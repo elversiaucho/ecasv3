@@ -1,0 +1,474 @@
+<table border="1">
+		<tr><th>Monitor</th>
+		<th>NUMERO DE LOTE</th>
+		<th>NUMERO DE LOTE</th>
+		<th>SEDE CODIGO</th>
+		<th>MUNICIPIO</th>
+		<th>ESTUDIANTES PRESENTES</th>
+		<th>ENCUESTAS REGISTRADAS</th>
+		<th>ENCUESTAS COMPLETAS</th>
+		<th>ENCUESTAS IN_COMPLETAS</th>
+		<th>ENCUENTAS VACIAS</th>
+		</tr><tr>
+				<th>Carolina Ceballos Medina</th>
+				<th>101261</th>
+				<th>376001022351</th>
+				<th>LICEO RENACER</th>
+				<th>CALI</th>
+				<th>10</th>
+				<th>2</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Julieth Lina Fernanda Zorro Melo</th>
+				<th>1111</th>
+				<th>411848001058</th>
+				<th>COLEGIO FUNDACION COLOMBIA</th>
+				<th>BOGOTÃ, D.C.</th>
+				<th>0</th>
+				<th>9</th>
+				<th>5</th>
+				<th>2</th>
+				<th>1</th>
+				</tr><tr>
+				<th>Julieth Lina Fernanda Zorro Melo</th>
+				<th>1127</th>
+				<th>411848001058</th>
+				<th>COLEGIO FUNDACION COLOMBIA</th>
+				<th>BOGOTÃ, D.C.</th>
+				<th>20</th>
+				<th>4</th>
+				<th>1</th>
+				<th>2</th>
+				<th>1</th>
+				</tr><tr>
+				<th>Julieth Lina Fernanda Zorro Melo</th>
+				<th>12111</th>
+				<th>311848002874</th>
+				<th>INSTITUTO COOPERATIVO DE CANAPRO</th>
+				<th>BOGOTÃ, D.C.</th>
+				<th>0</th>
+				<th>1</th>
+				<th>0</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Julieth Lina Fernanda Zorro Melo</th>
+				<th>18971</th>
+				<th>311001048011</th>
+				<th>LICEO MALLERLAND</th>
+				<th>BOGOTÃ, D.C.</th>
+				<th>20</th>
+				<th>4</th>
+				<th>1</th>
+				<th>2</th>
+				<th>1</th>
+				</tr><tr>
+				<th>NANCY STELLA CARDENAS RODRIGUEZ</th>
+				<th>281</th>
+				<th>411769001981</th>
+				<th>LICEO JUAN RAMON JIMENEZ</th>
+				<th>BOGOTÃ, D.C.</th>
+				<th>12</th>
+				<th>3</th>
+				<th>0</th>
+				<th>0</th>
+				<th>3</th>
+				</tr><tr>
+				<th>Julieth Lina Fernanda Zorro Melo</th>
+				<th>36661</th>
+				<th>311001000441</th>
+				<th>LICEO PARROQUIAL SAN JOSE</th>
+				<th>BOGOTÃ, D.C.</th>
+				<th>20</th>
+				<th>5</th>
+				<th>3</th>
+				<th>1</th>
+				<th>1</th>
+				</tr><tr>
+				<th>Julieth Lina Fernanda Zorro Melo</th>
+				<th>66061</th>
+				<th>111001011029</th>
+				<th>REINO DE HOLANDA</th>
+				<th>BOGOTÃ, D.C.</th>
+				<th>5</th>
+				<th>5</th>
+				<th>4</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Julieth Lina Fernanda Zorro Melo</th>
+				<th>66062</th>
+				<th>111001011029</th>
+				<th>REINO DE HOLANDA</th>
+				<th>BOGOTÃ, D.C.</th>
+				<th>10</th>
+				<th>2</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Diana Carolina PeÃ±a BolÃ­var</th>
+				<th>68993</th>
+				<th>413001007648</th>
+				<th>COLEGIO CAMINO DEL CORAL  DE CARTAGENA</th>
+				<th>CARTAGENA DE INDIAS</th>
+				<th>20</th>
+				<th>19</th>
+				<th>3</th>
+				<th>1</th>
+				<th>15</th>
+				</tr><tr>
+				<th>Julieth Alejandra Solano Villa</th>
+				<th>69078</th>
+				<th>413001007630</th>
+				<th>CORP COL CARIBE REAL</th>
+				<th>CARTAGENA DE INDIAS</th>
+				<th>20</th>
+				<th>1</th>
+				<th>0</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Diana Carolina PeÃ±a BolÃ­var</th>
+				<th>698102</th>
+				<th>313001028985</th>
+				<th>CORP DIOS ES AMOR  SEDE CARTAGENA</th>
+				<th>CARTAGENA DE INDIAS</th>
+				<th>15</th>
+				<th>5</th>
+				<th>2</th>
+				<th>1</th>
+				<th>2</th>
+				</tr><tr>
+				<th>Diana Carolina PeÃ±a BolÃ­var</th>
+				<th>73267</th>
+				<th>313001009328</th>
+				<th>GIMNASIO MODERNO DE CARTAGENA</th>
+				<th>CARTAGENA DE INDIAS</th>
+				<th>45</th>
+				<th>12</th>
+				<th>3</th>
+				<th>1</th>
+				<th>8</th>
+				</tr><tr>
+				<th>Diana Carolina PeÃ±a BolÃ­var</th>
+				<th>86284</th>
+				<th>113001001581</th>
+				<th>INSTITUCION EDUCATIVA DE FREDONIA</th>
+				<th>CARTAGENA DE INDIAS</th>
+				<th>0</th>
+				<th>2</th>
+				<th>0</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³</th>
+				<th>881102</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>5</th>
+				<th>8</th>
+				<th>2</th>
+				<th>4</th>
+				<th>2</th>
+				</tr><tr>
+				<th></th>
+				<th>881104</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>35</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³</th>
+				<th>88181</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>20</th>
+				<th>5</th>
+				<th>1</th>
+				<th>1</th>
+				<th>3</th>
+				</tr><tr>
+				<th></th>
+				<th>881815</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>1</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th></th>
+				<th>881817</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>35</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th></th>
+				<th>88182</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>23</th>
+				<th>2</th>
+				<th>1</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th></th>
+				<th>88183</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>23</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³</th>
+				<th>88261</th>
+				<th>476001005957</th>
+				<th>GIMN LOS FARALLONES  VALLE DEL LILY</th>
+				<th>CALI</th>
+				<th>20</th>
+				<th>6</th>
+				<th>0</th>
+				<th>3</th>
+				<th>3</th>
+				</tr><tr>
+				<th></th>
+				<th>883121</th>
+				<th>376001043901</th>
+				<th>COL NVO CAMBRIDGE</th>
+				<th>CALI</th>
+				<th>20</th>
+				<th>2</th>
+				<th>0</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³</th>
+				<th>883138</th>
+				<th>376001043901</th>
+				<th>COL NVO CAMBRIDGE</th>
+				<th>CALI</th>
+				<th>7</th>
+				<th>2</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th></th>
+				<th>88373</th>
+				<th>376001043901</th>
+				<th>COL NVO CAMBRIDGE</th>
+				<th>CALI</th>
+				<th>35</th>
+				<th>6</th>
+				<th>1</th>
+				<th>0</th>
+				<th>5</th>
+				</tr><tr>
+				<th></th>
+				<th>88464</th>
+				<th>376001043871</th>
+				<th>COL LOS ANGELES DEL NORTE DE OCCIDENTE</th>
+				<th>CALI</th>
+				<th>28</th>
+				<th>2</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th></th>
+				<th>886102</th>
+				<th>376001043617</th>
+				<th>COL PHILADELPHIA INTERNACIONAL</th>
+				<th>CALI</th>
+				<th>0</th>
+				<th>3</th>
+				<th>1</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³</th>
+				<th>8871218</th>
+				<th>376001043455</th>
+				<th>INSTITUCION EDUCATIVA POTRERO GRANDE</th>
+				<th>CALI</th>
+				<th>10</th>
+				<th>7</th>
+				<th>3</th>
+				<th>2</th>
+				<th>2</th>
+				</tr><tr>
+				<th>Carolina Ceballos Medina</th>
+				<th>891101</th>
+				<th>376001043285</th>
+				<th>COLEGIO GUIAS</th>
+				<th>CALI</th>
+				<th>15</th>
+				<th>3</th>
+				<th>2</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th></th>
+				<th>891107</th>
+				<th>376001043285</th>
+				<th>COLEGIO GUIAS</th>
+				<th>CALI</th>
+				<th>0</th>
+				<th>5</th>
+				<th>0</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th></th>
+				<th>894111</th>
+				<th>376001042882</th>
+				<th>LICEO MIXTO EMPERADOR DE CALI SEDE II</th>
+				<th>CALI</th>
+				<th>35</th>
+				<th>1</th>
+				<th>0</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th></th>
+				<th>896113</th>
+				<th>376001042866</th>
+				<th>COL LA SAGRADA FAMILIA II</th>
+				<th>CALI</th>
+				<th>0</th>
+				<th>3</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³</th>
+				<th>89762</th>
+				<th>376001042777</th>
+				<th>COLEGIO SANTA ISABEL DE HUNGRIA SEDE CALIMIO NORTE</th>
+				<th>CALI</th>
+				<th>10</th>
+				<th>6</th>
+				<th>1</th>
+				<th>3</th>
+				<th>2</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³</th>
+				<th>89861</th>
+				<th>376001042700</th>
+				<th>CENT ETNOEDUCATIVO  ANTONIO MACEO</th>
+				<th>CALI</th>
+				<th>5</th>
+				<th>5</th>
+				<th>5</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³</th>
+				<th>89862</th>
+				<th>376001042700</th>
+				<th>CENT ETNOEDUCATIVO  ANTONIO MACEO</th>
+				<th>CALI</th>
+				<th>4</th>
+				<th>4</th>
+				<th>3</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³</th>
+				<th>89871</th>
+				<th>376001042700</th>
+				<th>CENT ETNOEDUCATIVO  ANTONIO MACEO</th>
+				<th>CALI</th>
+				<th>4</th>
+				<th>5</th>
+				<th>5</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³</th>
+				<th>89872</th>
+				<th>376001042700</th>
+				<th>CENT ETNOEDUCATIVO  ANTONIO MACEO</th>
+				<th>CALI</th>
+				<th>3</th>
+				<th>3</th>
+				<th>2</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th></th>
+				<th>90267</th>
+				<th>376001042157</th>
+				<th>COL SANTA ISABEL DE HUNGRIA SEDE INVICALI  DESEPAZ</th>
+				<th>CALI</th>
+				<th>30</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th></th>
+				<th>92694</th>
+				<th>376001037617</th>
+				<th>COLEGIO ARQUIDIOCESANO JUAN PABLO II</th>
+				<th>CALI</th>
+				<th>24</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Carolina Ceballos Medina</th>
+				<th>94261</th>
+				<th>376001034219</th>
+				<th>COL CREAD</th>
+				<th>CALI</th>
+				<th>3</th>
+				<th>4</th>
+				<th>4</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Carolina Ceballos Medina</th>
+				<th>96081</th>
+				<th>376001031902</th>
+				<th>COL ALEXANDER</th>
+				<th>CALI</th>
+				<th>5</th>
+				<th>1</th>
+				<th>0</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Julieth Lina Fernanda Zorro Melo</th>
+				<th>981020</th>
+				<th>311001107645</th>
+				<th>COLEGIO BILINGUE SAN JUAN DE AVILA</th>
+				<th>BOGOTÃ, D.C.</th>
+				<th>35</th>
+				<th>3</th>
+				<th>1</th>
+				<th>1</th>
+				<th>1</th>
+				</tr></table>

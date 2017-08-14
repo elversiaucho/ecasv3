@@ -15,6 +15,7 @@ function index(){
 	$mensaje ='';
 	$result = 2;
 	$validacion = FALSE;
+	$info_encuesta = array();
 	if (isset($_POST["estado_e"]))
 		$estado_e = $_POST["estado_e"];
 	if (isset($_POST["seguir"]))
@@ -31,6 +32,7 @@ function index(){
 		}
 	$data_encuesta = $this->m_ecas->get_encuesta($id_encuesta);
 	if (is_array($data_encuesta)){
+		
 		$data_encuesta = $data_encuesta[0];
 		foreach ($data_encuesta as &$value) {
 			if ($value == '0')
@@ -39,12 +41,21 @@ function index(){
 					$value = 'checked';
 
 			}
+			if ($data_encuesta->NRO_ENCUESTA=="checked")
+				$data_encuesta->NRO_ENCUESTA = 1;
+			$info_encuesta =array('LOTE_ENC' =>$data_encuesta->LOTE_ENC,
+				        'nro_encuesta'=> $data_encuesta->NRO_ENCUESTA,
+				        'estado_e' => $data_encuesta->ESTADO_ENCUESTA,
+				        );
 	   }
 	//if ($nro_slide==1)
 	
 	//$data_encuesta=json_encode($data_encuesta);
-	//var_dump($data_encuesta);
-
+	/*print_r($info_encuesta);
+	
+	$this->session->set_userdata('info_enc',$info_encuesta);
+	print_r($this->session->userdata('info_enc'));
+	exit();*/
 	$this->form_validation->set_rules("id_e");
     $this->form_validation->set_rules("A1","Selecciona tu género",'required');
 	$this->form_validation->set_rules("A2","Ingresa tu edad",'required|is_natural_no_zero|max_length[2]|callback_edad');
@@ -1127,9 +1138,12 @@ function cerrar_e(){
 	//if($this->form_validation->run()==FALSE)
 	$session_data = $this->session->userdata('ingreso');
     $usuario = $session_data['usuario'];
-	$clave =$this->input->post('clave');
-	$id_e= $this->input->post('id_e');
+	$clave = $this->input->post('clave');
+	$id_e = $this->input->post('id_e');
 	$motivo = $this->input->post('motivo');
+
+
+	$info_encuesta = $this->session->userdata('info_enc');
 	if (is_string($clave)){
 		$result = $this->m_ecas->get_user($usuario,$clave);
 		if (is_array($result)){
@@ -1137,8 +1151,21 @@ function cerrar_e(){
 				$info = array('ESTADO_ENCUESTA' => 2,
 							  'OBSERVACIONES' => $motivo);
 				$result = $this->m_ecas->m_cerrar_e($id_e, $info);
-				if ($result==1){
-					$mensaje="Encuesta cerrada con Exito.";
+				if ($result == 1){
+					$grado = "";
+					$curso = "";
+					$result=$this->m_ecas->get_lote($info_encuesta["LOTE_ENC"]);
+					if(is_object($result)){
+						$grado = $result->GRADO;
+						$curso = $result->CURSO;
+
+					}
+					$mensaje ="Se ha cerrado la Encuesta Número: <b>".$info_encuesta["nro_encuesta"]."<br> Lote: ".
+					$info_encuesta["LOTE_ENC"].
+					"<br> Grado: ".$grado.
+					"<br> Curso: ".$curso." 
+					</b> <br> Estado: <b>INCOMPLETA</b> 
+					 <p><b>Motivo:</b> ".$motivo."</p><p><a href ='".base_url()."' class='btn btn-raised btn-success arrow-r'>Aceptar</a></p>";
 				}else
 					$mensaje = "Fallo cierre de encuesta intenta reabrirla y volver a cerrarla.";
 

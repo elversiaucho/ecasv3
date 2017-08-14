@@ -30,7 +30,7 @@
 				 <div class="col-lg-5" ></div>
 				 
 					<label class="col-lg-2 control-label">Motivo cierre:</label><br>
-					<textarea class="col-lg-2" name="motivo" id="motivo"></textarea> 
+					<textarea class="col-lg-2" name="motivo" id="motivo" onkeypress="return soloLetras(event);"></textarea> 
 					<div class="col-lg-2">
 						<a class="btn" id="btn_close" >Cerrar</a>
 					</div> 
@@ -50,7 +50,7 @@
 			<img src='<?php echo base_url('/images/Cabezotep.png')?>' class="img-responsive"/>
 			<div style="height:40%;"></div>
 			<div id="franja"></div>
-			<div class="bs-component" style="width: 90%;margin: 20px auto;">
+			<div class="bs-component" id="menu" style="width: 90%;margin: 20px auto;">
 				<div class="btn-group btn-group-sm btn-group-justified btn-group-raised">
 					<a class="btn itemMenu" data-pag="1">Características generales</a>
 					<a class="btn itemMenu" data-pag="3">Mi entorno social</a>
@@ -3433,7 +3433,7 @@
 								</label>
 							</div>
 						</div>
-						<p class="t_error col-lg-6" id="errA8b"><?php echo strip_tags(form_error('A8')); ?></p>
+						<span class="t_error col-lg-6" id="errA8b"><?php echo strip_tags(form_error('A8')); ?></span>
 					</div>
 					<div id="not1" style="display:none;">
 						<div class="row form-group label-floating TH">
@@ -5655,7 +5655,8 @@
 					$("#err_clave").text("Ingresa tu clave");
 					seguir=0;
 				}
-				if ($("#motivo").val()=='')
+				
+				if ($("#motivo").val().trim()=='')
 				{
 					$("#err_motivo").text("Ingresa El motivo");
 					seguir=0;
@@ -5675,14 +5676,18 @@
 		                	if (r=='0'){
 		                		alert("Datos errados");
 
-		                		$("#form_cierre").hide();
-		                		$("#clave").val('');
-		                		$("#motivo").val('');
-		                		$("#ms_cierre").html('');
-
+	                	}
+		                	else{
+		                	    $("#encuesta").html('');
+		                	    $("#monitor").hide();
+		                	    $("#menu").html(r);
 		                	}
-		                	else
-		                	    $("#encuesta").text(r);
+		                	$("#form_cierre").hide();
+		                	$("#clave").val('');
+		                	$("#motivo").val('');
+		                	$("#ms_cierre").html('');
+		                	
+		                	
 		                },
 		                error: function(errorThrown)
 		                {

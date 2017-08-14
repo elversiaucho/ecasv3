@@ -57,7 +57,7 @@ function index()
               if (!is_numeric($colegio))
                 $mensaje="Codigo de colegio no válido";
               else{
-                  $no_asistieron=set_value('nro_eregulares')-set_value('nro_presentes');
+                  //$no_asistieron=set_value('nro_eregulares')-set_value('nro_presentes');
                   $lote = array(
                    'COD_COLEGIO_OP' => $colegio,
                    'JORNADA' => set_value('jornada'),
@@ -66,7 +66,7 @@ function index()
                    'MATRICULADOS' => set_value('nro_ecurso'),
                    'REGULARES' => set_value('nro_eregulares'),
                    'PRESENTES' => set_value('nro_presentes'),
-                   'NO_ASISTIERON' => $no_asistieron,
+                   //'NO_ASISTIERON' => $no_asistieron,
                    'SIS_RECOLECTA' => set_value('sis_recolecta'),
                    'USUARIO' => $usuario
                  );
@@ -249,6 +249,7 @@ function otra_nov($valor){
                     //$data['encuesta']=$result; 
                     $data['encuestar'] = 1;
                     $data['id_encuesta'] = $encuesta['ID_ENCUESTA'];
+                    $data['retomada'] = 1;
                     $this->load->view('v_menult',$data);
                   break;
               case 2:
@@ -286,24 +287,34 @@ function otra_nov($valor){
         $data['rol'] = $session_data['rol'];
         $data_l[] = array();
         $mensaje ="";
+        $total_enc=0;
+        /*se ingresan para  reconfirmar y/o corregir*/
+
+        $this->form_validation->set_rules('matriculados' , 'Ingresa número de Estudiantes Matriculados','trim|is_natural|required');
+        $this->form_validation->set_rules('regulares' , 'Ingresa número de Estudiantes Regulares','trim|is_natural|required');
+        
+        $this->form_validation->set_rules('sistema_r' , 'Selecciona el sistema de recoleccion del lote','trim|is_natural|required');
+        //$this->form_validation->set_rules('encuestados' , 'Ingresa número de estudiantes encuestados','trim|is_natural|required');
+
+        /*variable para distribuir los que no asistieron*/
         $this->form_validation->set_rules('nro_lote', 'Ingresa Número de Lote', 'trim|required');
-        $this->form_validation->set_rules('ocupados', 'Ingresa Número de Estudiantes Ocupados', 'trim|is_natural|callback_no_encuesta');
+        $this->form_validation->set_rules('ocupados', 'Ingresa Número de Estudiantes Ocupados', 'trim|is_natural|callback_no_encuestados');
         $this->form_validation->set_rules('ausentes', 'Ingresa Número de Estudiantes Ausentes', 'trim|is_natural');
         $this->form_validation->set_rules('rechazaron', 'Ingresa Número de Estudiantes que rechazaron', 'trim|is_natural');
+         $this->form_validation->set_rules('menores', 'Ingresa Número de Estudiantes que menores de 12 años', 'trim|is_natural');
         $this->form_validation->set_rules('otro_motivo', 'Ingresa Número de Estudiantes con otro motivo', 'trim|is_natural');
         $this->form_validation->set_rules('text_motivo', 'Ingresa el Motivo', '');
         $this->form_validation->set_rules('obs_lote', 'Ingresa las observaciones', 'trim');
-        $this->form_validation->set_rules('faltaron', '', 'trim');
+       // $this->form_validation->set_rules('faltaron', '', 'trim');
 
         
 
       if($this->form_validation->run()==FALSE){
             
-                
             $lotes = $this->m_ecas->get_lotes($data['usuario'],0);//caso puede ser 2.todos.. 0.solo abiertos... 1.solo cerrados. del usuarios
             switch ($lotes) {
               case (is_array($lotes)):
-                  $mensaje="---Revisar valores ingresados";
+                  $mensaje="---Revise valores ingresados---";
                 break;
               case 1:
                   $mensaje="No hay lotes para cerrar";
@@ -314,17 +325,26 @@ function otra_nov($valor){
             } 
           $data_l['lotes']=$lotes;
           $data_l['mensaje']=$mensaje;
+          $data_l['inf_lote']="";
+          if (is_numeric(set_value('nro_lote'))){//consulta la info del lote
+             $data_l['inf_lote']=$this->m_ecas->get_infolt(set_value('nro_lote'));
+             //$data_l['inf_lote']=['inf_lote']);
+          }
           $this->load->view('v_menult',$data);
           $this->load->view('view_cerrarlt',$data_l);
           }
           else {//'LOTE_ENC' => set_value('nro_lote'),
               $nro_lote=set_value('nro_lote');
-
               $lote = array(
                 
+                'MATRICULADOS' => set_value('matriculados'),
+                'REGULARES' => set_value('regulares'),
+                'PRESENTES' => set_value('total_e'),//total de encuestas
                 'OCUPADOS_LG' => set_value('ocupados'),
+             
                 'AUSENTES_LG' => set_value('ausentes'),
                 'RECHAZARON_LG' => set_value('rechazaron'),
+                'MENORES_DE_12' => set_value('menores'),
                 'CON_MOTIVO_LG' => set_value('otro_motivo'),
                 'MOTIVO_LG' => set_value('text_motivo'),
                 'OBSERVACIONES' => set_value('obs_lote'),
@@ -345,23 +365,23 @@ function otra_nov($valor){
             }
    }
 
-  function no_encuesta(){
+  function no_encuestados(){
     #$faltan = $this->m_ecas->get_faltaron($this->input->post('nro_lote'));
     #$total_enc = $this->m_ecas->m_total_enc();
     
     $faltan=$this->input->post('faltaron');
-    $est_noencuestados= $this->input->post('ocupados')+$this->input->post('ausentes')+$this->input->post('rechazaron')+$this->input->post('otro_motivo');
+    $est_noencuestados= $this->input->post('ocupados')+$this->input->post('ausentes')+$this->input->post('rechazaron')+$this->input->post('menores')+$this->input->post('otro_motivo');
         if (is_numeric($faltan)){
             #$faltan = $faltan[0]->NO_ASISTIERON;
             if ($faltan!=$est_noencuestados){
-                 $this->form_validation->set_message('no_encuesta',"Estudiantes no encuestados( ".$faltan." ) no coinciden con ".$est_noencuestados." Suma de Ocupados+Ausentes+rechazaron+otro_motivo.");
+                 $this->form_validation->set_message('no_encuestados',"Estudiantes no encuestados( ".$faltan." ) no es igual a la suma de: ".$est_noencuestados." (Ocupados + No asistieron + Rechazaron + Menores de 12 años + Otro motivo)");
                  return false;
             }else
               return true;
 
         }
         else{
-          $this->form_validation->set_message('no_encuesta','Error al consultar no asistentes');
+          $this->form_validation->set_message('no_encuestados','Error al consultar no asistentes');
                  return false;
         }
   }

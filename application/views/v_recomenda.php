@@ -20,9 +20,15 @@
 		<div class="col-md-6">
 			<img src="<?php echo $ruta_base.'images/recomienda.png';?>" class="img-responsive"/>
 		
-			<div style="height:70px">
-		  	 	<a href="<?php echo $ruta_base.'index.php/c_ecas?id_e='.$id_encuesta;?>" class="btn btn-raised btn-danger" style="position:auto; 0px;" >Iniciar</a>
-			</div>
+
 
 		</div>
+		<div>
+		  	 	<a href="<?php echo $ruta_base.'index.php/c_ecas?id_e='.$id_encuesta;?>" class="btn btn-raised btn-danger" style="position:auto; 0px;" ><?php if (isset($retomada)){
+		  	 		 echo "RETOMAR";
+		  	 		}
+		  	 		else echo "INICIAR";?> 
+
+		  	 	</a>
+			</div>
 	</div>

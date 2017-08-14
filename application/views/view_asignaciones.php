@@ -1,11 +1,11 @@
 <div id="campo">
   <div class="estilo_campos">
    	<?php 
-		$attributes = array('class' => '', 'id' => 'form_lote' , 'method' => 'POST');
-       	echo form_open('index.php/c_crearlt', $attributes);
+		$attributes = array('class' => '', 'id' => 'form_asig' , 'method' => 'POST');
+       	echo form_open('index.php/c_asignaciones', $attributes);
        	?>
 	 
-     	<h5>Por favor identificar y diligenciar las siguientes preguntas:</h5> 
+     	<h5>Ingrese la siguiente información:</h5> 
         <br>
         <div class="row pregunta-lote">
             <div class="col-md-1 icono-lote"></div>
@@ -14,20 +14,7 @@
             <p class="t_error" id="err_IE"><?php echo strip_tags(form_error('IE')); ?></p>
             
         </div>
-     	<!--label class="col-lg-4">En que colegio estas?</label>
-     	<select class="col-lg-3" id = 'colegio' name="colegio" >
-	     	<?php 
-	     		/*echo "<option value=''>Seleccione..</option>";
-	     		if(isset($colegios))
-	     		{
-	     		foreach ($colegios as $fila){
-	     			echo '<option value='.$fila->Cod_colegio_op.'>'.$fila->Cod_colegio_op.'-'.$fila->SEDE_NOMBRE.'</option>';
-	     		  }
-	     		}
-	     		*/?>    		
-	    </select>
-        <p class="t_error" class="col-lg-5"><?php #echo strip_tags(form_error('colegio')); ?></p>
-     </div-->
+  
         <div class="row pregunta-lote">
             <div class="col-md-1 icono-lote"></div>
             <label class="col-md-4">Jornada:</label>

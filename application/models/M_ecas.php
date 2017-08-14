@@ -132,6 +132,16 @@ function get_infolt($id_lote){//infomacion del lote segun enceustas
 	else 
 		$info_lt['e_completas'] ="Error al Consultar el total de encuestas";
     //$this->db->reconnect();
+    //consulta encuestas incompletas 2018
+    $this->db->select('COUNT(LOTE_ENC) as incompletas');
+	$this->db->where("(ESTADO_ENCUESTA = 0 OR ESTADO_ENCUESTA = 2) 
+                   AND LOTE_ENC = '$id_lote'");
+	$result=$this->db->get('encuesta3');
+   	if($result->num_rows()>0){
+		$info_lt['incompletas'] = $result->result();
+	}
+	else 
+		$info_lt['e_completas'] ="Error al Consultar  encuestas incompletas";
     //CONSULTA CANTIDAD DE ESTUDIANTES..... 
 	$this->db->select('MATRICULADOS,REGULARES,PRESENTES');
 	$this->db->from('lote');
@@ -145,7 +155,7 @@ function get_infolt($id_lote){//infomacion del lote segun enceustas
 	return $info_lt;
 	
 }
-
+//modificar para ver encuestas incompletas
 function get_lotes($usuario, $caso){
 
 	$this->db->select('ID_LOTE, muestra_2016.SEDE_NOMBRE ,ESTADO_LOTE');
@@ -162,6 +172,19 @@ function get_lotes($usuario, $caso){
      else return 1;//echo error_log("Fallo consulta");
 
 	return false;
+}
+
+function get_lote($lote_enc){
+	$result = $this->db->get_where('lote',array('id_lote' => $lote_enc));
+	
+	if($result->num_rows()>0){
+
+		return $result->row();
+		 //el lote esiste
+	}
+	else 
+		return 2;//lote no esiste
+
 }
 
 function get_encuesta($id_encuesta){
@@ -308,6 +331,22 @@ function get_user($usuario, $clave){
      	$this->db->from('user_2016');
      	$this->db->where('USUARIO', $usuario);
      	$this->db->where('CLAVE', $clave);
+     	$result = $this->db->get();
+     	if($result->num_rows()==1)
+     		return $result->result();
+     	else
+     		return false;
+
+      }
+
+function get_usuarios($rol=''){
+
+     
+
+     	$this->db->select('USUARIO, COD_MUNI, CIUDAD, ROL');
+     	$this->db->from('user_2016');
+     	if ($rol!='')
+     		$this->db->where('ROL', $rol);
      	$result = $this->db->get();
      	if($result->num_rows()==1)
      		return $result->result();

@@ -2,7 +2,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-     
+     <?php echo base_url();?>
 <style type="text/css">
 
 	
@@ -51,16 +51,17 @@
      <div class="bs-component" style="width: 90%;margin: 0px  auto;">
 		<div class="btn-group-justified menu1"><!--btn-group btn-group-sm btn-group-justified btn-group-raised-->
 		    <a  class="btn btn-menu1" id="crear_lte">Crear Lote</a>
-			<a  class="btn btn-menu1" id="crear_enc">Crear Encuesta</a>
-			<a  class="btn btn-menu1" id="reanudar_e">Retomar Encuesta</a>
+			<a  class="btn btn-menu1" id="crear_enc">Crear <br>Encuesta</a>
+			<a  class="btn btn-menu1" id="reanudar_e">Retomar <br> Encuesta</a>
 			<a  class="btn btn-menu1" id="cerrar_lt">Cerrar Lote</a>
 				<?php 
 			if(!isset($encuestar)){
 				if ($rol==1){
 			?>
-			<a  class="btn btn-menu1" id="nov_lt">Lote Novedad</a>
+			<a  class="btn btn-menu1" id="nov_lt">Novedad <br>Lote</a>
 			<a  class="btn btn-menu1" id="nov_ie">IE Novedad</a>
 			<a  class="btn btn-menu1" id="reportar">Reportes </a>	
+			<a  class="btn btn-menu1" id="asignar_col">Asignar <br>Colegios</a>
 			<?php
 				}
 			}
@@ -82,6 +83,7 @@
 			{
 				//$this->load("v_recomenda.php");
 				require('v_recomenda.php');
+				
     		}
        ?>
        </h2>
@@ -276,6 +278,36 @@
 		 estilo_menu('#crear_lte');
 			$.ajax({
 				url: '<?php echo base_url('index.php/C_cheklg/vista_lote');?>',
+				type: 'GET',
+				//data: $(this).serialize(),
+				beforeSend : function(){
+					$("#campos").html("<img src='<?php echo base_url('images/ajax-loader.gif');?>'>");
+				},
+				success:function (response) {
+                	     if ($.trim(response)){
+							$('#campos').html(response);
+						   }
+						   else {
+                			$("#campos").html("Error No se pudo crear el Lote");
+                		}
+			     },
+			     error: function(errorThrown){
+        	 	 alert(errorThrown);
+        	 	 alert("Ocurrio un error en AJAX!");
+        	 	 }	
+			});
+
+		});
+		
+		$('#asignar_col').click(function(){
+		if($('#campo').length>0)
+			$('#campo').remove();
+	     //$("#cont_ppal").append("<div id='campos'>Texto Agregado</div>");
+		//alert("vamos");
+		 //
+		 estilo_menu('#asignar_col');
+			$.ajax({
+				url: '<?php echo base_url('index.php/C_asignaciones');?>',
 				type: 'GET',
 				//data: $(this).serialize(),
 				beforeSend : function(){

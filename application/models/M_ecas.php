@@ -112,7 +112,7 @@ function get_infolt($id_lote){//infomacion del lote segun enceustas
 	$info_lt= array();
 	$this->db->select('COUNT(LOTE_ENC) as total_e');
 	$this->db->from('encuesta3');
-	$this->db->where('LOTE_ENC',$id_lote);
+	$this->db->where("LOTE_ENC = $id_lote AND ESTADO_ENCUESTA > 0");
 	$result=$this->db->get();
    	if($result->num_rows()>0){
 		$info_lt['total_e'] = $result->result();
@@ -134,8 +134,8 @@ function get_infolt($id_lote){//infomacion del lote segun enceustas
     //$this->db->reconnect();
     //consulta encuestas incompletas 2018
     $this->db->select('COUNT(LOTE_ENC) as incompletas');
-	$this->db->where("(ESTADO_ENCUESTA = 0 OR ESTADO_ENCUESTA = 2) 
-                   AND LOTE_ENC = '$id_lote'");
+	$this->db->where("(ESTADO_ENCUESTA > 1) 
+                   AND LOTE_ENC = '$id_lote'");//ESTADO_ENCUESTA = 0 OR 
 	$result=$this->db->get('encuesta3');
    	if($result->num_rows()>0){
 		$info_lt['incompletas'] = $result->result();
@@ -143,10 +143,11 @@ function get_infolt($id_lote){//infomacion del lote segun enceustas
 	else 
 		$info_lt['e_completas'] ="Error al Consultar  encuestas incompletas";
     //CONSULTA CANTIDAD DE ESTUDIANTES..... 
-	$this->db->select('MATRICULADOS,REGULARES,PRESENTES');
+	$this->db->select('MATRICULADOS,REGULARES,PRESENTES,GRADO,CURSO');
 	$this->db->from('lote');
 	$this->db->where('ID_LOTE',$id_lote);
     $result=$this->db->get();
+    
     if($result->num_rows()>0){
 		$info_lt['estudiantes'] = $result->result(); //la encuesta existe
 	}
@@ -156,15 +157,34 @@ function get_infolt($id_lote){//infomacion del lote segun enceustas
 	
 }
 //modificar para ver encuestas incompletas
-function get_lotes($usuario, $caso){
-
+function get_lotes($usuario, $caso=""){
+	$session_data = $this->session->userdata('ingreso');
+	$cod_mpio= $session_data['mpio_user'];
 	$this->db->select('ID_LOTE, muestra_2016.SEDE_NOMBRE ,ESTADO_LOTE');
 	$this->db->from('lote');
-	if ($caso == 0 || $caso == 1)
-			$this->db->join('muestra_2016',"lote.COD_COLEGIO_OP=muestra_2016.Cod_colegio_op AND USUARIO ='".$usuario."' AND ESTADO_LOTE='".$caso."'");
-	else	
-		$this->db->join('muestra_2016',"lote.COD_COLEGIO_OP=muestra_2016.Cod_colegio_op AND USUARIO ='".$usuario."'");//todos los lotes
-	$result = $this->db->get();
+	switch ($caso) {
+		case 0: case 1:
+			$this->db->join('muestra_2016',"lote.COD_COLEGIO_OP=muestra_2016.Cod_colegio_op AND USUARIO ='".$usuario."' AND ESTADO_LOTE='".$caso."'");//caso 0 lote abierto 1 cerrado 
+			$result = $this->db->get();
+			break;
+		case  3://solo lotes que no tienen encuestas
+			$sql = "select ID_LOTE,
+			  (SELECT SEDE_NOMBRE FROM muestra_2016 M where M.Cod_colegio_op = L.Cod_colegio_op) AS SEDE_NOMBRE,
+			  ESTADO_LOTE
+			 from lote L
+				where COD_MUNI ='".$cod_mpio."' AND id_lote not in (
+				select id_lote from lote 
+				join encuesta3 ON (lote_enc = id_lote))";
+				$result = $this->db->query($sql);
+			break;
+		
+		default:
+			$this->db->join('muestra_2016',"lote.COD_COLEGIO_OP=muestra_2016.Cod_colegio_op AND USUARIO ='".$usuario."'");//todos los lotes
+			$result = $this->db->get();
+			break;
+	}
+
+	//print_r($this->db->last_query());
 	if($result->num_rows()>0){
 		//var_dump($result->result());
      	return $result->result();
@@ -175,8 +195,12 @@ function get_lotes($usuario, $caso){
 }
 
 function get_lote($lote_enc){
-	$result = $this->db->get_where('lote',array('id_lote' => $lote_enc));
+	//$result = $this->db->get_where('lote',array('id_lote' => $lote_enc));
+	$this->db->select('ID_LOTE, muestra_2016.SEDE_NOMBRE ,GRADO, CURSO, MATRICULADOS,REGULARES,PRESENTES,ESTADO_LOTE');
+	$this->db->from('lote');
+	$this->db->join('muestra_2016',"lote.COD_COLEGIO_OP=muestra_2016.Cod_colegio_op AND ID_LOTE ='".$lote_enc."'");
 	
+	$result = $this->db->get();
 	if($result->num_rows()>0){
 
 		return $result->row();
@@ -214,6 +238,7 @@ function m_retomar($info){
 					}
 					
 					return $result->result(); //la encuesta existe
+
 				}
 				else 
 					return 2;//encuesta no existe
@@ -254,6 +279,19 @@ function crear_encuesta($info){
 			//echo "Lote no exixte";
 
 }
+function guarda_asignacion($info){
+	$result = $this->db->get_where('asig_monitor',array('id_asignacion' => $info["id_asignacion"]));
+		if ($result->num_rows() > 0)
+			return 2;
+	$this->db->insert('asig_monitor',$info);
+	//echo $this->db->last_query();
+	if($this->db->affected_rows() == '1')
+		return 1;
+		
+	else
+		return 0;
+}
+
 //--------GUARDAR ACTUALIZAR ENCUESTA
 function guarda_lote($lote){
 	      
@@ -308,17 +346,77 @@ function mget_grado($cod_col){
 	return false;
 }	
 //------------------------
-/*Devuelve los colegios que tiene el usuario por municipio*/
-function get_colegio(){
+
+/*
+version que consulta los colegios asignados
+*/
+
+function get_col_asignado(){
 		$session_data = $this->session->userdata('ingreso');
-	    $cod_mpio= $session_data['mpio_user'];
-	    $this->db->select('Cod_colegio_op, COD_MUNI, MUNICIPIO, SECTOR, SEDE_NOMBRE');
+	    $usuario= $session_data['usuario'];
+	    $this->db->select("cod_colegio");
+	    $this->db->from("asig_monitor");
+	    $this->db->where("us_monitor",$usuario);
+	    $colegios=$this->db->get();
+	    if ($colegios->num_rows()>0) {
+	    	$colegios=$colegios->result();
+	    $i=0;
+	    $lista = array();
+	    foreach ($colegios as $key => $value) {
+		    	$lista[$i++]=$value->cod_colegio;
+		    }
+	    }
+	   else {
+	   		echo $usuario." <b>No</b> tiene colegios asignados";
+	   		exit();
+	   }
+	    
+	    //where_in
+	    //exit();
+	    $this->db->select('Cod_colegio_op, COD_MUNI, MUNICIPIO, SECTOR, SEDE_NOMBRE, GRADO6, GRADO7, GRADO8, GRADO8, GRADO9, GRADO10, GRADO11_OMAS');
      	$this->db->from('muestra_2016');
-     	$this->db->where('COD_MUNI', $cod_mpio);
+     	$this->db->where_in('SEDE_CODIGO', $lista);
      	$result = $this->db->get();
+     	//echo $this->db->last_query();
      	if($result->num_rows()>0)
      		return $result->result();
      	else
+     		return false;
+}
+
+/*Devuelve los colegios que tiene el usuario por municipio*/
+function get_colegio($caso =""){//TODOS LOS COLEGIOS DE LA MUESTRA
+		$session_data = $this->session->userdata('ingreso');
+	    $cod_mpio= $session_data['mpio_user'];
+	    
+	   switch($caso){
+	    	case 'nov_ie':// solo mostrar los que no tienen encuestas
+	    	  $sql = "select Cod_colegio_op, 
+				COD_MUNI, 
+				MUNICIPIO, 
+				SECTOR, 
+				SEDE_NOMBRE
+				from muestra_2016 where COD_MUNI ='".$cod_mpio."' AND Cod_colegio_op not in (
+				SELECT M.Cod_colegio_op FROM muestra_2016 M join 
+				lote L ON (M.Cod_colegio_op = L.COD_COLEGIO_OP AND M.COD_MUNI ='".$cod_mpio."')
+				JOIN encuesta3 E ON (L.id_lote =E.lote_enc) group by M.Cod_colegio_op);";
+	  
+	        $result = $this->db->query($sql);
+	    	break;
+	    	default: 
+	    		$this->db->select('Cod_colegio_op, COD_MUNI, MUNICIPIO, SECTOR, SEDE_NOMBRE, GRADO6, GRADO7, GRADO8, GRADO8, GRADO9, GRADO10, GRADO11_OMAS');
+     			$this->db->from('muestra_2016');
+	    		$this->db->where("COD_MUNI = $cod_mpio AND Novedad is NULL");
+	    		$result = $this->db->get();
+	    	break;
+	    }
+	    //Colegios que no tienen encuestas para mostrar y agregar posible novedad
+	  
+      	 //
+     	if($result->num_rows()>0){
+     		$this->db->close();
+     		return $result->result();
+      	}else
      		return false;
 }
 
@@ -339,19 +437,23 @@ function get_user($usuario, $clave){
 
       }
 
-function get_usuarios($rol=''){
+function get_usuarios($rol='', $ciudad = ''){
 
-     
-
-     	$this->db->select('USUARIO, COD_MUNI, CIUDAD, ROL');
+     	$this->db->select('NOMBRE, USUARIO, COD_MUNI, CIUDAD, ROL');
      	$this->db->from('user_2016');
      	if ($rol!='')
      		$this->db->where('ROL', $rol);
+     	if ($ciudad!='')
+     		$this->db->where('COD_MUNI', $ciudad);
      	$result = $this->db->get();
-     	if($result->num_rows()==1)
+     	if($result->num_rows()>0){
+     		//echo $this->db->last_query();
      		return $result->result();
-     	else
+     	}
+     	else{
+			
      		return false;
+     	}
 
       }
 
@@ -360,10 +462,10 @@ function get_rep_monitor($op){
 	if ($op==1){
 			$session_data = $this->session->userdata('ingreso');
 			$mpio= $session_data['mpio_user'];
-			$result = $this->db->query("CALL rep_monitor('".$mpio."')");
+			$result = $this->db->query("CALL rep_monitorv3('".$mpio."')");
 		}
 	 else
-	 	$result = $this->db->query("CALL full_monitor()");
+	 	$result = $this->db->query("CALL full_monitorv3()");
 	
 	  if($result->num_rows()>0)
 	    {

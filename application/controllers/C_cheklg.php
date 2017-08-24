@@ -67,7 +67,7 @@ class C_cheklg extends CI_Controller {
 		$rol = $session_data['rol'];
 		$data['cod_mpio'] = $session_data['mpio_user'];
 		$data['usuario'] = $session_data['usuario'];
-		if ($rol==1)
+		if ($rol==1 || $rol == 3)
 			$this->load->view('v_reportes',$data);
 		else
 		 echo "Usuario no tiene privilegios para realizar esta accíon. rol:".$rol;	
@@ -81,8 +81,8 @@ function rep_monitor(){
 	$tabla ='<table border="1">
 		<tr><th>Monitor</th>
 		<th>NUMERO DE LOTE</th>
-		<th>NUMERO DE LOTE</th>
 		<th>SEDE CODIGO</th>
+		<th>INSTITUCION</th>
 		<th>MUNICIPIO</th>
 		<th>ESTUDIANTES PRESENTES</th>
 		<th>ENCUESTAS REGISTRADAS</th>
@@ -94,7 +94,7 @@ function rep_monitor(){
 			foreach ($datos['reporte'] as $fila) 
 				{
 				$tabla.= '<tr>
-				<th>'.$fila->Monitor.'</th>
+				<th>'.$fila->Monitor.'"</th>
 				<th>'.$fila->Nro_lote.'</th>
 				<th>'.$fila->SEDE_CODIGO.'</th>
 				<th>'.$fila->SEDE_NOMBRE.'</th>
@@ -123,13 +123,14 @@ function rep_monitor(){
 		$data[]= array();
 		$session_data = $this->session->userdata('ingreso');
     	$usuario= $session_data['usuario'];
-    	$lotes = $this->m_ecas->get_lotes($usuario,2);//2 muestra todos
+    	$lotes = $this->m_ecas->get_lotes($usuario,3);//3 solo muestra lotes sin encuesta
    		$data['lotes']=$lotes;
+   		//print_r($lotes);
 		$this->load->view('v_novedad_lt',$data);	
 	}
 	function ver_novedad_ie(){
 		
-		$data['colegios'] = $this->m_ecas->get_colegio();
+		$data['colegios'] = $this->m_ecas->get_colegio("nov_ie");
 		if ($data['colegios']!=false)
 			$this->load->view('v_novedad_ie',$data);	
 		else
@@ -138,11 +139,11 @@ function rep_monitor(){
 	}
 
 	function vista_lote(){
-			$data['colegios'] = $this->m_ecas->get_colegio();
+			$data['colegios'] = $this->m_ecas->get_colegio();// get_col_asignado()
    			if ($data['colegios']!=false)
    				$this->load->view('view_lote',$data);
    			else
-   				echo "No se encuentra Ningún  usuario";
+   				echo "El usuario no tiene asignado ningún colegio.";
 		
 	}
 
@@ -186,6 +187,11 @@ function rep_monitor(){
 		$session_data = $this->session->userdata('ingreso');
     	$usuario= $session_data['usuario'];
 		$data['lotes'] = $this->m_ecas->get_lotes($usuario,0);
+		//var_dump($data);
+		//$result = $this->m_ecas->m_total_enc("2525119");
+		//$result = $this->m_ecas->get_lote('2525119');
+		//$result = pre_encuesta("2525119");
+		//var_dump($result);
 		$this->load->view('view_creaEnc',$data);
    		}
 		 

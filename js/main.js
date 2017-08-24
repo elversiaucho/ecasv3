@@ -6,8 +6,7 @@ if ($('#seguir').val()>0){
 	slide = $('#seguir').val();
 
 }
-//var seguir=1;
-//var vid = document.getElementById("vid");
+
 $(function(){
 	$.material.init();
 	main();

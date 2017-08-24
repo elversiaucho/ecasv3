@@ -2,7 +2,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-     <?php echo base_url();?>
+
+
 <style type="text/css">
 
 	
@@ -44,24 +45,28 @@
      		}
     
 </style>
-
+<body>
 <div id="cont_ppal">
      <?php
   if(!isset($encuestar)){  	?>
      <div class="bs-component" style="width: 90%;margin: 0px  auto;">
 		<div class="btn-group-justified menu1"><!--btn-group btn-group-sm btn-group-justified btn-group-raised-->
+			<?php 
+			if(!isset($encuestar)){
+				if ($rol==2 || $rol == 3){// el rol 3 es para dane central puede ver lso dos
+			?>
 		    <a  class="btn btn-menu1" id="crear_lte">Crear Lote</a>
 			<a  class="btn btn-menu1" id="crear_enc">Crear <br>Encuesta</a>
 			<a  class="btn btn-menu1" id="reanudar_e">Retomar <br> Encuesta</a>
 			<a  class="btn btn-menu1" id="cerrar_lt">Cerrar Lote</a>
 				<?php 
-			if(!isset($encuestar)){
-				if ($rol==1){
+					}				
+				if ($rol==1 || $rol == 3){
 			?>
+			<a  href="<?php echo base_url('index.php/C_asignaciones');?>" class="btn btn-menu1"  id="asignar_colX">Asignar <br>Colegios</a>
 			<a  class="btn btn-menu1" id="nov_lt">Novedad <br>Lote</a>
 			<a  class="btn btn-menu1" id="nov_ie">IE Novedad</a>
 			<a  class="btn btn-menu1" id="reportar">Reportes </a>	
-			<a  class="btn btn-menu1" id="asignar_col">Asignar <br>Colegios</a>
 			<?php
 				}
 			}
@@ -75,14 +80,14 @@
 			<h2>
 			Señor(a) Monitor(a):
 			<?php 
-		 		echo $usuario." ";
+		 		echo $usuario."<br> ";
 		 		if (isset($mensaje))
 		 			echo $mensaje;
 	    	if(isset($encuestar))
 	 		if ($encuestar==1)
 			{
-				//$this->load("v_recomenda.php");
-				require('v_recomenda.php');
+				//$data["mensaje"]="";
+				require('v_recomenda.php');  
 				
     		}
        ?>
@@ -90,7 +95,7 @@
 </div>
     <?php #include('v_pie.html'); ?>
 </div>
-
+</body>
   <style>
 		/*Quita flecha del campo número*/
 			input[type=number]::-webkit-outer-spin-button,
@@ -183,7 +188,17 @@
 
 //---------------------Descargar encuestas
 
+function importarScript(nombre, callback) {
+    var s = document.createElement("script");
+    s.onload = callback;
+    s.src = nombre;
+    document.querySelector("head").appendChild(s);
+}
 
+
+function scriptCargado() { 
+    console.log("se cargo"); 
+}
 
 //-----------Cargar la vista reaunudar encuesta.
 		 $('#reanudar_e').click(function(){
@@ -274,7 +289,9 @@
 			$('#campo').remove();
 	     //$("#cont_ppal").append("<div id='campos'>Texto Agregado</div>");
 		//alert("vamos");
-		 //
+		 /*$("head").empty();
+		 importarScript("<?php echo base_url()?>js/jquery-2.2.0.min.js", scriptCargado);*/
+
 		 estilo_menu('#crear_lte');
 			$.ajax({
 				url: '<?php echo base_url('index.php/C_cheklg/vista_lote');?>',
@@ -305,6 +322,7 @@
 	     //$("#cont_ppal").append("<div id='campos'>Texto Agregado</div>");
 		//alert("vamos");
 		 //
+		 //importarScript("<?php echo base_url();?>assets/js/asignaciones/jquery.easyui.min.js", scriptCargado);
 		 estilo_menu('#asignar_col');
 			$.ajax({
 				url: '<?php echo base_url('index.php/C_asignaciones');?>',
@@ -315,7 +333,10 @@
 				},
 				success:function (response) {
                 	     if ($.trim(response)){
+                	     	               	     	
+                	     	//response+= "<div id='ms'>Texto Agregado</div>";
 							$('#campos').html(response);
+							//console.log(response);
 						   }
 						   else {
                 			$("#campos").html("Error No se pudo crear el Lote");
@@ -331,4 +352,5 @@
 	});
 	</script>
 	</body>
+
 </html>

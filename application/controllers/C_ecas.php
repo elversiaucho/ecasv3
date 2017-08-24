@@ -23,7 +23,9 @@ function index(){
 
 	if (isset($_GET["id_e"])){
 		$id_encuesta = $_GET["id_e"];
-		
+	
+	if (isset($_GET["seguir"]))
+		$nro_slide= $_GET["seguir"];
 	//echo $nro_slide;
 	
 	}else
@@ -41,8 +43,11 @@ function index(){
 					$value = 'checked';
 
 			}
+			
+
 			if ($data_encuesta->NRO_ENCUESTA=="checked")
 				$data_encuesta->NRO_ENCUESTA = 1;
+
 			$info_encuesta =array('LOTE_ENC' =>$data_encuesta->LOTE_ENC,
 				        'nro_encuesta'=> $data_encuesta->NRO_ENCUESTA,
 				        'estado_e' => $data_encuesta->ESTADO_ENCUESTA,
@@ -51,10 +56,10 @@ function index(){
 	//if ($nro_slide==1)
 	
 	//$data_encuesta=json_encode($data_encuesta);
-	/*print_r($info_encuesta);
+	/*print_r($info_encuesta);*/
 	
 	$this->session->set_userdata('info_enc',$info_encuesta);
-	print_r($this->session->userdata('info_enc'));
+	/*print_r($this->session->userdata('info_enc'));
 	exit();*/
 	$this->form_validation->set_rules("id_e");
     $this->form_validation->set_rules("A1","Selecciona tu género",'required');
@@ -399,7 +404,7 @@ if ($nro_slide == 15){
 		  if (is_array($this->input->post('A4'))){
 	     	 foreach ($this->input->post('A4[]') as $key => $val) {
 	       	 	$form_data['A4'.$letra[$val-1]]=1;
-	       	 }
+	         	 }
 		  }
 		   
 			//B8[]
@@ -423,9 +428,8 @@ if ($nro_slide == 15){
 				       	 $form_data['B9'.$letra[$val-1]]=1;
 				       	 } 
 			    }
-			  /* if ($form_data['A8g']==1)#ERROR DETECTADO 25/08/2016 ESTABA $form_data['A8g']=1
-			    	  $form_data['B10e']=9;*/
-			   if ($form_data['A11']==2) #ERROR DETECTADO 24/08/2016 ESTABA $form_data['A8g']=2
+			  
+			   if ($form_data['A11']==2) 
 			    	  $form_data['B10e']=9;
 			    
 			   
@@ -606,14 +610,20 @@ if ($nro_slide == 15){
   
 if ($validacion == FALSE) // validation hasn't been passed
 {
-	if (isset($_POST['id_e'])){
-	   $result = $this->m_ecas->actualizar_encuesta($form_data,$id_encuesta);
-	  }
-	if ($nro_slide  > 1){
+	if ($nro_slide  >= 1){
 		$mensaje ='Respuestas incompletas.';
-		//$result = $this->m_ecas->actualizar_encuesta($form_data,$id_encuesta);
+		if(set_value('A1') !='' || set_value('A2') !='' || set_value('A3') !='' || set_value('A5') !='' || is_array($this->input->post('A4'))){
+			$form_data['ESTADO_ENCUESTA']=3;
+			//echo is_array($this->input->post('A4'));
+		}
 	}
 	else $mensaje ='';
+
+	if (isset($_POST['id_e'])){
+		$form_data['SLIDE_NRO']=$nro_slide;
+	   $result = $this->m_ecas->actualizar_encuesta($form_data,$id_encuesta);
+	  }
+	
 	
 	/*----------------------------------*/
 	
@@ -651,6 +661,12 @@ if ($validacion == FALSE) // validation hasn't been passed
 }
 else // passed validation proceed to post success logic
 {
+ $form_data['ESTADO_ENCUESTA']=3;
+
+if ($this->input->post('E55')==2){
+//pendiente por limpiar los valores en caso que se retome y cambien la respuesta a 2
+ 	$form_data['ESTADO_ENCUESTA']=1;
+}
 
 if ($nro_slide==15)
 		{
@@ -658,6 +674,7 @@ if ($nro_slide==15)
 		}
 	/*var_dump($form_data)*/
 	//echo json_encode($id_encuesta);
+	 $form_data['SLIDE_NRO']=$nro_slide;
 	 $result = $this->m_ecas->actualizar_encuesta($form_data,$id_encuesta);
 	  	 switch ($result) {
 	  	 	case '1':
@@ -694,7 +711,7 @@ if ($nro_slide==15)
 		
 		$mensaje .= "<p><a  href='http://pacman.platzh1rsch.ch' class='btn'>Jugar</a></p></div>";
 		$control['mensaje'] = $mensaje;
-		$contro['estado_e'] =1;
+		$control['estado_e'] =1;
 		}
 	$this->load->view('v_encuesta_val',$control);
 }
@@ -1154,16 +1171,18 @@ function cerrar_e(){
 				if ($result == 1){
 					$grado = "";
 					$curso = "";
+					$colegio = "";
 					$result=$this->m_ecas->get_lote($info_encuesta["LOTE_ENC"]);
 					if(is_object($result)){
 						$grado = $result->GRADO;
 						$curso = $result->CURSO;
-
+						$colegio = $result->SEDE_NOMBRE;
 					}
 					$mensaje ="Se ha cerrado la Encuesta Número: <b>".$info_encuesta["nro_encuesta"]."<br> Lote: ".
 					$info_encuesta["LOTE_ENC"].
 					"<br> Grado: ".$grado.
-					"<br> Curso: ".$curso." 
+					"<br> Curso: ".$curso."</b> 
+					<br> Institución Educativa: <b>".$colegio."</b>
 					</b> <br> Estado: <b>INCOMPLETA</b> 
 					 <p><b>Motivo:</b> ".$motivo."</p><p><a href ='".base_url()."' class='btn btn-raised btn-success arrow-r'>Aceptar</a></p>";
 				}else
@@ -1204,18 +1223,12 @@ function infolt(){// Obtiene el resumen del lote
 
     //echo '{"firstname":"Jesper","surname":"Aaberg","phone":["555-0100","555-0120"]}';
 }
-	
-   function crea_encuesta(){
-       $session_data = $this->session->userdata('ingreso');
-       $data['usuario'] = $session_data['usuario'];
-       $data['rol'] = $session_data['rol'];
-       $data_l[] = array();
-       $encuesta=0;
-      $mensaje ="";
-            //$this->form_validation->set_rules('nro_lote', 'Número de Lote', 'trim|required');
-      //$this->form_validation->set_rules('nro_encuesta', 'Número de Encuesta', 'trim|required|min_length[1]|max_length[2]|is_natural_no_zero');
-      $lote=$_POST['id_lote'];
-      if($lote==''){
+
+ function pre_encuesta(){
+  	
+  	 	$lote = $_POST["id_lote"];
+  	 
+	 if($lote==''){
             //$this->load->view('v_menult',$data);
             //$lotes = $this->m_ecas->get_lotes($data['usuario'],0);
             //$data['lotes']=$lotes;
@@ -1223,12 +1236,63 @@ function infolt(){// Obtiene el resumen del lote
             $data['encuestar'] = 0;
             print_r(json_encode($data));
             //$this->load->view('view_creaEnc',$data);
+         }else{
+         	  $grado = "";
+			  $curso = "";
+			  $colegio = "";
+         	  $encuesta = $this->m_ecas->m_total_enc($lote);
+              $encuesta=$encuesta[0];
+              $encuesta=$encuesta->total_e+1;
+              
+		    $result=$this->m_ecas->get_lote($lote);
+			if(is_object($result)){
+				$grado = $result->GRADO;
+				$curso = $result->CURSO;
+				$colegio = $result->SEDE_NOMBRE;
+			}
+						
+            $data['mensaje']="Confirme los datos de la encuesta: <br><h4>Colegio: ".$colegio."<br>
+            Grado : ".$grado."<br>
+            Curso : ".$curso."<br>
+            Encuesta Nro: ".$encuesta." </h4>";
+          	$data['encuestar'] = 1;
+          	$data['nro_encuesta'] =  $encuesta;
+
+            print_r(json_encode($data));
+		 }
+
+  } 
+
+   function crea_encuesta(){
+       $session_data = $this->session->userdata('ingreso');
+       $data['usuario'] = $session_data['usuario'];
+       $data['rol'] = $session_data['rol'];
+       $data_l[] = array();
+       $encuesta=0;
+       $mensaje ="";
+       $this->form_validation->set_rules('id_lote', 'Número de Lote', 'trim|required');
+       $this->form_validation->set_rules('nro_encuesta', 'Número de Encuesta', 'trim|required|min_length[1]|max_length[2]|is_natural_no_zero');
+      //$lote=$_POST['id_lote'];
+      //if($lote==''){
+      if($this->form_validation->run()==FALSE){
+      		$this->load->view("encabezado",$data);
+            $this->load->view('v_menult',$data);
+            $lotes = $this->m_ecas->get_lotes($data['usuario'],0);
+            $data['lotes']=$lotes;
+            $data['mensaje']="Selecciona un lote";
+            $data['encuestar'] = 0;
+            $data['nro_e'] = set_value('nro_encuesta');
+            $data['id_lote'] = set_value('id_lote');
+            //print_r(json_encode($data));
+            $this->load->view('view_creaEnc',$data);
          }
          else {
 
-              $encuesta = $this->m_ecas->m_total_enc($lote);
+              /*$encuesta = $this->m_ecas->m_total_enc($lote);
               $encuesta=$encuesta[0];
-              $encuesta=$encuesta->total_e+1;
+              $encuesta=$encuesta->total_e+1;*/
+              $lote = set_value('id_lote');
+              $encuesta = set_value('nro_encuesta');
               $encuesta = array(
                'ID_ENCUESTA' => $lote.$encuesta,
                'LOTE_ENC' => $lote,
@@ -1239,16 +1303,30 @@ function infolt(){// Obtiene el resumen del lote
               $result = $this->m_ecas->crear_encuesta($encuesta);
              switch ($result) {
                 case 1:
+                	$grado = "";
+					$curso = "";
+					$colegio = "";
+					$result=$this->m_ecas->get_lote($lote);
+					if(is_object($result)){
+						$grado = $result->GRADO;
+						$curso = $result->CURSO;
+						$colegio = $result->SEDE_NOMBRE;
+					}
                    $data['id_encuesta'] = $encuesta['ID_ENCUESTA'];
-                   $data['mensaje']="Se creó la encuesta ".$encuesta['NRO_ENCUESTA']." para el Lote ".$encuesta['LOTE_ENC'];
+                   $data['mensaje']="<h4>Se creó la encuesta <b>".$encuesta['NRO_ENCUESTA']."</b> en el Lote <b>".$encuesta['LOTE_ENC']."</b>. Grado: ".$grado .". Curso: <b>".$curso ."</b> colegio: <b>".$colegio." </b></h4>";
                    $data['encuestar'] = 1;
+                   $data['ingreso'] = 1;
                    /*ob_start(); # open buffer
 	     		   include(base_url('application/views/v_recomenda.php');
 				   $data['v_recomenda'] = echo ob_get_contents();
 				   ob_end_clean(); # close buffer*/
 				   //var_dump($data['v_recomenda']);
-                   print_r(json_encode($data));
-                   
+                   $this->load->view("encabezado",$data);
+                   //print_r(json_encode($data));
+
+                   $this->load->view("v_recomenda", $data);
+                  /* echo "<br><div class='pagination-centered'><a href=<?php echo base_url('index.php/c_ecas?id_e=".$encuesta['NRO_ENCUESTA']."');?> class='btn btn-raised btn-danger' style='position:auto; 0px;' >Iniciar</a></div>";
+                   */
                    //$this->load->view('v_menult',$data);
                    break;
                 case 2:

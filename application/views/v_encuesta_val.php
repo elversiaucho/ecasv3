@@ -3488,11 +3488,10 @@
 									</label>
 								</div>
 							</div>
-							<div class="col-lg-6"></div>
-							<div class="col-lg-6">
-								<p class="t_error" id="errA11b"><?php echo strip_tags(form_error('A11')); ?></p>
-							</div>
 						</div>
+
+						<p class="t_error" id="errA11b"><?php echo strip_tags(form_error('A11')); ?></p>
+
 					 </div>
 					<div id="not2" style="display:none;">
 						<!--Pregunta 12-->
@@ -4891,7 +4890,7 @@
 							<input type="submit" class="btn btn-raised btn-success arrow-r" style="position:relative;right: 0px;" value="Siguiente"/>
 						</div>
 					</div>
-				<!--/div-->
+				</div>
 			</div>
 
 				<!-- ************************************************************************************************************************************************************************************* -->
@@ -5673,21 +5672,16 @@
 		                },
 		                success:  function (r) 
 		                {
-		                	if (r=='0'){
-		                		alert("Datos errados");
-
-	                	}
-		                	else{
-		                	    $("#encuesta").html('');
-		                	    $("#monitor").hide();
-		                	    $("#menu").html(r);
-		                	}
-		                	$("#form_cierre").hide();
-		                	$("#clave").val('');
-		                	$("#motivo").val('');
-		                	$("#ms_cierre").html('');
-		                	
-		                	
+		                if (r=='0'){
+		                		$("#err_motivo").text("Revise su contraseña");
+		                		$("#form_cierre").show();
+		                		$("#ms_cierre").html("");
+	                	}else{
+		                	  $("#encuesta").html('');
+		                	  $("#monitor").hide();
+		                	  $("#menu").html(r);
+		                	  $("#form_cierre").hide();
+		                	}                	
 		                },
 		                error: function(errorThrown)
 		                {

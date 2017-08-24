@@ -1,0 +1,418 @@
+<table border="1">
+		<tr><th>Monitor</th>
+		<th>NUMERO DE LOTE</th>
+		<th>SEDE CODIGO</th>
+		<th>MUNICIPIO</th>
+		<th>ESTUDIANTES PRESENTES</th>
+		<th>ENCUESTAS REGISTRADAS</th>
+		<th>ENCUESTAS COMPLETAS</th>
+		<th>ENCUESTAS IN_COMPLETAS</th>
+		<th>ENCUENTAS VACIAS</th>
+		</tr><tr>
+				<th>Carolina Ceballos Medina"</th>
+				<th>101261</th>
+				<th>376001022351</th>
+				<th>LICEO RENACER</th>
+				<th>CALI</th>
+				<th>10</th>
+				<th>4</th>
+				<th>1</th>
+				<th>2</th>
+				<th>1</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>1101112</th>
+				<th>376001008641</th>
+				<th>LICEO MIXTO EMPERADOR DE CALI</th>
+				<th>CALI</th>
+				<th>2</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>2525111</th>
+				<th>2525</th>
+				<th>Colegio de pruebas</th>
+				<th>CALI</th>
+				<th>30</th>
+				<th>7</th>
+				<th>4</th>
+				<th>2</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>2525112</th>
+				<th>2525</th>
+				<th>Colegio de pruebas</th>
+				<th>CALI</th>
+				<th>1</th>
+				<th>11</th>
+				<th>5</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>2525119</th>
+				<th>2525</th>
+				<th>Colegio de pruebas</th>
+				<th>CALI</th>
+				<th>38</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>2525123</th>
+				<th>2525</th>
+				<th>Colegio de pruebas</th>
+				<th>CALI</th>
+				<th>39</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>881102</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>5</th>
+				<th>8</th>
+				<th>2</th>
+				<th>4</th>
+				<th>2</th>
+				</tr><tr>
+				<th>Luis Edgar Sanchez Martinez"</th>
+				<th>881103</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>14</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>"</th>
+				<th>881104</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>35</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>88181</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>0</th>
+				<th>5</th>
+				<th>1</th>
+				<th>1</th>
+				<th>3</th>
+				</tr><tr>
+				<th>"</th>
+				<th>881815</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>1</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>"</th>
+				<th>881817</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>35</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th>"</th>
+				<th>88182</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>23</th>
+				<th>2</th>
+				<th>1</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th>"</th>
+				<th>88183</th>
+				<th>476001029180</th>
+				<th>COLEGIO CAMPESTRE ANGLO HISPANO</th>
+				<th>CALI</th>
+				<th>23</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>88261</th>
+				<th>476001005957</th>
+				<th>GIMN LOS FARALLONES  VALLE DEL LILY</th>
+				<th>CALI</th>
+				<th>20</th>
+				<th>6</th>
+				<th>0</th>
+				<th>3</th>
+				<th>3</th>
+				</tr><tr>
+				<th>"</th>
+				<th>883121</th>
+				<th>376001043901</th>
+				<th>COL NVO CAMBRIDGE</th>
+				<th>CALI</th>
+				<th>20</th>
+				<th>2</th>
+				<th>0</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>883138</th>
+				<th>376001043901</th>
+				<th>COL NVO CAMBRIDGE</th>
+				<th>CALI</th>
+				<th>7</th>
+				<th>4</th>
+				<th>1</th>
+				<th>3</th>
+				<th>0</th>
+				</tr><tr>
+				<th>"</th>
+				<th>88373</th>
+				<th>376001043901</th>
+				<th>COL NVO CAMBRIDGE</th>
+				<th>CALI</th>
+				<th>35</th>
+				<th>6</th>
+				<th>1</th>
+				<th>0</th>
+				<th>5</th>
+				</tr><tr>
+				<th>"</th>
+				<th>88464</th>
+				<th>376001043871</th>
+				<th>COL LOS ANGELES DEL NORTE DE OCCIDENTE</th>
+				<th>CALI</th>
+				<th>28</th>
+				<th>2</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>"</th>
+				<th>886102</th>
+				<th>376001043617</th>
+				<th>COL PHILADELPHIA INTERNACIONAL</th>
+				<th>CALI</th>
+				<th>0</th>
+				<th>3</th>
+				<th>1</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>8871218</th>
+				<th>376001043455</th>
+				<th>INSTITUCION EDUCATIVA POTRERO GRANDE</th>
+				<th>CALI</th>
+				<th>10</th>
+				<th>7</th>
+				<th>3</th>
+				<th>2</th>
+				<th>2</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>89071</th>
+				<th>376001043315</th>
+				<th>LICEO SAGRADO CORAZON DE JESUS</th>
+				<th>CALI</th>
+				<th>9</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Carolina Ceballos Medina"</th>
+				<th>891101</th>
+				<th>376001043285</th>
+				<th>COLEGIO GUIAS</th>
+				<th>CALI</th>
+				<th>15</th>
+				<th>3</th>
+				<th>2</th>
+				<th>0</th>
+				<th>1</th>
+				</tr><tr>
+				<th>Carolina Ceballos Medina"</th>
+				<th>891102</th>
+				<th>376001043285</th>
+				<th>COLEGIO GUIAS</th>
+				<th>CALI</th>
+				<th>30</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>"</th>
+				<th>891107</th>
+				<th>376001043285</th>
+				<th>COLEGIO GUIAS</th>
+				<th>CALI</th>
+				<th>0</th>
+				<th>5</th>
+				<th>0</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th>"</th>
+				<th>894111</th>
+				<th>376001042882</th>
+				<th>LICEO MIXTO EMPERADOR DE CALI SEDE II</th>
+				<th>CALI</th>
+				<th>35</th>
+				<th>1</th>
+				<th>0</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th>"</th>
+				<th>896113</th>
+				<th>376001042866</th>
+				<th>COL LA SAGRADA FAMILIA II</th>
+				<th>CALI</th>
+				<th>0</th>
+				<th>3</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>89762</th>
+				<th>376001042777</th>
+				<th>COLEGIO SANTA ISABEL DE HUNGRIA SEDE CALIMIO NORTE</th>
+				<th>CALI</th>
+				<th>10</th>
+				<th>6</th>
+				<th>1</th>
+				<th>3</th>
+				<th>2</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>89861</th>
+				<th>376001042700</th>
+				<th>CENT ETNOEDUCATIVO  ANTONIO MACEO</th>
+				<th>CALI</th>
+				<th>5</th>
+				<th>5</th>
+				<th>5</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>89862</th>
+				<th>376001042700</th>
+				<th>CENT ETNOEDUCATIVO  ANTONIO MACEO</th>
+				<th>CALI</th>
+				<th>4</th>
+				<th>4</th>
+				<th>3</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>89871</th>
+				<th>376001042700</th>
+				<th>CENT ETNOEDUCATIVO  ANTONIO MACEO</th>
+				<th>CALI</th>
+				<th>4</th>
+				<th>5</th>
+				<th>5</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>89872</th>
+				<th>376001042700</th>
+				<th>CENT ETNOEDUCATIVO  ANTONIO MACEO</th>
+				<th>CALI</th>
+				<th>3</th>
+				<th>3</th>
+				<th>2</th>
+				<th>1</th>
+				<th>0</th>
+				</tr><tr>
+				<th>"</th>
+				<th>90267</th>
+				<th>376001042157</th>
+				<th>COL SANTA ISABEL DE HUNGRIA SEDE INVICALI  DESEPAZ</th>
+				<th>CALI</th>
+				<th>30</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>"</th>
+				<th>92694</th>
+				<th>376001037617</th>
+				<th>COLEGIO ARQUIDIOCESANO JUAN PABLO II</th>
+				<th>CALI</th>
+				<th>24</th>
+				<th>1</th>
+				<th>1</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Carolina Ceballos Medina"</th>
+				<th>94261</th>
+				<th>376001034219</th>
+				<th>COL CREAD</th>
+				<th>CALI</th>
+				<th>3</th>
+				<th>4</th>
+				<th>4</th>
+				<th>0</th>
+				<th>0</th>
+				</tr><tr>
+				<th>Carolina Ceballos Medina"</th>
+				<th>96081</th>
+				<th>376001031902</th>
+				<th>COL ALEXANDER</th>
+				<th>CALI</th>
+				<th>5</th>
+				<th>4</th>
+				<th>0</th>
+				<th>2</th>
+				<th>2</th>
+				</tr><tr>
+				<th>Elver SiauchÃ³"</th>
+				<th>97771</th>
+				<th>376001030141</th>
+				<th>COL EKKLESIA</th>
+				<th>CALI</th>
+				<th>8</th>
+				<th>3</th>
+				<th>3</th>
+				<th>0</th>
+				<th>0</th>
+				</tr></table>

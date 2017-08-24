@@ -22,7 +22,7 @@ $(document).ready(function(){
         else $("#err_regulares").text("");
        
 
-        if($("#val_motivo").val()>'0' && $("#text_moti").val()=='')
+        if(parseInt($("#val_motivo").val())>0 && $("#text_moti").val()=='')
         {
             $("#err_motivo").text('Ingresa el Motivo');
             $("#text_moti").addClass("focus");
@@ -55,7 +55,7 @@ $(document).ready(function(){
       
     });
 
-    $("#text_moti").prop("disabled",true);
+    //$("#text_moti").prop("disabled",true);
     $("#val_motivo").keyup(function () {
        if (parseInt($("#val_motivo").val())>0)
             $("#text_moti").prop("disabled",false);
@@ -65,23 +65,69 @@ $(document).ready(function(){
         }
     });
 
-   /* if ($("#ms").text()!=""){
-        if
-    }*/
-    
+/*despliegue inicial de campo segun seleccion y/o valores */
+    if(parseInt($("#off_line").val())>0){
+        var total_e = parseInt($("#total_e").val())+ parseInt($("#off_line").val());
+        $("#web_offline").text(" "+total_e);
+        faltaron = parseInt($("#regulares").val()) - total_e;
+        $("#info_faltaron").text(faltaron);
+    }
+
+    if(parseInt($('#val_motivo').val())>0)
+        $("#text_moti").prop("disabled",false);
+    else 
+        $("#text_moti").prop("disabled",true);
+
     if ($("#lote").val()!= ''){
-        $("#op_recoleccion").show();}
+        $("#op_recoleccion").show();
+        if ($("#sistema_r").val() != ''){
+            $('#info_lt').show();
+            if (parseInt($("#sistema_r").val()) > 1){
+                $('#enc_offline').slideDown();
+                $("#tot_web_offline").slideDown();
+            }
+
+        }
+    }
+
 
     $("#sistema_r").change(function(){
         var op_rec = $(this);
         if ($(this).val() != '') {
 
             $("#err_sistema_r").text('');
+            if (parseInt($(this).val())>1) {
+                //alert($(this).val());
+                $('#enc_offline').slideDown();
+                $("#tot_web_offline").slideDown();
+            }else{
+                $('#off_line').val("");
+                $('#enc_offline').slideUp();
+                $("#tot_web_offline").slideUp();       
+            }
             $('#info_lt').slideDown();
         }
         else
             $('#info_lt').slideUp();
 
+    });
+    /*Actualiza el valor de total encuestas*/
+    $('#off_line').keyup(function (){
+        var off_line = parseInt($(this).val());
+        var total_e = parseInt($("#total_e").val())+ off_line;
+         if ($(this).val()==""){
+            total_e = $("#total_e").val();
+         }
+            
+            faltaron = parseInt($("#regulares").val()) - total_e;
+            
+            $("#web_offline").text(" "+total_e);
+
+            $("#info_faltaron").text(faltaron);
+            $("#faltaron").val(faltaron);
+            $("#encuestados").text(+total_e); 
+         
+         //alert(total_e.val());
     });
 
 });

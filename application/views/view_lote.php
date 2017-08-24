@@ -9,7 +9,7 @@
         <br>
         <div class="row pregunta-lote">
             <div class="col-md-1 icono-lote"></div>
-            <label class="col-md-4" >Establecimiento Educativo: </label>
+            <label class="col-md-4" >Seleccione el establecimiento educativo a encuestar: </label>
             <input class="col-md-7 ui-widget" type="text" name="IE" id="IE" class="form-control" value = "<?php echo set_value('IE');?>" placeholder="Digita el Código o Nombre"/>
             <p class="t_error" id="err_IE"><?php echo strip_tags(form_error('IE')); ?></p>
             
@@ -23,26 +23,15 @@
 	     		foreach ($colegios as $fila){
 	     			echo '<option value='.$fila->Cod_colegio_op.'>'.$fila->Cod_colegio_op.'-'.$fila->SEDE_NOMBRE.'</option>';
 	     		  }
-	     		}
+	     		} 
 	     		*/?>    		
 	    </select>
         <p class="t_error" class="col-lg-5"><?php #echo strip_tags(form_error('colegio')); ?></p>
      </div-->
-        <div class="row pregunta-lote">
+      <div class="row pregunta-lote">
             <div class="col-md-1 icono-lote"></div>
-            <label class="col-md-4">Jornada:</label>
-         	<select  class="col-md-7" id ='jornada' name="jornada">
-         		<option value=''>Selecciona..</option>
-         		<option value='1' <?php echo  set_select('jornada', '1');?>>Mañana</option>
-         		<option value='2' <?php echo  set_select('jornada', '2');?>>Tarde</option>
-         		<option value='3' <?php echo  set_select('jornada', '3');?>>Única</option>
-         	</select>
-         	<p class="t_error"><?php echo strip_tags(form_error('jornada')); ?></p>
-        </div>
-        <div class="row pregunta-lote">
-            <div class="col-md-1 icono-lote"></div>
-            <label class="col-md-4">Grado:</label>
-         	<select class="col-md-7" id ='grado' name="grado">
+            <label class="col-md-4">Seleccione el grado a encuestar:</label>
+          <select class="col-md-7" id ='grado' name="grado">
                  <?php
                     if(isset($grados))
                     {
@@ -76,21 +65,21 @@
                       }
                     }
                 ?> 
-         	</select>
-         	<p class="t_error"><?php echo strip_tags(form_error('grado')); ?></p>
+          </select>
+          <p class="t_error"><?php echo strip_tags(form_error('grado')); ?></p>
         </div>
-        <div class="row pregunta-lote">
+          <div class="row pregunta-lote">
             <div class="col-md-1 icono-lote"></div>
-            <label class="col-lg-4">Curso:</label>
+            <label class="col-md-4">Seleccione el curso a encuestar:</label>
             <select class="col-md-7" id ='curso' name="curso">
-         		<option value=''>Selecciona..</option>
-         		<option value='1' <?php echo  set_select('curso', '1');?> >1</option>
-         		<option value='2' <?php echo  set_select('curso', '2');?> >2</option>
-         		<option value='3' <?php echo  set_select('curso', '3');?> >3</option>
-         		<option value='4' <?php echo  set_select('curso', '4');?> >4</option>
-         		<option value='5' <?php echo  set_select('curso', '5');?> >5</option>
-         		<option value='6' <?php echo  set_select('curso', '6');?> >6</option>
-         		<option value='7' <?php echo  set_select('curso', '7');?> >7</option>
+            <option value=''>Selecciona..</option>
+            <option value='1' <?php echo  set_select('curso', '1');?> >1</option>
+            <option value='2' <?php echo  set_select('curso', '2');?> >2</option>
+            <option value='3' <?php echo  set_select('curso', '3');?> >3</option>
+            <option value='4' <?php echo  set_select('curso', '4');?> >4</option>
+            <option value='5' <?php echo  set_select('curso', '5');?> >5</option>
+            <option value='6' <?php echo  set_select('curso', '6');?> >6</option>
+            <option value='7' <?php echo  set_select('curso', '7');?> >7</option>
                 <option value='8' <?php echo  set_select('curso', '8');?> >8</option>
                 <option value='9' <?php echo  set_select('curso', '9');?> >9</option>
                 <option value='10' <?php echo  set_select('curso', '10');?> >10</option>
@@ -105,49 +94,41 @@
                 <option value='19' <?php echo  set_select('curso', '19');?> >19</option>
                 <option value='20' <?php echo  set_select('curso', '20');?> >20</option>
 
-         	</select>
+          </select>
                  <p class="t_error"><?php echo strip_tags(form_error('curso')); ?></p>
         </div>
         <div class="row pregunta-lote">
             <div class="col-md-1 icono-lote"></div>
+            <label class="col-md-4">Jornada:</label>
+         	<select  class="col-md-7" id ='jornada' name="jornada">
+         		<option value=''>Selecciona..</option>
+         		<option value='1' <?php echo  set_select('jornada', '1');?>>Mañana</option>
+         		<option value='2' <?php echo  set_select('jornada', '2');?>>Tarde</option>
+         		<option value='3' <?php echo  set_select('jornada', '3');?>>Única</option>
+         	</select>
+         	<p class="t_error"><?php echo strip_tags(form_error('jornada')); ?></p>
+        </div>
+       
+      
+        <div class="row pregunta-lote">
+            <div class="col-md-1 icono-lote"></div>
          	<label class="col-md-4">Número de estudiantes matriculados en el curso:</label>
-         	<input class="col-md-7" type="text" name="nro_ecurso" value = "<?php echo set_value('nro_ecurso');?>"/>
+         	<input class="col-md-7" type="text" onkeypress="return solonumeros(event)" maxlength='2' name="nro_ecurso" value = "<?php echo set_value('nro_ecurso');?>"/>
          	<p class="t_error"><?php echo strip_tags(form_error('nro_ecurso')); ?></p>
         </div>
         <div class="row pregunta-lote">
             <div class="col-md-1 icono-lote"></div>
          	<label class="col-md-4">Número de estudiantes que asisten regularmente:</label>
-         	<input class="col-md-7" type="text" name="nro_eregulares" value = "<?php echo set_value('nro_eregulares');?>"/>
+         	<input class="col-md-7" type="text" onkeypress="return solonumeros(event)" maxlength='2' name="nro_eregulares" value = "<?php echo set_value('nro_eregulares');?>"/>
          	<p class="t_error"><?php echo strip_tags(form_error('nro_eregulares')); ?></p>
         </div>
         <div class="row pregunta-lote">
             <div class="col-md-1 icono-lote"></div>
-            <label class="col-md-4">Número de estudiantes a encuestar:</label>
-            <input class="col-md-7" type="text" name="nro_presentes" value = "<?php echo set_value('nro_presentes');?>"/>
+            <label class="col-md-4">Número de estudiantes a encuestar:</label> 
+            <input class="col-md-7" type="text" onkeypress="return solonumeros(event)" maxlength='2' name="nro_presentes" value = "<?php echo set_value('nro_presentes');?>"/>
             <p class="t_error"><?php echo strip_tags(form_error('nro_presentes')); ?></p>
         </div>
-        <div class="row pregunta-lote" style="display: none;">
-            <div class="col-md-1 icono-lote"></div>
-            <label class="col-md-4">Sistema de recolección:</label>
-            <div class="col-md-7 row">
-                    <div class="col-md-6">
-                        <div class="radio radio-primary">
-                            <label>
-                                <input type="radio" name="sis_recolecta" value="1" <?php echo set_radio("sis_recolecta","1");?> checked/>
-                                Aplicativo web
-                            </label>
-                        </div>
-                    </div>
-                  <!--   <div class="col-md-6">
-                        <div class="radio radio-primary">
-                            <label>
-                                <input type="radio" name="sis_recolecta" value="2" <?php echo set_radio("sis_recolecta","2");?> disabled/>
-                                Formulario en papel
-                            </label>
-                        </div>
-                    </div>   -->
-                </div>
-        </div>
+   
                 
 
         <div id='ms'>
@@ -164,6 +145,7 @@
     </div><!--Fin Crear lote-->   	
 </div>
 </body>
+
 </html>
 <script type="text/javascript">
 $(document).ready(function(){

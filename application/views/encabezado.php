@@ -8,15 +8,10 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/ripples.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/animaciones.css"-->
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/style.css">
-				
-		<script type="text/javascript" src="<?php echo base_url()?>js/jquery-2.2.0.min.js"></script>
-		<script type="text/javascript" src="<?php echo base_url()?>js/bootstrap.js"></script>
-		<script type="text/javascript" src="<?php echo base_url()?>js/material.js"></script>
-		<script type="text/javascript" src="<?php echo base_url()?>js/ripples.js"></script>
-		<script type="text/javascript" src="<?php echo base_url()?>js/main.js"></script>
-		<script type="text/javascript" src="<?php echo base_url()?>js/validar.js"></script>
-		
-		<style type="text/css">
+			
+
+	</head>
+	<style type="text/css">
 		.cont-btn{
 				float: right;
 				position:absolute;
@@ -33,8 +28,6 @@
 			}
 
 		</style>
-
-	</head>
 	<body>
 		<header>
 			<img id = 'logo' style="width:20%; position:relative;" src="<?php echo base_url()?>images/logo_dane.png" class="img-responsive"/>
@@ -49,3 +42,14 @@
 			<img src='<?php echo base_url('/images/Cabezotep.png')?>' class="img-responsive"/>
 		</header>	
 		
+	</body>
+	   
+	    <script type="text/javascript" src="<?php echo base_url()?>js/jquery-2.2.0.min.js"></script>
+	    <script type="text/javascript" src="<?php echo base_url()?>js/bootstrap.js"></script>
+		<script type="text/javascript" src="<?php echo base_url()?>js/material.js"></script>
+		<script type="text/javascript" src="<?php echo base_url()?>js/ripples.js"></script>
+		<script type="text/javascript" src="<?php echo base_url()?>js/main.js"></script>
+		<script type="text/javascript" src="<?php echo base_url()?>js/validar.js"></script>
+        
+
+	</html>

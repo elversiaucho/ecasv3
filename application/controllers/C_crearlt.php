@@ -28,7 +28,7 @@ function index()
         $this->form_validation->set_rules('nro_ecurso', 'Ingresa Número de Estudiantes Matriculados.', 'trim|required|is_natural_no_zero|max_length[2]');
         $this->form_validation->set_rules('nro_eregulares', 'Ingresa Número de Estudiantes que asisten Regularmente.', 'trim|required|max_length[2]|is_natural_no_zero|callback_ecurso');
         $this->form_validation->set_rules('nro_presentes', 'Presentes', 'trim|required|max_length[2]|is_natural_no_zero|callback_presentes');
-        $this->form_validation->set_rules('sis_recolecta', 'Sistema de recolección', 'trim|required');
+        //$this->form_validation->set_rules('sis_recolecta', 'Sistema de recolección', 'trim|required');
 
          
          if($this->form_validation->run()==FALSE){
@@ -36,7 +36,7 @@ function index()
             $data['usuario'] = $usuario;
             $data['rol'] = $rol;
             $this->load->view('v_menult',$data);
-            $data['colegios'] = $this->m_ecas->get_colegio();
+            $data['colegios'] = $this->m_ecas->get_col_asignado();//get_colegio();
             $colegio = set_value('IE');
             $lugar= strpos($colegio, '-');
             if ($lugar>0)
@@ -67,7 +67,7 @@ function index()
                    'REGULARES' => set_value('nro_eregulares'),
                    'PRESENTES' => set_value('nro_presentes'),
                    //'NO_ASISTIERON' => $no_asistieron,
-                   'SIS_RECOLECTA' => set_value('sis_recolecta'),
+                  // 'SIS_RECOLECTA' => set_value('sis_recolecta'),
                    'USUARIO' => $usuario
                  );
                 $retorno = $this->m_ecas->guarda_lote($lote);
@@ -234,7 +234,7 @@ function otra_nov($valor){
     if($this->form_validation->run()==FALSE){
         $this->load->view('v_menult',$data);
         $lotes = $this->m_ecas->get_lotes($data['usuario'],0);
-        $data['lotes']=$lotes;
+        $data['lotes']=$lotes; 
         $this->load->view('view_retomar',$data);
        }else
        {$encuesta = array(
@@ -246,10 +246,22 @@ function otra_nov($valor){
         //echo $result;
         switch ($result) {
               case (is_array($result)):
-                    //$data['encuesta']=$result; 
+                   if ($result[0]->SLIDE_NRO > 0)
+                       $data['slide'] = $result[0]->SLIDE_NRO;
+                    $grado = "";
+                    $curso = "";
+                    $colegio = "";
+                    $result=$this->m_ecas->get_lote(set_value('nro_lote'));
+                    if(is_object($result)){
+                      $grado = $result->GRADO;
+                      $curso = $result->CURSO;
+                      $colegio = $result->SEDE_NOMBRE;
+                    }
+                   
                     $data['encuestar'] = 1;
                     $data['id_encuesta'] = $encuesta['ID_ENCUESTA'];
                     $data['retomada'] = 1;
+                    $data['usuario'] .= "<br><div class='pagination-centered'><h4>Se retomará la encuesta nro: <b>".set_value("nro_encuesta")."</b> del Lote <b>".set_value("nro_lote")."</b>. Grado: <b>".$grado ."</b>. Curso: <b>".$curso ."</b> colegio: <b>".$colegio." </b></h4></div>";//grado 8 curso 2 del colegio Liceo Juan Ramón Jimenez";
                     $this->load->view('v_menult',$data);
                   break;
               case 2:
@@ -294,6 +306,7 @@ function otra_nov($valor){
         $this->form_validation->set_rules('regulares' , 'Ingresa número de Estudiantes Regulares','trim|is_natural|required');
         
         $this->form_validation->set_rules('sistema_r' , 'Selecciona el sistema de recoleccion del lote','trim|is_natural|required');
+        $this->form_validation->set_rules('off_line','Ingrese la cantidad de encuestas off_line','trim|is_natural|callback_sistema_r');
         //$this->form_validation->set_rules('encuestados' , 'Ingresa número de estudiantes encuestados','trim|is_natural|required');
 
         /*variable para distribuir los que no asistieron*/
@@ -341,7 +354,8 @@ function otra_nov($valor){
                 'REGULARES' => set_value('regulares'),
                 'PRESENTES' => set_value('total_e'),//total de encuestas
                 'OCUPADOS_LG' => set_value('ocupados'),
-             
+                'SIS_RECOLECTA' => set_value('sistema_r'),
+                'OFFLINE' => set_value('off_line'),
                 'AUSENTES_LG' => set_value('ausentes'),
                 'RECHAZARON_LG' => set_value('rechazaron'),
                 'MENORES_DE_12' => set_value('menores'),
@@ -384,6 +398,14 @@ function otra_nov($valor){
           $this->form_validation->set_message('no_encuestados','Error al consultar no asistentes');
                  return false;
         }
+  }
+
+  function sistema_r($cantidad_offline){
+    if ($this->input->post('sistema_r')>1 && $cantidad_offline==0 ){
+      $this->form_validation->set_message('sistema_r','Ingrese la cantidad de encuestas off_line');
+      return false;
+    }
+    else return true;
   }
 
   

@@ -6,7 +6,7 @@
        	?>
 	  
        <div class="row list-group-item">
-     	   <label class="col-sm-3" >¿En qué colegio estás? </label>
+     	   <label class="col-sm-3" >Establecimiento Educativo:</label>
          <div class="col-sm-9 ui-widget">
             <input type="text" name="IE" id="IE" class="form-control" value = "<?php echo set_value('IE');?>" placeholder="Digita el Código o Nombre"/>
             <p class="t_error"><?php echo strip_tags(form_error('IE')); ?></p>
@@ -19,6 +19,7 @@
      		<option value='1' <?php echo  set_select('novedad_ie', '1');?>>Razón Social Diferente</option>
      		<option value='2' <?php echo  set_select('novedad_ie', '2');?>>Demolición - Construcción</option>
      		<option value='3' <?php echo  set_select('novedad_ie', '3');?>>Lote</option>
+        <option value='4' <?php echo  set_select('novedad_ie', '4');?>>Rechazo</option>
      		<option value='5' <?php echo  set_select('novedad_ie', '5');?>>Otra novedad</option>
      	</select>
      	<p class="t_error"><?php echo strip_tags(form_error('novedad_ie')); ?></p>

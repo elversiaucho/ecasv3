@@ -22,6 +22,7 @@
       </div-->
     <div class="row form-group">
      <?#php echo json_encode($lotes);?>
+     <div class="col-md-1 icono-lote"></div>
       <label class="col-lg-3">Número del lote:</label>
       <select id = 'lote' name="nro_lote">
         <?php 
@@ -38,11 +39,23 @@
       <p class="t_error"><?php echo strip_tags(form_error('nro_lote')); ?></p>
     </div>
 
+
+<p>Grado: <span id="grado">
+      <?php if (isset($inf_lote["GRADO"])){
+        echo $inf_lote["GRADO"][0]->GRADO;
+        }?>
+    </span></p>
+    <p>Curso: <span id="curso">
+      <?php if (isset($inf_lote["CURSO"])){
+        echo $inf_lote["CURSO"][0]->CURSO;
+        }?>
+    </span></p>
  <!-- Sistema de recoleccion del lote -->
  <div class="row form-group" id="op_recoleccion" style="display: none;">
      <?#php echo json_encode($lotes);?>
+     <div class="col-md-1 icono-lote"></div>
       <label class="col-lg-3">Sistema de recolección:</label>
-      <select id = 'sistema_r' name="sistema_r">
+      <select id = 'sistema_r' name="sistema_r" class="col-lg-3">
         <option value=''>Seleccione..</option>";
           <option value='1' <?php echo set_select('sistema_r','1')?>>Web</option>
           <option value='2' <?php echo set_select('sistema_r','2')?>>Mixto (Aplicativo web+ Offline)</option>
@@ -52,6 +65,14 @@
       <p class="t_error" id="err_sistema_r"><?php echo strip_tags(form_error('sistema_r')); ?></p>
   </div>
  <!-- fin sistema recoleccion -->
+  
+  <!-- Total de encuestas offline:  -->
+  <div class="row form-group" id="enc_offline" style="display:none;">
+          <div class="col-md-1 icono-lote"></div>
+          <label class="col-lg-3">Total de encuestas offline:</label>
+          <input type="text" name="off_line" id="off_line" value = "<?php echo set_value('off_line');?>" onkeypress="return solonumeros(event)" maxlength='2' min ="1" max ="70" />
+          <p class="t_error" id="err_off_line"><?php echo strip_tags(form_error('off_line')); ?></p>
+    </div>
 
     <div id="ms">
       <?php 
@@ -68,21 +89,27 @@
 
     <section id='info_lt' style="display:none;"> 
   
-      <p>Total de encuestas: <span id="tot_encuestas">
+      <p>Total de encuestas web: <span id="tot_encuestas">
       <?php if (isset($inf_lote["total_e"])){
         echo $inf_lote["total_e"][0]->total_e;
         }?>
     </span></p>
-      <p>Total de encuestas <b>completas</b>:<span id="tot_completas">
+      <p>Total de encuestas <b>completas</b> web:<span id="tot_completas">
         <?php if (isset($inf_lote["e_completas"])){
         echo $inf_lote["e_completas"][0]->completas;
            }?>
 
       </span></p>
-      <p>Total de encuestas <b>incompletas</b>:<span id="incompletas">
+      <p>Total de encuestas <b>incompletas</b> web:<span id="incompletas">
         <?php if (isset($inf_lote["incompletas"])){
         echo $inf_lote["incompletas"][0]->incompletas;
            }?>
+      </span></p>
+
+       <p id="tot_web_offline" style="display:none;">Total de encuestas <b>offline + web </b>:<span id="web_offline">
+        <?php if (isset($inf_lote["total_e"])){
+        echo $inf_lote["total_e"][0]->total_e;
+        }?>
       </span></p>
       <hr>
       <h4>Verifique la información diligenciada inicialmente</h4>
@@ -227,7 +254,8 @@
                         objeto=valor.estudiantes;
                         $("#matriculados").val(objeto[0].MATRICULADOS);
                         $("#regulares").val(objeto[0].REGULARES);
-
+                        $("#grado").text(objeto[0].GRADO);
+                        $("#curso").text(objeto[0].CURSO);
                          
                          faltaron = parseInt($("#regulares").val()) - parseInt(tot_e);
                          //alert("Total encuestas" + typeof(faltaron)+" "+$("#regulares").val());
@@ -254,6 +282,7 @@
         {
           
           $("#op_recoleccion").slideUp();
+          $("#enc_offline").slideUp();
         }
     });
 

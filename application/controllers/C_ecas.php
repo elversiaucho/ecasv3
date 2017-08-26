@@ -1197,7 +1197,29 @@ function cerrar_e(){
    print_r(json_encode($mensaje));
 }
 
- function get_grados()//funcion llamada por ajar
+ function get_gradosUser()//funcion llamada por ajax
+	{   
+		$id_col = $_POST['id_colegio'];
+		$data['colegios'] = $this->m_ecas->get_col_asignado();//get_colegio();
+        $sede_cod='';
+       foreach ($data['colegios'] as $key => $value) {
+         if ($value->Cod_colegio_op == $id_col){
+             $sede_cod =$value->SEDE_CODIGO;
+             break 1;
+           }
+         }
+         //print_r(json_encode($data));
+		$grados = $this->m_ecas->mget_gradoUser($sede_cod,$_POST['usuario']);
+
+		//$grados = $this->m_ecas->mget_grado($id_col);
+		//echo json_encode($grados);
+		//$result["rows"] = $items;
+ 		$this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($grados));
+		 //print_r(json_encode($_POST));
+
+	}
+
+ function get_grados()//funcion llamada por ajax
 	{   
 		$id_col = $_POST['id_colegio'];
 		$grados = $this->m_ecas->mget_grado($id_col);

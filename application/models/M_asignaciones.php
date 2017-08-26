@@ -8,7 +8,21 @@ class M_asignaciones extends CI_Model {
 
     function __construct() {
         parent::__construct();
+        date_default_timezone_set('America/Bogota');
     }
+
+
+public function setAsignacion($monitor,$asignador,$lotes){
+    $fecha = date('Y/m/d H:i:s');
+    $sql = "update asig_monitor set us_monitor ='".$monitor."',
+               us_asignador = '".$asignador."' ,fecha ='".$fecha."' where id_asignacion in ('".$lotes."');";
+
+    if ($this->db->query($sql)){
+            return 1;
+        }
+        return 2;
+}
+
 
     /**
      * Consulta los lotes que se van a asignar de la tabla previamente creada según ciudad del usuario

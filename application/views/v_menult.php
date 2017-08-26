@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html>
+
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
@@ -63,7 +66,7 @@
 					}				
 				if ($rol==1 || $rol == 3){
 			?>
-			<a  href="<?php echo base_url('index.php/C_asignaciones');?>" class="btn btn-menu1"  id="asignar_colX">Asignar <br>Colegios</a>
+			<a href="<?php echo base_url('index.php/C_asignaciones');?>" class="btn btn-menu1"  id="asignar_colX">Asignar <br>Colegios</a>
 			<a  class="btn btn-menu1" id="nov_lt">Novedad <br>Lote</a>
 			<a  class="btn btn-menu1" id="nov_ie">IE Novedad</a>
 			<a  class="btn btn-menu1" id="reportar">Reportes </a>	
@@ -96,6 +99,8 @@
     <?php #include('v_pie.html'); ?>
 </div>
 </body>
+
+</html>
   <style>
 		/*Quita flecha del campo número*/
 			input[type=number]::-webkit-outer-spin-button,

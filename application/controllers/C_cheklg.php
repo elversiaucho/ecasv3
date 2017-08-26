@@ -11,12 +11,15 @@ class C_cheklg extends CI_Controller {
 	function index()
 	{			
 		$ingreso['ingreso'] = 0;
+		$ingresa = false;
  		$this->load->library('form_validation');
-		
+		$session_data = $this->session->userdata('ingreso');
+		if (isset($session_data['usuario']))
+			$ingresa = true;
 		
 		$this->form_validation->set_rules('Usuario', 'Nombre de Usuario', 'trim|required');
    		$this->form_validation->set_rules('clave', 'Contraseña', 'trim|required|callback_verifica_user');
-   		if($this->form_validation->run()==FALSE){
+   		if($this->form_validation->run()==FALSE && !$ingresa){
    			$ingreso['usuario']='';
    			$ingreso['ingreso'] = 1;
    			$this->load->view("encabezado",$ingreso);
@@ -138,8 +141,13 @@ function rep_monitor(){
 		
 	}
 
+/*
+
+*/
+
 	function vista_lote(){
-			$data['colegios'] = $this->m_ecas->get_colegio();// get_col_asignado()
+			$data['colegios'] = $this->m_ecas->get_col_asignado();//get_colegio();
+			//var_dump($data);
    			if ($data['colegios']!=false)
    				$this->load->view('view_lote',$data);
    			else

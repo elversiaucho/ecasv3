@@ -20,11 +20,11 @@ function index()
        $session_data = $this->session->userdata('ingreso');
        $usuario = $session_data['usuario'];
        $rol = $session_data['rol'];
-       $this->form_validation->set_rules('IE', 'Digita el Colegio', 'trim|required');
-        //$this->form_validation->set_rules('colegio', 'Colegio', 'trim|required');
-        $this->form_validation->set_rules('jornada', 'Jornada', 'trim|required');
-        $this->form_validation->set_rules('grado', 'Grado', 'trim|required');
-        $this->form_validation->set_rules('curso', 'Curso', 'trim|required|min_length[1]|max_length[2]');
+       //$this->form_validation->set_rules('IE', 'Digita el Colegio', 'trim|required'); variable que vieene de campo digitado
+        $this->form_validation->set_rules('colegio', 'Seleccione un colegio', 'trim|required');// viene de la seleccion
+        $this->form_validation->set_rules('jornada', 'Seleccione la jornada', 'trim|required');
+        $this->form_validation->set_rules('grado', 'Seleccione el grado', 'trim|required');
+        $this->form_validation->set_rules('curso', 'Seleccione el curso', 'trim|required|min_length[1]|max_length[2]');
         $this->form_validation->set_rules('nro_ecurso', 'Ingresa Número de Estudiantes Matriculados.', 'trim|required|is_natural_no_zero|max_length[2]');
         $this->form_validation->set_rules('nro_eregulares', 'Ingresa Número de Estudiantes que asisten Regularmente.', 'trim|required|max_length[2]|is_natural_no_zero|callback_ecurso');
         $this->form_validation->set_rules('nro_presentes', 'Presentes', 'trim|required|max_length[2]|is_natural_no_zero|callback_presentes');
@@ -37,20 +37,36 @@ function index()
             $data['rol'] = $rol;
             $this->load->view('v_menult',$data);
             $data['colegios'] = $this->m_ecas->get_col_asignado();//get_colegio();
-            $colegio = set_value('IE');
-            $lugar= strpos($colegio, '-');
+            //$colegio = set_value('IE');
+            $colegio = set_value('colegio');
+            /*$lugar= strpos($colegio, '-');
+            echo $colegio;
             if ($lugar>0)
-              $colegio = substr($colegio, 0,$lugar);
+              $colegio = substr($colegio, 0,$lugar);*/
+              $sede_cod='';
             if (is_numeric($colegio)){
-
-                $data['grados'] = $this->m_ecas->mget_grado($colegio);
-                //is_array
+                foreach ($data['colegios'] as $key => $value) {
+                  //print_r($data['colegios'][$key]);
+                  //print_r($value->SEDE_CODIGO." ");
+                  if ($value->Cod_colegio_op == $colegio){
+                    $sede_cod =$value->SEDE_CODIGO;
+                    break 1;
+                  }
+                }
+                //echo $sede_cod;
+                //exit();
+                $data['grados'] = $this->m_ecas->mget_gradoUser($sede_cod, $usuario);//$this->m_ecas->mget_grado($colegio);
+                /*print_r($sede_cod);
+                var_dump( $data['grados']);
+                exit();*/
               }
+             // print_r($data['grados']);
             $this->load->view('view_lote',$data);
             //echo set_value('colegio');
          }
          else {
-              $colegio = set_value('IE');
+              //$colegio = set_value('IE');
+              $colegio = set_value('colegio');
               $lugar= strpos($colegio, '-');
               if ($lugar>0)
                 $colegio = substr($colegio, 0,$lugar);

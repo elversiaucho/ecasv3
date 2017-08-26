@@ -333,12 +333,26 @@ function guarda_lote($lote){
 	        
    }
 //------------------------
-function mget_grado($cod_col){
+/*function mget_grado($cod_col){
 
 	$this->db->select('GRADO6, GRADO7, GRADO8, GRADO9, GRADO10, GRADO11_OMAS');
-	$this->db->from('muestra_2016');
+	$this->db->from('mtra_colegios');//$this->db->from('muestra_2016');
 	$this->db->where('Cod_colegio_op', $cod_col);
 	$result = $this->db->get();
+	if($result->num_rows()>0)
+     	return $result->result();
+     else echo error_log("Fallo consulta");
+
+	return false;
+}*/
+
+function mget_gradoUser($cod_col,$usuario = ""){
+
+	$this->db->select('grado_asignado');
+	$this->db->from('asig_monitor');//$this->db->from('muestra_2016');
+	$this->db->where("cod_colegio='".$cod_col."' AND us_monitor = '".$usuario."'");
+	$result = $this->db->get();
+	/*print_r($this->db->last_query());*/
 	if($result->num_rows()>0)
      	return $result->result();
      else echo error_log("Fallo consulta");
@@ -358,6 +372,7 @@ function get_col_asignado(){
 	    $this->db->from("asig_monitor");
 	    $this->db->where("us_monitor",$usuario);
 	    $colegios=$this->db->get();
+	    //print_r($colegios->num_rows());
 	    if ($colegios->num_rows()>0) {
 	    	$colegios=$colegios->result();
 	    $i=0;
@@ -367,21 +382,22 @@ function get_col_asignado(){
 		    }
 	    }
 	   else {
-	   		echo $usuario." <b>No</b> tiene colegios asignados";
-	   		exit();
+	   	   return false;
+	   		//echo $usuario." <b>No</b> tiene colegios asignados";
+	   		//exit();
 	   }
 	    
 	    //where_in
 	    //exit();
-	    $this->db->select('Cod_colegio_op, COD_MUNI, MUNICIPIO, SECTOR, SEDE_NOMBRE, GRADO6, GRADO7, GRADO8, GRADO8, GRADO9, GRADO10, GRADO11_OMAS');
-     	$this->db->from('muestra_2016');
+	    $this->db->select("Cod_colegio_op, COD_MUNI, MUNICIPIO, SECTOR, CONCAT(SEDE_NOMBRE,' (',SEDE_CODIGO,')') AS SEDE_NOMBRE, GRADO6, GRADO7, GRADO8, GRADO8, GRADO9, GRADO10, GRADO11_OMAS, SEDE_CODIGO");
+     	$this->db->from('mtra_colegios');//$this->db->from('muestra_2016');
      	$this->db->where_in('SEDE_CODIGO', $lista);
      	$result = $this->db->get();
      	//echo $this->db->last_query();
      	if($result->num_rows()>0)
      		return $result->result();
-     	else
-     		return false;
+     	
+        return false;
 }
 
 /*Devuelve los colegios que tiene el usuario por municipio*/

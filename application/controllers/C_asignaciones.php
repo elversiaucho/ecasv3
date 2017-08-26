@@ -40,17 +40,17 @@ function index()
             $data['usuarios'] = $this->m_ecas->get_usuarios(null,$session_data['mpio_user']);// usaurio con rol de monitor
             //var_dump($this->get_users());
             //var_dump($this->ver_pre_lotes());
-            $data['colegios'] = $this->m_ecas->get_colegio();
-            $colegio = set_value('IE');
-            $lugar= strpos($colegio, '-');
-            if ($lugar>0)
+            //$data['colegios'] = $this->m_ecas->get_colegio();
+            //$colegio = set_value('IE');
+            //$lugar= strpos($colegio, '-');
+           /* if ($lugar>0)
               $colegio = substr($colegio, 0,$lugar);
             if (is_numeric($colegio)){
 
                 $data['grados'] = $this->m_ecas->mget_grado($colegio);
                 //is_array
               }
-              
+              */
               if (!$this->input->is_ajax_request()) {
                 
               $this->load->view("encabezado",$ingreso);
@@ -108,9 +108,31 @@ function index()
 function asignarUsers(){
   $data =array();
   $data["codiError"] = 1;
-  $data["mensaje"] = "Se va a guarda la siguinte info:";
-  var_dump($data);
-  return json_encode($data);
+  $data["usuario"] = "";
+
+  
+  //if (isset($_POST['ids']))
+    //echo $_POST['ids'];
+  foreach ($_POST as $key => $value) {
+        $data[$key]=$value;
+    }
+    if (isset($data['usuario']) && isset($data['asignador']) && isset($data['ids'])){
+      
+      $result = $this->m_asigna->setAsignacion($data['usuario'],$data['asignador'],$data['ids']);
+      switch ($result) {
+        case 1:
+            $data["mensaje"] = "Se asigno el usuario ".$data['usuario']." a los lotes: ".$data['ids'];  
+          break;
+        
+        case 2:
+          $data["mensaje"] = "No se ha asignado ningún usurio";  
+          $data["codiError"] = 0;
+          break;
+      }
+  }
+  $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($data));
+  //var_dump($data);
+  //return json_encode($data);
 
 }
 
@@ -136,6 +158,8 @@ function asignarUsers(){
   $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
   $offset = ($page-1)*$rows;
   $result = array();
+  $session_data = $this->session->userdata('ingreso');
+  $mpio = $session_data['mpio_user'];
   //echo $page;
   //include 'conn.php';
   $conn = @mysql_connect('192.168.1.200','dimpe','D1mP3D3s4rr0ll0');
@@ -143,26 +167,29 @@ function asignarUsers(){
       die('Could not connect: ' . mysql_error());
     }
     mysql_select_db('dane_ecas_v2', $conn);
+    mysql_query("SET NAMES UTF8");
    //$conn=conn();
   
-  $rs = mysql_query("select count(*) from asig_monitor");
+  $rs = mysql_query("select count(*) from asig_monitor A join mtra_colegios M
+on (A.cod_colegio = M.SEDE_CODIGO AND COD_MUNI ='".$mpio."')");
   $row = mysql_fetch_row($rs);
   $result["total"] = $row[0];
   $rs = mysql_query("select * from asig_monitor A join mtra_colegios M
-on (A.cod_colegio = M.SEDE_CODIGO) limit $offset,$rows");
-  
+on (A.cod_colegio = M.SEDE_CODIGO AND COD_MUNI ='".$mpio."') limit $offset,$rows");
+  //print_r($rs);
+  //exit();
   $items = array();
   while($row = mysql_fetch_object($rs)){
     //array_push($items, $row);
     $items[] = $row;
   }
   $result["rows"] = $items;
-
-  echo json_encode($result);
+ $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($result));
+ // echo json_encode($result);
  }
 
 
- public function get_users(){
+/* public function get_users(){
   $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
   $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
   $offset = ($page-1)*$rows;
@@ -189,5 +216,5 @@ on (A.cod_colegio = M.SEDE_CODIGO) limit $offset,$rows");
   $result["rows"] = $items;
 
   echo json_encode($result);
- }
+ }*/
 }

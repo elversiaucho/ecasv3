@@ -33,7 +33,7 @@
 			<img id = 'logo' style="width:20%; position:relative;" src="<?php echo base_url()?>images/logo_dane.png" class="img-responsive"/>
 			<?php if(isset($ingreso))
 				{
-					echo "<label class='lb-btn'>".$usuario."</label>";
+					echo "<label class='lb-btn' id='nombreUser'>".$usuario."</label>";
 			?>
 			<!--div class="cont-btn"-->
 			   <a href=<?php echo base_url('');?> class="btn btn-cerrar">Cerrar sesión</a>

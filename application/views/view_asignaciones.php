@@ -17,16 +17,19 @@
 
 </head>
 
+
+
 <div id="campo">
   <div class="estilo_campos">
+  <a href="<?php echo base_url('index.php/C_cheklg');?>" class="btn btn-menu1"  >Regresar</a>
    <?php 
         $attributes = array('class' => '', 'id' => 'formAsigna', 'rol' =>'form', 'name' => 'formAsigna' , 'method' => 'POST');
         echo form_open('index.php/C_asignaciones', $attributes);
     ?>
       <div class="row pregunta-lote form-group">
           <div class="col-md-1 icono-lote"></div>
-          <label class="col-md-4">Seleccione el usuario:</label>
-          <select class="col-md-7" id = 'usuario' name="usuario" >
+          <label class="col-sm-2">Seleccione el usuario:</label>
+          <select class="col-md-5" id = 'usuario' name="usuario" >
             <?php 
               echo "<option value=''>Seleccione..</option>";
               if(isset($usuarios))
@@ -48,33 +51,27 @@
     <thead>
       <tr>
         <th field="ck" checkbox="true">Asignado</th>
-        <th field="id_asignacion" width="50">id_curso</th>
-        <th field="MUNICIPIO" width="50">MUNICIPIO</th>
         <th field="cod_colegio" width="50">CODIGO COLEGIO</th>
-        <th field="SECTOR" width="50">SECTOR</th>
         <th field="SEDE_NOMBRE" width="50">NOMBRE</th>
         <th field="grado_asignado" width="50">GRADO</th>
         <th field="curso_nro" width="50">CURSO</th>
-        <!-- <th field="email" width="50">ESTADO</th> -->
+        <th field="id_asignacion" width="50">id_curso</th>
+        <th field="MUNICIPIO" width="50">MUNICIPIO</th>
         <th field="us_asignador" width="50">COORDINADOR</th>
         <th field="us_monitor" width="50">MONITOR</th>
-        <th field="estado" width="50">FECHA DE ASIGNACION</th>
+        <th field="SECTOR" width="50">SECTOR</th>
+        <th field="fecha" width="50">FECHA DE ASIGNACION</th>
       </tr>
     </thead>
   </table>
   <div id="toolbar">
     <!-- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">Opcion</a> -->
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Editar Monitor</a>
+    <!-- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Editar Monitor</a> -->
    <!--  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a> -->
   </div>
-
-  <div style="margin-bottom:20px">
-    <a href="#" onclick="getSelected()">Asignar al seleccionado</a>
-    <a href="#" onclick="getSelections()">Asignar</a>
-  </div>  
   
  </div>
-      <div id='ms'>
+      <div id='ms' class="alert-danger">
     
       </div>
 
@@ -83,7 +80,6 @@
             $data = array('type' => 'button',
             'value' =>'Asignar lotes',
             'id' => 'btnAsignar',
-            //'onclick' => 'getSelections(event)',
             'class' => 'btn btn-success abtn');
             echo form_submit($data);
             echo form_close();
@@ -97,42 +93,6 @@
  <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-dialog.js"></script>
 <script type="text/javascript">
 var base_url= '<?php echo base_url(); ?>'+'index.php/';
-/*propias e del demo*/
-var url;
-    function newUser(){
-      $('#dlg').dialog('open').dialog('setTitle','New User');
-      $('#fm').form('clear');
-      url = 'save_user.php';
-    }
-    function editUser(){
-      var row = $('#dg').datagrid('getSelected');
-      if (row){
-        $('#dlg').dialog('open').dialog('setTitle','Edit User');
-        $('#fm').form('load',row);
-        url = 'update_user.php?id='+row.id;
-      }
-    }
-  
-    function destroyUser(){
-      var row = $('#dg').datagrid('getSelected');
-      if (row){
-        $.messager.confirm('Confirm','Are you sure you want to destroy this user?',function(r){
-          if (r){
-            $.post('destroy_user.php',{id:row.id},function(result){
-              if (result.success){
-                $('#dg').datagrid('reload');  // reload the user data
-              } else {
-                $.messager.show({ // show error message
-                  title: 'Error',
-                  msg: result.errorMsg
-                });
-              }
-            },'json');
-          }
-        });
-      }
-    }
-//fin propias del Demo
 
 $(document).ready(function(){
   //$("#campo").show();

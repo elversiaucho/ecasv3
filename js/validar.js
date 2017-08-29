@@ -1,3 +1,5 @@
+
+
 //cambi el Estilo del menú
 
 function menu_enc(id){
@@ -201,8 +203,8 @@ function valNumero(id){
 				}
 		 break;
 		case 'A2'://edad del estudiante entre 12 y 18
-				if (valor < 12 || valor > 18){
-					$("#errA2").text('Ingresa tu edad.');
+				if (valor < 12 || valor > 25){
+					$("#errA2").text('Ingresa una edad válida.');
 					$(id_tex).focus();
 				}
 		 break;
@@ -241,7 +243,7 @@ function edad(e){
 	if (solonumeros(e)){
 		
 		edad=$("#A2").val()+String.fromCharCode(key).toString();
-		if ((edad.length==1 && (edad==0 || edad >1)) || edad.length>1 && (edad < 12 || edad > 18)) {
+		if ((edad.length==1 && (edad==0 || edad >2)) || edad.length>1 && (edad < 12 || edad > 25)) {
 		   $("#errA2").text("Edad inválida.");
 	 	   return false;
 	 	}
@@ -275,7 +277,7 @@ function solonumeros(e) {
     key = e.keyCode || e.which;
     tecla = String.fromCharCode(key).toString();
     numeros = "0123456789";//Se define todo el abecedario que se quiere que se muestre.
-    especiales = [8, 37, 39, 46, 6]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
+    especiales = [8,6]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.37% 46 es le punto, 08comilla
 
     tecla_especial = false
     for(var i in especiales) {
@@ -335,6 +337,7 @@ function ocultos(id)
 			  $('#E59').show();
 			  $('#E63').show();
 			  $('#E64').show();
+			  $("#monitor").show();
 			  break;
 		case 'E55no':
 			  $("#internet").val('Finalizar');
@@ -354,6 +357,7 @@ function ocultos(id)
 			  $('#E59').hide();
 			  $('#E63').hide();
 			  $('#E64').hide();
+			  $("#monitor").hide();
 			  //$('#fin_internet').hide();
 			  //aumetar las página en 1
 			  break;
@@ -652,7 +656,9 @@ function ocultos(id)
 
 		case "C20no":
 			 	hide_C2x(20);
-
+			 	if($('.C27').is(':checked')) {
+					$('#btn7').slideDown('slow');
+				  }
 
 		break;
 	    case "C20si":
@@ -718,7 +724,7 @@ function noHijos(){
 function pareja(id_caso){
 	id_err="#err"+id_caso;
 	
-	 if ($("#A4e").prop("checked") || $("input:radio[name=B10e]:checked").val()!=4){
+	 if ($("#A4e").prop("checked") || $("input:radio[name=B10e]:checked").val()!='4'){
 		    $(id_err).text("Nos informaste tener pareja por favor revisa tus respuestas."); 
 		    $('#btn8').prop("disabled",true);
 		}

@@ -1,21 +1,28 @@
 
 <div id='campo' class="estilo_campos">
     <?php 
+       if ($lotes==1 || $lotes == false){
+            echo "No se encontraron lotes para cerrar!";
+            exit();
+            }
     		$attributes = array('class' => '', 'id' => 'form_novlt' , 'method' => 'POST');
        	echo form_open('index.php/c_crearlt/novedad_lt', $attributes);
     ?>
-    	  
-      <div class="row form-group">
+         <div class="row form-group">
         	<label class="col-lg-3">Número del lote:</label>
          	<select id = 'lote' name="lote">
-    	     	<?php 
-    	     		echo "<option value=''>Selecciona..</option>";
-    	     		if(isset($lotes))
-    	     		{
+    	     <?php 
+    	     echo "<option value=''>Selecciona..</option>";
+
+    	     	if(isset($lotes))
+    	     		{ 
     	     		foreach ($lotes as $fila){
     	     			echo "<option value='".$fila->ID_LOTE."' ".set_select('lote', $fila->ID_LOTE).">".$fila->ID_LOTE."-".$fila->SEDE_NOMBRE."</option>";
     	     		  }
-    	     		}
+
+                    }
+             
+                    
     	     	?>    		
     	
          	</select>

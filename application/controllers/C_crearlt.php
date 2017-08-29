@@ -23,7 +23,7 @@ function index()
        //$this->form_validation->set_rules('IE', 'Digita el Colegio', 'trim|required'); variable que vieene de campo digitado
         $this->form_validation->set_rules('colegio', 'Seleccione un colegio', 'trim|required');// viene de la seleccion
         $this->form_validation->set_rules('jornada', 'Seleccione la jornada', 'trim|required');
-        $this->form_validation->set_rules('grado', 'Seleccione el grado', 'trim|required');
+        $this->form_validation->set_rules('grado', 'Seleccione el grado', 'trim|required|callback_lotesGrado['.$usuario.']');//
         $this->form_validation->set_rules('curso', 'Seleccione el curso', 'trim|required|min_length[1]|max_length[2]');
         $this->form_validation->set_rules('nro_ecurso', 'Ingresa Número de Estudiantes Matriculados.', 'trim|required|is_natural_no_zero|max_length[2]');
         $this->form_validation->set_rules('nro_eregulares', 'Ingresa Número de Estudiantes que asisten Regularmente.', 'trim|required|max_length[2]|is_natural_no_zero|callback_ecurso');
@@ -112,6 +112,27 @@ function index()
    }
 
 /*Inicio Funciones de validación*/
+function lotesGrado($grado,$usuario){
+  $mensaje ="El lote para este curso se puede crear";
+if ($grado==null)
+      {
+         $this->form_validation->set_message('lotesGrado','Seleccione un grado.');
+         return false;
+      }
+   else if($_POST['colegio']!=''){
+      $total =$this->m_ecas->comparaTotCursos($_POST['colegio'],$grado,$usuario);
+      if ($total['creados'] >= $total['aEncuestar'] || $total['aEncuestar'] == 0){
+
+          $mensaje = "El total de lotes creados(".$total['creados'].") no puede ser mayor a(".$total['aEncuestar'].")  cantidad de cursos asignada para el grado seleccionado.";
+          $this->form_validation->set_message('lotesGrado',$mensaje);
+          return false;     
+   
+      }
+    }
+  return true;
+   }
+
+
   function presentes($valor){
       if ($valor==null)
       {
@@ -209,11 +230,12 @@ function otra_nov($valor){
 
        if($this->form_validation->run()==FALSE){
           
-          $lotes = $this->m_ecas->get_lotes($data['usuario'],2);
+          $lotes = $this->m_ecas->get_lotes($data['usuario'],3);
           $data['lotes']=$lotes;
+          //print_r($lotes);
           $this->load->view('v_menult',$data);
           $this->load->view('v_novedad_lt',$data);
-          
+                
          }else{
           $estado_lt=1;//cerrado
           $nro_lote = set_value('lote');

@@ -254,10 +254,10 @@ function main()
 
 		if($('input:radio[name=D44]:checked').val()=='1')//40 muestra 40a
 			$('#D57').slideDown("slow");
-		/*if ($('input:radio[name=D40]:checked').val()=='2' && $("#D60a").prop('checked')){
-			 $("#error_D40").text("Por favor revisa tu respuesta de las pregunta 9, nos informaste que tienes hijos");
+		if ($('input:radio[name=D40]:checked').val()=='2' && $("#D60a").prop('checked')){
+			 $("#error_D40").text("Nos informaste tener hijos por favor revisa tus respuestas.");
 			 $("#btn_D40").prop('disabled',true);
-					}*/
+					}
 	
 		if($('input:radio[name=D43]:checked').val()!='10')
 			$('#D43_cual').prop('disabled',true);
@@ -357,6 +357,22 @@ function delegateEvents()
 {
 
 $(document).ready(function(){
+
+	/*$("#fin_internet").click(function(){
+		$("#monitor").hide();
+	});*/
+
+	$("input:radio[name=A15]").click(function(){
+		if($("input:radio[name=A15]:checked").val() != '3' && $('#A4e').prop('checked')){
+			$("#errA15").addClass("alert alert-warning");
+			$("#errA15").text("Nos indicaste que vivías con tu pareja, por favor revisa tus respuestas.");
+		}else{
+			$("#errA15").removeClass("alert alert-warning");
+			$("#errA15").text("");
+		}
+
+	});
+
 	$("#monitor").click(function(){
 				$("#form_cierre").show();
 			});
@@ -564,6 +580,20 @@ $(document).ready(function(){
 				}
 
 			});
+
+		$("#btn_D40").click(function(){
+		 	if(($("#A4i").prop('checked') || $("#B8j").prop('checked') || 
+					$('input:radio[name=B10j]:checked').val()<=3 || $("#B15j").prop('checked') || $("#C18j").prop('checked')) 
+					&& $('input:radio[name=D40]:checked').val()==2)
+						{	$("#error_D40").text("Nos informaste tener hijos por favor revisa tus respuestas.");
+							$("#btn_D40").prop('disabled',true);
+						}
+		 });
+
+		$("#btn8").click(function(){
+			if ($('input:radio[name=A11]:checked').val()==2)
+				pareja("A11b");
+		});
 
 			$("#D41").blur(function(){
 				if ($("#D41").val()<=10){

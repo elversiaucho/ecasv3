@@ -61,15 +61,18 @@
 		    <a  class="btn btn-menu1" id="crear_lte">Crear Lote</a>
 			<a  class="btn btn-menu1" id="crear_enc">Crear <br>Encuesta</a>
 			<a  class="btn btn-menu1" id="reanudar_e">Retomar <br> Encuesta</a>
-			<a  class="btn btn-menu1" id="cerrar_lt">Cerrar Lote</a>
-				<?php 
-					}				
+			<?php 
+				if ($rol == 2)
+					{echo "<a  class='btn btn-menu1' id='cerrar_lt'>Cerrar Lote</a>";}
+				}
 				if ($rol==1 || $rol == 3){
 			?>
 			<a href="<?php echo base_url('index.php/C_asignaciones');?>" class="btn btn-menu1"  id="asignar_colX">Asignar <br>Colegios</a>
+			<a  class="btn btn-menu1" id="cerrar_lt">Cerrar Lote</a>
 			<a  class="btn btn-menu1" id="nov_lt">Novedad <br>Lote</a>
 			<a  class="btn btn-menu1" id="nov_ie">IE Novedad</a>
 			<a  class="btn btn-menu1" id="reportar">Reportes </a>	
+			<a href="<?php echo base_url('index.php/C_alertas');?>" class="btn btn-menu1"  id="">Alertas</a>	
 			<?php
 				}
 			}
@@ -127,6 +130,8 @@
 
   //-----------------reportes..............
   	$("#reportar").click(function(){
+  		if($('#campo').length>0)
+			$('#campo').remove();
   		estilo_menu('#reportar');
   		$.post('<?php echo base_url('index.php/C_cheklg/ver_reportes');?>', 
   				function(rta,status){

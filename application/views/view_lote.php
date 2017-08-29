@@ -273,7 +273,7 @@ $(document).ready(function(){
           var grado = $("#grado");
         // Guardamos el select de colegio
          var colegio = $(this);
-        //alert("colegio"+ colegio.val());
+        //alert("colegio"+ colegio.val()); 
          if($(this).val() != '')
         {
             $.ajax({

@@ -133,8 +133,8 @@
 					<p class="t_error col-lg-6" id='errA2'><?php echo strip_tags(form_error('A2')); ?></p>
 				</div>					
 				<!-- Pregunta 3-->
-					<div class="row form-group">
-						<label class="col-lg-12">3. De acuerdo a tu cultura, pueblo o rasgos físicos, te reconoces como:</label>
+					<div class="row form-group"> 
+						<label class="col-lg-12">3. De acuerdo con tu cultura, pueblo o rasgos físicos, te reconoces como:</label>
 						<div class="col-lg-12">
 							<div class="radio radio-primary">
 								<label>
@@ -1577,7 +1577,7 @@
 							<div class="radio radio-primary">
 								<label>
 									<input type="radio" name="B11" value="5" <?php echo set_radio("B11","5"); echo $rta[5]; ?>/>
-									Acuden a (psicólogo, orientador, comisarías de familia, ICBF, Policía, autoridades comunitarias de etnia)
+									Acuden a (psicólogo(a), orientador(a), comisarías de familia, ICBF, Policía, autoridades comunitarias de etnia)
 								</label>
 							</div>
 							<div class="radio radio-primary">
@@ -2330,7 +2330,7 @@
 					<!-- Pregunta 17-->
 					
 						<div class="row form-group">
-						<label class="mg-top-label col-lg-6 col-md-8 col-sm-8 col-xs-12">17. En tu grupo de amigos, ¿consideras que existe presión en temas relacionados con:</label>
+						<label class="mg-top-label col-lg-12 col-md-12 col-sm-12 col-xs-12">17. En tu grupo de amigos, ¿consideras que existe presión en temas relacionados con:</label>
 							<div class="col-lg-12 incluyente" >
 								<div class="checkbox">
 									<label>
@@ -3340,9 +3340,8 @@
 			</div>
 					<!-- Pregunta 35 nueva-->
 			 <div class="row form-group" id="C27" style="display: none;">
-					   <label class="col-lg-12">27. ¿De los siguientes lugares en cuales te han ofrecido este tipo de sustancias?
+					   <label class="col-lg-12">27.  De los siguientes lugares, ¿en cuales te han ofrecido este tipo de sustancias?
 						</label>
-
 						<div class="col-lg-12">
 							<div class="checkbox">
 								<label>
@@ -3404,7 +3403,8 @@
 					<label class="col-md-12 sub_t" id="cap_4">Ahora queremos conocer más acerca de la sexualidad de los adolescentes de tu edad.<br> Recuerda que esta información es totalmente anónima.</label>
 
 					<p class="glosario">
-						<b>Relación afectiva cercana:</b> se entiende como relación romántica, relación con novio o novia, relación de pareja o con amigos o amigas especiales.
+						<b>Relación afectiva cercana:</b>
+						 se entiende como relación romántica, relación con novio o novia, relación de pareja, o con amigos o amigas especiales.
 					</p>		
 
 					<!-- Pregunta 8-->
@@ -3450,7 +3450,7 @@
 						
 						<!-- Pregunta 10-->
 						<div class="row form-group label-floating TH">
-						<label class="col-md-4">30. ¿Cuántas relaciones afectivas cercanas has tenido desde ese momento? </label>
+						<label class="col-md-7">30. ¿Cuántas relaciones afectivas cercanas has tenido desde ese momento? </label>
 							<div class="col-lg-12">
 								<?php #si es checked quiere decir que tiene un hijo
 									if ($fila->A10=='checked')
@@ -3464,10 +3464,10 @@
 						
 						<!--Pregunta 11-->
 						<div class="row form-group">
-							<label class="mg-top-label col-lg-4 col-md-6 col-sm-6 col-xs-12">
+							<label class="mg-top-label col-lg-7 col-md-7 col-sm-7 col-xs-7">
 							  31. Actualmente, ¿tienes una relación afectiva cercana con alguna persona?
 							</label>
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6">
+							<div class="col-md-1">
 								<div class="radio radio-primary">
 									<label>
 									<?php
@@ -3480,7 +3480,7 @@
 									</label>
 								</div>
 							</div>
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6">
+							<div class="col-md-1">
 								<div class="radio radio-primary">
 									<label>
 										<input type="radio" name="A11" id="A11b" value="2" onclick="ocultos(this.id)" <?php echo set_radio("A11","2"); echo $rta2; ?> />
@@ -3604,40 +3604,47 @@
 											}else $rta[$fila->A15] = 'checked';
 										?>
 											<input type="radio" name="A15" <?php echo set_radio("A15","1"); echo $rta[1]; ?> value="1" />
-											Nunca, solo por teléfono, carta o internet
-										</label>
-									</div>
-									<div class="radio radio-primary">
-										<label>
-											<input type="radio" name="A15" <?php echo set_radio("A15","2"); echo $rta[2]; ?> value="2" />
-											Casi nunca, cuando podemos y a escondidas
-										</label>
-									</div>
-									<div class="radio radio-primary">
-										<label>
-											<input type="radio" name="A15" <?php echo set_radio("A15","3"); echo $rta[3]; ?> value="3" />
-											Solo los fines de semana
-										</label>
-									</div>
-									<div class="radio radio-primary">
-										<label>
-											<input type="radio" name="A15" <?php echo set_radio("A15","4"); echo $rta[4]; ?> value="4" />
 											Todos los días en el colegio
 										</label>
 									</div>
 									<div class="radio radio-primary">
 										<label>
-											<input type="radio" name="A15" <?php echo set_radio("A15","5"); echo $rta[5]; ?> value="5" />
+											<input type="radio" name="A15" <?php echo set_radio("A15","2"); echo $rta[2]; ?> value="2" />
 											Todos los días en el barrio
 										</label>
 									</div>
 									<div class="radio radio-primary">
 										<label>
-											<input type="radio" name="A15" <?php echo set_radio("A15","6"); echo $rta[6]; ?> value="6" />
+											<input type="radio" name="A15" <?php echo set_radio("A15","3"); echo $rta[3]; ?> value="3" />
 											Vivimos en la misma casa
 										</label>
 									</div>
+									<div class="radio radio-primary">
+										<label>
+											<input type="radio" name="A15" <?php echo set_radio("A15","4"); echo $rta[4]; ?> value="4" />
+											Solo los fines de semana
+										</label>
+									</div>
+									<div class="radio radio-primary">
+										<label>
+											<input type="radio" name="A15" <?php echo set_radio("A15","5"); echo $rta[5]; ?> value="5" />
+											Casi nunca
+										</label>
+									</div>
+									<div class="radio radio-primary">
+										<label>
+											<input type="radio" name="A15" <?php echo set_radio("A15","6"); echo $rta[6]; ?> value="6" />
+											Cuando podemos y a escondidas
+										</label>
+									</div>
 										<p class="t_error"><?php echo strip_tags(form_error('A15')); ?></p>
+									<div class="radio radio-primary">
+										<label>
+											<input type="radio" name="A15" <?php echo set_radio("A15","7"); echo $rta[7]; ?> value="7" />
+											Nunca, solo por teléfono, carta o internet
+										</label>
+									</div>
+										<p class="t_error" id="errA15"><?php echo strip_tags(form_error('A15')); ?></p>
 								</div>
 						</div>
 					</div>
@@ -3902,7 +3909,7 @@
 				<div class="pregunta-encuesta pagina aparece-a-clase container" data-slide="9">  <!--Slide 9-->
 				
 					<p class="glosario">
-						<b>Actividad sexual:</b> en esta encuesta queremos saber si conoces o has tenido experiencias con otras personas que <u>involucren besos, abrazos, caricias y tocamientos</u> en diferentes partes del cuerpo,  incluida la zona genital (pene, vagina, nalgas y/o senos).
+						<b>Actividad sexual:</b> en esta encuesta queremos saber si conoces o has tenido experiencias con otras personas que involucren <u>besos, abrazos, caricias y tocamientos</u> en diferentes partes del cuerpo,  incluida la zona genital (pene, vagina, nalgas y/o senos).
 					</p>
 
 						<!-- Pregunta 38-->
@@ -4051,7 +4058,8 @@
 								</div>
 							</div>
 								<div class="row form-group" style="display: none;" id="D41_a">	
-								<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">41a. ¿Alguna vez has aceptado algo (por ejemplo, dinero, ropa, calificaciones u otros regalos) a cambio de participar en actividades sexuales contigo? </label>
+								<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">41a. ¿Alguna vez has aceptado algo (por ejemplo, dinero, ropa, calificaciones u otros regalos) a cambio de participar en actividades sexuales?
+								</label>
 								<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
 									<div class="radio radio-primary">
 										<label>
@@ -4348,7 +4356,7 @@
 							<!-- Pregunta 39-->
 							
 							<div class="row form-group" id="D39" style ="display:none;">
-								<label>47. ¿A quién?</label>
+								<label>47. ¿A quién se lo has comentado?</label>
 									<div class="checkbox">
 										<label>
 											<input id="ch33" type="checkbox" class="D39 sisexo1" name="D39[]" value ="1" <?php echo set_radio('D39[]','1'); echo $fila->D39a; ?> />
@@ -4370,7 +4378,7 @@
 									<div class="checkbox">	
 										<label>
 											<input id="ch36" type="checkbox" class="D39 sisexo1" name="D39[]" value ="4" <?php echo set_radio('D39[]','4'); echo $fila->D39d; ?> />
-											A algún trabajador de tu colegio (orientador, profesor, etc.)
+											A algún trabajador(a) de tu colegio (orientador(a), profesor(a), etc.)
 										</label>
 									</div>
 									<div class="checkbox">
@@ -4412,7 +4420,7 @@
 								<!-- ************************************************************************************************************************************************************************************* -->
 				<div class="pregunta-encuesta pagina aparece-a-clase container" data-slide="10">
 						<p class="glosario">
-						<b>Para fines de esta encuesta relación sexual es:</b> actividad sexual que incluye el contacto directo de los genitales de otra persona con tus genitales u otra parte de tu cuerpo que incluya penetración.
+						<b>Para fines de esta encuesta relación sexual es:</b> actividad sexual que incluye el contacto directo de los genitales de otra persona con tus genitales u otra parte de tu cuerpo, que incluya penetración. 
 						</p>
 						<!-- Pregunta 40 48-->
 						 
@@ -4590,7 +4598,7 @@
 		      
 		        			
 				<!-- Pregunta 53-->
-				<div class="row form-group"  id='D53'><!--style="display:none;"-->
+				<div class="row form-group"  id='D53' style="display:none;">
 				    
 						<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">52. ¿Le has comentado a alguien de lo sucedido?</label>
 									
@@ -4643,7 +4651,7 @@
 							<div class="checkbox">
 								<label>
 									<input class="D54 sisexo2" type="checkbox" value="4" name="D54[]" <?php echo set_checkbox('D54','4'); echo $fila->D54d;?>/>
-									A algún trabajador de tu colegio (orientador, profesor, etc)
+									A algún trabajador(a) de tu colegio (orientador(a), profesor(a), etc.)
 								</label>
 							</div>
 							<div class="checkbox">
@@ -4675,7 +4683,7 @@
 						<a href="javascript:void(0)" class="btn btn-raised btn-warning arrow-l" style="position:relative;right: 0px;" >Anterior</a>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-						<input type="submit" class="btn btn-raised btn-success arrow-r" id="btn_D40" style="position:relative;right: 0px;" value="Siguiente"/>
+						<input type="submit" class="btn btn-raised btn-success arrow-r" id="btn_D40?" style="position:relative;right: 0px;" value="Siguiente"/>
 					</div>
 				</div>
 					
@@ -5016,7 +5024,7 @@
 
 					<!--Pregunta 63-->
 					<div class="row form-group TH incluyente" id="hijosp3" onclick="ocultos(this.id)" style="display:none;">
-						<label class="col-lg-12">61. ¿Quién te apoya en el sostenimiento económico de tus hijos(as)?</label>
+						<label class="col-lg-12">61. ¿Quién te apoya en el sostenimiento económico de tu(s) hijos(as)?</label>
 						<div class="col-lg-12">
 							<div class="checkbox">
 								<label>
@@ -5300,7 +5308,7 @@
 								<div class="checkbox">
 									<label>
 										<input class="E56" type="checkbox" value="5" name="E56[]" <?php echo set_checkbox('E56','5'); echo $fila->E56e;?>/>
-										Desde el computador de la casa de otra persona (familiar, novio/a, amigo/a, vecino/a)
+										Desde el computador de la casa de otra persona (familiar, novio(a), amigo(a), vecino(a))
 								 	</label>
 								</div>
 								<div class="checkbox">
@@ -5574,7 +5582,7 @@
 								<div class="checkbox col-lg-6">
 									<label>
 									<input id="E63e" type="checkbox" value="5" onclick="ocultos(this.id)" name="E63[]" <?php echo set_checkbox('E63','5'); echo $fila->E63e;?>/>
-										Ninguna de los anteriores
+										Ninguno de los anteriores
 									</label>
 								</div>
 							</div>
@@ -5645,7 +5653,8 @@
 
 		<script type="text/javascript">
 
-		$(document).ready(function(){
+		
+	$(document).ready(function(){
 			/*validacione de formulario de cierre*/
 			$("#btn_close").click(function(){
 				var seguir=1
@@ -5693,9 +5702,6 @@
 		});
 			 
 		});
-
-		
-
 		</script>
 		
 		<style>

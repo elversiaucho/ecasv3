@@ -1,5 +1,4 @@
 <?php
-
 class C_cheklg extends CI_Controller {
                
 	function __construct()
@@ -10,24 +9,26 @@ class C_cheklg extends CI_Controller {
 	}	
 	function index()
 	{			
-		$ingreso['ingreso'] = 0;
+		//$ingreso['ingreso'] = 0;
 		$ingresa = false;
- 		$this->load->library('form_validation');
-		$session_data = $this->session->userdata('ingreso');
-		if (isset($session_data['usuario']))
-			$ingresa = true;
 		
+ 		$this->load->library('form_validation');
+		//$session_data = $this->session->userdata('ingreso');
 		$this->form_validation->set_rules('Usuario', 'Nombre de Usuario', 'trim|required');
    		$this->form_validation->set_rules('clave', 'Contraseña', 'trim|required|callback_verifica_user');
-   		if($this->form_validation->run()==FALSE && !$ingresa){
+   		$ingresa = $this->form_validation->run();
+   		if (isset($_GET['menu']))
+   			$ingresa = true;
+
+   		if($ingresa == FALSE){
    			$ingreso['usuario']='';
-   			$ingreso['ingreso'] = 1;
+   			//$ingreso['ingreso'] = 0;
    			$this->load->view("encabezado",$ingreso);
    			$this->load->view('view_elogin');
    		}
    		else {
    			$session_data = $this->session->userdata('ingreso');
-		
+		    //print_r($session_data);
    			$data['usuario'] = $session_data['usuario'];
    			$data['rol'] = $session_data['rol'];
    			$ingreso['ingreso'] = 1;
@@ -81,7 +82,7 @@ function rep_monitor(){
    $op= $_GET['op'];
    $datos['reporte'] = $this->m_ecas->get_rep_monitor($op);
   //echo json_encode($datos);
-	$tabla ='<table border="1">
+	$tabla ='<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><table border="1">
 		<tr><th>Monitor</th>
 		<th>NUMERO DE LOTE</th>
 		<th>SEDE CODIGO</th>

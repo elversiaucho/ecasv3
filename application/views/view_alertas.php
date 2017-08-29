@@ -1,9 +1,8 @@
 
 
-
 <head>
   <meta charset="UTF-8">
-  <!-- <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
+   <!-- <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
   <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css">
   <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/color.css">
   <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/demo/demo.css">
@@ -22,45 +21,31 @@
 <div id="campo">
   <div class="estilo_campos">
   <a href="<?php echo base_url('index.php/c_cheklg?menu=1');?>" class="btn btn-menu1"  >Regresar</a>
-   <?php 
-        $attributes = array('class' => '', 'id' => 'formAsigna', 'rol' =>'form', 'name' => 'formAsigna' , 'method' => 'POST');
-        echo form_open('index.php/C_asignaciones', $attributes);
-    ?>
       <div class="row pregunta-lote form-group">
           <div class="col-md-1 icono-lote"></div>
-          <label class="col-sm-2">Seleccione el usuario:</label>
-          <select class="col-md-5" id = 'usuario' name="usuario" >
-            <?php 
-              echo "<option value=''>Seleccione..</option>";
-              if(isset($usuarios))
-              {
-              foreach ($usuarios as $fila){
-                echo '<option value='.$fila->USUARIO.' '.set_select('usuario', $fila->USUARIO).'>'.$fila->NOMBRE.'</option>';
-                }
-              }
-              ?>        
-          </select>
-          
-</div>
-
+          <label class="col-sm-11">INCONSISTENCIAS EN LOTES MIXTOS</label>
 <div>
-          <table id="tt" title="Cursos" class="easyui-datagrid" style="width:100%;height:350px"
-      url="<?php echo base_url()?>index.php/C_asignaciones/get_lotes"
-       pagination="true"
-      rownumbers="true"  idField="id_asignacion" ><!--  singleSelect="true" -->
+<div class="col-lg-12">Después de cierre de lotes mixtos, las siguientes son las inconsistencias. verifique la alerta para cada lote.
+      </div>
+    <table id="tt" title="Alertas" class="easyui-datagrid" style="width:100%;height:350px"
+      url="<?php echo base_url()?>index.php/C_alertas/ver_alertas" pagination="true" rownumbers="true">
     <thead>
       <tr>
-        <th field="ck" checkbox="true">Asignado</th>
-        <th field="cod_colegio" width="90">CODIGO <br> COLEGIO</th>
-        <th field="SEDE_NOMBRE" width="350">NOMBRE</th>
-        <th field="grado_asignado" width="60">GRADO</th>
-        <th field="curso_nro" width="50">CURSO</th>
-        <th field="id_asignacion" width="60">id_curso</th>
-        <th field="MUNICIPIO" width="70">MUNICIPIO</th>
-        <th field="us_asignador" width="100">COORDINADOR</th>
-        <th field="us_monitor" width="100">MONITOR</th>
-        <th field="SECTOR" width="70">SECTOR</th>
-        <th field="fecha" width="90" fixed="true">FECHA DE<br> ASIGNACION</th>
+        <th field="Cod_colegio_op" width="50">COD COLEGIO<br> OPERATIVO</th>
+        <th field="SEDE_CODIGO" width="90">SEDE CODIGO</th>
+        <th field="SEDE_NOMBRE" width="150">SEDE NOMBRE</th>
+        <th field="id_lote" width="60">ID LOTE</th>
+        <th field="alerta" width="300" formatter="formatoAlerta">ALERTA</th>
+        <th field="USUARIO" width="80">USUARIO</th>
+        <th field="GRADO" width="50">GRADO</th>
+        <th field="CURSO" width="50">CURSO</th>
+        <th field="regWeb" width="90">ENCUESTAS<br> WEB</th>
+        <th field="OFFLINE" width="90">REPORTADAS <br> OFFLINE</th>
+        <th field="regOff" width="80">CARGADAS<br> OFFLINE</th>
+        <th field="PRESENTES" width="80">EST. <br>PRESENTES</th>
+        <th field="PRESENTES" width="80">EST. <br>REGULARES</th>
+        <th field="COD_MUNI" width="80">MUNICIPIO</th>
+        <th field="FECHA" width="90" fixed="true">FECHA LOTE</th>
       </tr>
     </thead>
   </table>
@@ -71,43 +56,19 @@
   </div>
   
  </div>
-      <div id='ms' class="alert-danger">
-    
-      </div>
-
-      
-     <?php 
-            $data = array('type' => 'button',
-            'value' =>'Asignar lotes',
-            'id' => 'btnAsignar',
-            'class' => 'btn btn-success abtn');
-            echo form_submit($data);
-            echo form_close();
-        ?>
+    <div id='ms' class="alert-danger">
+  
+    </div>
   </div><!--Fin estilo campo-->  
 </div>
 </body>
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/asignaciones/jquery.easyui.min.js"></script> 
- <script type="text/javascript" src="<?php echo base_url();?>assets/js/asignaciones/mis_funciones.js"></script>
  <script type="text/javascript" src="<?php echo base_url();?>js/jquery.validate.min.js"></script>
  <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-dialog.js"></script>
+
+ <script type="text/javascript" src="<?php echo base_url();?>assets/js/alertas/alertas.js"></script>
 <script type="text/javascript">
 var base_url= '<?php echo base_url(); ?>'+'index.php/';
-
-$(document).ready(function(){
-  //$("#campo").show();
-  //alert("cargado");
-
-
-$("#asignar").click(function(){
-  //result = jQuery.inArray($("#IE").val(),colegios);
-  //console.log(info_colegios);
-
-  //return false;
-});
-
-
-});
 
 </script>
 

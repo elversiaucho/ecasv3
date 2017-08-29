@@ -1048,7 +1048,7 @@ function E59($opcion){
 
 	function edad($edad)
 	{
-		if($edad>=12 and $edad <= 18)
+		if($edad>=12 and $edad <= 25)
 			return true;
 		else{
 			$this->form_validation->set_message('edad', 'Ingresa nuevamente tu edad.');

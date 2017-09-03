@@ -294,12 +294,13 @@ function otra_nov($valor){
                       $grado = $result->GRADO;
                       $curso = $result->CURSO;
                       $colegio = $result->SEDE_NOMBRE;
+                      $sede_cod = $result->SEDE_CODIGO;
                     }
                    
                     $data['encuestar'] = 1;
                     $data['id_encuesta'] = $encuesta['ID_ENCUESTA'];
                     $data['retomada'] = 1;
-                    $data['usuario'] .= "<br><div class='pagination-centered'><h4>Se retomará la encuesta nro: <b>".set_value("nro_encuesta")."</b> del Lote <b>".set_value("nro_lote")."</b>. Grado: <b>".$grado ."</b>. Curso: <b>".$curso ."</b> colegio: <b>".$colegio." </b></h4></div>";//grado 8 curso 2 del colegio Liceo Juan Ramón Jimenez";
+                    $data['usuario'] .= "<br><div class='pagination-centered'><h4>Se retomará la encuesta nro: <b>".set_value("nro_encuesta")."</b> del Lote <b>".set_value("nro_lote")."</b>. Grado: <b>".$grado ."</b>. Curso: <b>".$curso ."</b> Colegio: <b>".$colegio." </b> (".$sede_cod.")</h4></div>";//grado 8 curso 2 del colegio Liceo Juan Ramón Jimenez";
                     $this->load->view('v_menult',$data);
                   break;
               case 2:
@@ -356,7 +357,7 @@ function otra_nov($valor){
         $this->form_validation->set_rules('otro_motivo', 'Ingresa Número de Estudiantes con otro motivo', 'trim|is_natural');
         $this->form_validation->set_rules('text_motivo', 'Ingresa el Motivo', '');
         $this->form_validation->set_rules('obs_lote', 'Ingresa las observaciones', 'trim');
-       // $this->form_validation->set_rules('faltaron', '', 'trim');
+        //$this->form_validation->set_rules('faltaron', '', 'trim');
 
         
 
@@ -383,6 +384,104 @@ function otra_nov($valor){
           }
           $this->load->view('v_menult',$data);
           $this->load->view('view_cerrarlt',$data_l);
+          }
+          else {//'LOTE_ENC' => set_value('nro_lote'),
+              $nro_lote=set_value('nro_lote');
+              $lote = array(
+                
+                'MATRICULADOS' => set_value('matriculados'),
+                'REGULARES' => set_value('regulares'),
+                'PRESENTES' => set_value('total_e'),//total de encuestas
+                'OCUPADOS_LG' => set_value('ocupados'),
+                'SIS_RECOLECTA' => set_value('sistema_r'),
+                'OFFLINE' => set_value('off_line'),
+                'AUSENTES_LG' => set_value('ausentes'),
+                'RECHAZARON_LG' => set_value('rechazaron'),
+                'MENORES_DE_12' => set_value('menores'),
+                'CON_MOTIVO_LG' => set_value('otro_motivo'),
+                'MOTIVO_LG' => set_value('text_motivo'),
+                'OBSERVACIONES' => set_value('obs_lote'),
+                'ESTADO_LOTE' => 1
+                );
+              $result = $this->m_ecas->m_cerrarlt($lote,$nro_lote);
+              switch ($result) {
+                 case 1:
+                      $data['usuario']="Se cerro el Lote ".$nro_lote;
+                       $this->load->view('v_menult',$data);
+                    break;
+                 
+                   default:
+                    $data['usuario']="Lote ".$nro_lote." Ya está cerrado o no existe";
+                     $this->load->view('v_menult',$data);
+                    break;
+               }
+            }
+   }
+
+   function verifica_lt(){
+    $session_data = $this->session->userdata('ingreso');
+        $data['usuario'] = $session_data['usuario'];
+        $data['rol'] = $session_data['rol'];
+        $data_l[] = array();
+        $mensaje ="";
+        $total_enc=0;
+        $valida = FALSE;
+        /*se ingresan para  reconfirmar y/o corregir*/
+
+        $this->form_validation->set_rules('matriculados' , 'Ingresa número de Estudiantes Matriculados','trim|is_natural|required');
+        $this->form_validation->set_rules('regulares' , 'Ingresa número de Estudiantes Regulares','trim|is_natural|required');
+        $this->form_validation->set_rules('sede_nombre' , 'Ingresa nombre de la sede','trim|required');
+
+        
+        $this->form_validation->set_rules('sistema_r' , 'Selecciona el sistema de recoleccion del lote','trim|is_natural|required');
+        $this->form_validation->set_rules('off_line','Ingrese la cantidad de encuestas off_line','trim|is_natural|callback_sistema_r');
+        //$this->form_validation->set_rules('encuestados' , 'Ingresa número de estudiantes encuestados','trim|is_natural|required');
+
+        /*variable para distribuir los que no asistieron*/
+        $this->form_validation->set_rules('nro_lote', 'Ingresa Número de Lote', 'trim|required');
+        $this->form_validation->set_rules('ocupados', 'Ingresa Número de Estudiantes Ocupados', 'trim|is_natural|callback_no_encuestados');
+        $this->form_validation->set_rules('ausentes', 'Ingresa Número de Estudiantes Ausentes', 'trim|is_natural');
+        $this->form_validation->set_rules('rechazaron', 'Ingresa Número de Estudiantes que rechazaron', 'trim|is_natural');
+         $this->form_validation->set_rules('menores', 'Ingresa Número de Estudiantes que menores de 12 años', 'trim|is_natural');
+        $this->form_validation->set_rules('otro_motivo', 'Ingresa Número de Estudiantes con otro motivo', 'trim|is_natural');
+        $this->form_validation->set_rules('text_motivo', 'Ingresa el Motivo', '');
+        $this->form_validation->set_rules('obs_lote', 'Ingresa las observaciones', 'trim');
+        $this->form_validation->set_rules('faltaron', '', 'trim');
+        $valida = $this->form_validation->run();
+
+      if (array_key_exists('alerta',$_POST)){
+           $valida = FALSE;
+           echo "viene de Alerta";
+         }
+        //echo gettype($this->form_validation->run());
+        
+      if($valida == FALSE){
+          foreach ($_POST as $key => $value) {
+            $info_l[$key]=$value;
+            }
+          //if ($info_l[])
+            $lote = array("ID_LOTE"=>set_value('nro_lote'),"sede_nombre"=>$info_l['sede_nombre']);//, "faltaron"=>$info_l['faltaron'] //$this->m_ecas->get_lotes($data['usuario'],0);//caso puede ser 2.todos.. 0.solo abiertos... 1.solo cerrados. del usuarios
+            switch ($lote) {
+              case (is_array($lote)):
+                  $mensaje="---Revise valores ingresados---";
+                break;
+              case 1:
+                  $mensaje="No hay lotes para cerrar";
+                break;
+              case 2:
+                  $mensaje="Error al consultar lotes..";
+                break;
+            } 
+          $data_l['lote']=$lote;
+          $data_l['mensaje']=$mensaje;
+          $data_l['inf_lote']=$info_l;
+          
+           if (isset($_POST['nro_lote'])){//consulta la info del lote
+              $data_l['inf_lote2']=$this->m_ecas->get_infolt(set_value('nro_lote'));
+              //$data_l['inf_lote']=['inf_lote']);
+            }
+         // $this->load->view('v_menult',$data);
+          $this->load->view('viewVerifica_lote',$data_l);
           }
           else {//'LOTE_ENC' => set_value('nro_lote'),
               $nro_lote=set_value('nro_lote');

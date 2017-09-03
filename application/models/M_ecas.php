@@ -200,9 +200,9 @@ function get_lotes($usuario, $caso=""){
 
 function get_lote($lote_enc){
 	//$result = $this->db->get_where('lote',array('id_lote' => $lote_enc));
-	$this->db->select('ID_LOTE, mtra_colegios.SEDE_NOMBRE ,GRADO, CURSO, MATRICULADOS,REGULARES,PRESENTES,ESTADO_LOTE');
+	$this->db->select('ID_LOTE, M.SEDE_NOMBRE ,M.SEDE_CODIGO,GRADO, CURSO, MATRICULADOS,REGULARES,PRESENTES,ESTADO_LOTE');
 	$this->db->from('lote');
-	$this->db->join('mtra_colegios',"lote.COD_COLEGIO_OP=mtra_colegios.Cod_colegio_op AND ID_LOTE ='".$lote_enc."'");
+	$this->db->join('mtra_colegios M',"lote.COD_COLEGIO_OP=M.Cod_colegio_op AND ID_LOTE ='".$lote_enc."'");
 	
 	$result = $this->db->get();
 	if($result->num_rows()>0){
@@ -462,14 +462,15 @@ function get_colegio($caso =""){//TODOS LOS COLEGIOS DE LA MUESTRA
 	        $result = $this->db->query($sql);
 	    	break;
 	    	default: 
-	    		$this->db->select('Cod_colegio_op, COD_MUNI, MUNICIPIO, SECTOR, SEDE_NOMBRE, GRADO6, GRADO7, GRADO8, GRADO8, GRADO9, GRADO10, GRADO11_OMAS');
+	    		$this->db->select('Cod_colegio_op, SEDE_CODIGO, COD_MUNI, MUNICIPIO, SECTOR, SEDE_NOMBRE, GRADO6, GRADO7, GRADO8, GRADO8, GRADO9, GRADO10, GRADO11_OMAS');
      			$this->db->from('mtra_colegios');
-	    		$this->db->where("COD_MUNI = $cod_mpio AND Novedad is NULL");
+	    		$this->db->where("COD_MUNI = $cod_mpio AND (Novedad is NULL or Novedad = 0)");
 	    		$result = $this->db->get();
 	    	break;
 	    }
 	    //Colegios que no tienen encuestas para mostrar y agregar posible novedad
-	  
+	  /*print_r($this->db->last_query());
+	  exit();*/
       	 //
      	if($result->num_rows()>0){
      		$this->db->close();

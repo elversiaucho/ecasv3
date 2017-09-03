@@ -75,7 +75,6 @@ function main()
 				}
 /*Muestra las opciones ocultas de acuerso a la respuesta*/
 		oculto();
-		//function ocultos(id)
 		if($('input:radio[name=D44]:checked').val()==2)	
 			tieneHijos('D44');
 		B15();
@@ -86,6 +85,14 @@ function main()
 		D26();
 		ocho();
 		nt();
+		if(slide > 15){
+			$("#menu").hide();
+		}
+		if ($('#E55no').prop("checked") && slide == 15){
+			$("#menu").hide();
+		}
+
+
 		if($("#A4l").prop("checked")){
 			$(".A4").prop("disabled",true);
 			$('#A5_1').prop("checked",true);
@@ -134,6 +141,10 @@ function main()
 				{
 				  $("#B12b").prop("disabled",false);					   
 				}
+
+		if ($("#B13a").prop("checked"))	{
+			  $("#B13b").prop("disabled",false);					   
+			}else $("#B13b").prop("disabled",true);
 		if($("#B8a").prop("checked"))
 			$(".B8").prop("disabled",true);
 		else $(".B8").prop("disabled",false);
@@ -209,11 +220,16 @@ function main()
 			}
 			else $(".D27").prop("disabled",false);
 
-		if($("#D30a").prop("checked")|| $("#D31a").prop("checked")|| $("#D32a").prop("checked")|| $("#D33a").prop("checked")||
+	/*if($("#D30a").prop("checked")|| $("#D31a").prop("checked")|| $("#D32a").prop("checked")|| $("#D33a").prop("checked")||
 		$("#D26a").prop("checked")|| $("#D35a").prop("checked")|| $("#D36a").prop("checked")||
 		$("#D46a").prop("checked")|| $("#D38a").prop("checked")|| $("#D39auxa").prop("checked")|| $("#D39a").prop("checked")||
 		 $("#D40a").prop("checked")|| $("#D41si").prop("checked") || $("#D34a").prop("checked") || $("#D41a").prop("checked"))
-		{
+		{*/
+		if( $("#D31a").prop("checked")||  $("#D33a").prop("checked")||
+		$("#D35a").prop("checked")|| $("#D36a").prop("checked")||
+		$("#D46a").prop("checked")|| $("#D38a").prop("checked")|| $("#D39auxa").prop("checked")|| $("#D39a").prop("checked")||
+		 $("#D40a").prop("checked")|| $("#D41si").prop("checked") || $("#D34a").prop("checked") || $("#D41a").prop("checked"))
+					{
 			$("#D40ab").show();
 			//$("input:radio[name=D38]").prop("checked",false);
 		}
@@ -308,12 +324,19 @@ function main()
 				  $('#fin_internet').hide();
 				  //slide=15;
 			}
+
+
 		if($('input:radio[name=E59]:checked').val()=='1'){
 			$('#E60').show();
 			$('#E61').show();
 			$('#E62').show();
 		}
-}
+	if($("input:radio[name=A15]:checked").val() != '3' && $('#A4e').prop('checked')){
+			$("#errA15").text("Nos indicaste que vivías con tu pareja, por favor revisa tus respuestas.");
+		}else{
+			$("#errA15").text("");
+		}
+    }
 ///Fin mostrar slide
 
 	for(var i = 1;i<=cant_paginas;i++){
@@ -357,17 +380,14 @@ function delegateEvents()
 {
 
 $(document).ready(function(){
-
-	/*$("#fin_internet").click(function(){
-		$("#monitor").hide();
-	});*/
-
+ 
+	
 	$("input:radio[name=A15]").click(function(){
 		if($("input:radio[name=A15]:checked").val() != '3' && $('#A4e').prop('checked')){
-			$("#errA15").addClass("alert alert-warning");
+			//$("#errA15").addClass("alert alert-warning");
 			$("#errA15").text("Nos indicaste que vivías con tu pareja, por favor revisa tus respuestas.");
 		}else{
-			$("#errA15").removeClass("alert alert-warning");
+			//$("#errA15").removeClass("alert alert-warning");
 			$("#errA15").text("");
 		}
 
@@ -665,13 +685,15 @@ $(document).ready(function(){
 				//cantidad de sustancias ingresadas.
 				if($('#C27').is(':visible')) {
 					$("#C27").hide();
-					$('#btn7').hide();
+					//$('#btn7').hide();
 					$('#btn_sigue').show();
 					$("#mensa1").hide();
 				   }
 				mas_consumo(1);
 				});
 			
+
+				
 
 			$('.sisexo1').click(function(){
 				$("#mensa2").slideDown('slow');

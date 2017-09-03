@@ -13,6 +13,7 @@
  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/asignaciones/icon.css">
  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/asignaciones/color.css">
  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/asignaciones/demo.css">
+<!--  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/autocompletar/jquery-ui.css"> -->
  
 
 </head>
@@ -42,11 +43,19 @@
           </select>
           
 </div>
+<!-- 
+  <div class="row pregunta-lote">
+            <div class="col-md-1 icono-lote"></div>
+            <label class="col-md-4" >Filtra establecimiento educativo a asignar: </label>
+            <input class="col-md-6 ui-widget" type="text" name="IE" id="IE" class="form-control" value = "<?php echo set_value('IE');?>" placeholder="Digita el Código o Nombre"/>
+            <button class="btn-success" id="buscar">Buscar</button>             
+      </div>
+     <p class="t_error" id="err_IE"><?php echo strip_tags(form_error('IE')); ?></p> -->
 
 <div>
           <table id="tt" title="Cursos" class="easyui-datagrid" style="width:100%;height:350px"
       url="<?php echo base_url()?>index.php/C_asignaciones/get_lotes"
-       pagination="true"
+       pagination="true" iconCls="icon-search" toolbar="#tb"
       rownumbers="true"  idField="id_asignacion" ><!--  singleSelect="true" -->
     <thead>
       <tr>
@@ -64,6 +73,15 @@
       </tr>
     </thead>
   </table>
+
+  <div id="tb" style="padding:3px">
+    <span>CODIGO SEDE:</span>
+    <input id="cod_colegio" style="line-height:26px;border:1px solid #ccc">
+    <span>SEDE NOMBRE:</span>
+    <input id="SEDE_NOMBRE" style="line-height:26px;border:1px solid #ccc">
+    <a href="#" class="easyui-linkbutton" plain="true" onclick="buscarIe()">Buscar</a>
+  </div>
+
   <div id="toolbar">
     <!-- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">Opcion</a> -->
     <!-- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Editar Monitor</a> -->
@@ -87,19 +105,41 @@
   </div><!--Fin estilo campo-->  
 </div>
 </body>
+ 
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/asignaciones/jquery.easyui.min.js"></script> 
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/asignaciones/mis_funciones.js"></script>
  <script type="text/javascript" src="<?php echo base_url();?>js/jquery.validate.min.js"></script>
  <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-dialog.js"></script>
+ <!-- <script type="text/javascript" src="<?php echo base_url();?>assets/js/autocompletar/jquery-ui.js"></script> -->
+  
 <script type="text/javascript">
 var base_url= '<?php echo base_url(); ?>'+'index.php/';
 
+function buscarIe(){
+      $('#tt').datagrid('load',{
+        codColegio: $('#cod_colegio').val(),
+        sedeNombre: $('#SEDE_NOMBRE').val()
+    });
+}
+
 $(document).ready(function(){
-  //$("#campo").show();
-  //alert("cargado");
+   var colegios=[];
+//-----------------buscar colegios----
 
+ /*   <?php 
+        $i=0;
+        if(isset($colegios))
+            {
+            foreach ($colegios as $fila){?>
+                colegios[<?php echo $i++;?>]=<?php echo "'".$fila->SEDE_CODIGO.'-'.$fila->SEDE_NOMBRE."';"; ?>
+    <?php }
+        }
+    ?>      
+    $("#IE").autocomplete({
+        source: colegios
+    });*/
 
-$("#asignar").click(function(){
+$("#buscar").click(function(){
   //result = jQuery.inArray($("#IE").val(),colegios);
   //console.log(info_colegios);
 

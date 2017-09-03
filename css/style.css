@@ -209,6 +209,21 @@ input.btn.btn-raised.btn-success.arrow-r:hover {
 	text-align: center;*/
 }
 
+#btn_mas{
+	background-color: #FF8C00;
+	text-transform: capitalize;
+	/*color: black;*/
+}
+#btn_menos{
+	background-color: #00BFFF;
+	text-transform: capitalize;
+	
+}
+#btn_sigue{
+	background-color: #DD7093;
+	text-transform: capitalize;
+}
+
 .negrita{
 	font-weight: bold; 	
 }

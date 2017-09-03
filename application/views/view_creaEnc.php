@@ -163,6 +163,7 @@
                       texto=valor.mensaje;
                       encuestar=valor.encuestar;
                       nro_e=valor.nro_encuesta;
+                      //sede_cod=valor.sede_cod;
                       //recomendaciones =valor.v_recomenda;
                    });
                    if (encuestar==1){

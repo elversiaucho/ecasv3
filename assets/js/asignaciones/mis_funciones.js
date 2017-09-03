@@ -10,6 +10,7 @@ var dialogo = new BootstrapDialog({
     });
 
 
+
     $('#formAsigna').validate({
        rules: {
             
@@ -82,8 +83,9 @@ $('#btnAsignar').click(function () {
                         }
                     });
                 } else {
+                     var info = getSelections2();
                     dialogo.setTitle('Asignacion exitosa');
-                    dialogo.setMessage(data.mensaje);
+                    dialogo.setMessage(data.mensaje+"\n"+info);
                     dialogo.setType(BootstrapDialog.TYPE_DANGER);
                     dialogo.open();
                     $('#tt').datagrid('reload'); 
@@ -99,6 +101,9 @@ $('#btnAsignar').click(function () {
             });
         }
     });
+
+
+/*----------------*/
  function getSelected(){
 
 	var usuario = "";
@@ -109,6 +114,9 @@ $('#btnAsignar').click(function () {
 		alert('ID lote:'+row.id_asignacion+"\nUsuario:"+usuario);
 	}
 }
+/*
+@comentario: Toma los ids de los cursos seleccionados para asignar usuario
+*/
 function getSelections(){
 	var ids = [];
 	var rows = $('#tt').datagrid('getSelections');
@@ -117,9 +125,20 @@ function getSelections(){
 		ids.push(rows[i].id_asignacion);
 	}
 	return ids.join("','");
-	
-  
 }
+/*
+Para mostar info ampliada de los lotes que se asignaron 
+*/
+function getSelections2(){
+    var ids = [];
+    var rows = $('#tt').datagrid('getSelections');
+    
+    for(var i=0; i<rows.length; i++){
+        ids.push(rows[i].id_asignacion+": "+rows[i].SEDE_NOMBRE+" GRADO "+rows[i].grado_asignado+" CURSO "+rows[i].curso_nro);
+    }
+    return ids.join('\n');
+}
+
 
   function asignaUser(){
       $('#fm').form('submit',{

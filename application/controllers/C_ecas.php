@@ -92,7 +92,7 @@ if ($nro_slide >= 3){
 	$this->form_validation->set_rules("B10b","Selecciona una opción",'required');
 	$this->form_validation->set_rules("B10c","Selecciona una opción",'required');
 	$this->form_validation->set_rules("B10d","Selecciona una opción",'required');
-	$this->form_validation->set_rules("B10e","Selecciona una opción",'callback_pareja');
+	$this->form_validation->set_rules("B10e","Selecciona una opción",'required');
 	$this->form_validation->set_rules("B10f","Selecciona una opción",'required');
 	$this->form_validation->set_rules("B10g","Selecciona una opción",'required');
 	$this->form_validation->set_rules("B10h","Selecciona una opción",'required');
@@ -134,8 +134,8 @@ if ($nro_slide >= 5){
 if ($nro_slide >= 6){
 	$this->form_validation->set_rules("C19","Marca Sí o No",'required');
 	$this->form_validation->set_rules("C20","Marca Sí o No",'callback_consumioC19');;
-	$this->form_validation->set_rules("C21","Selecciona una opción",'');
-	$this->form_validation->set_rules("C22","Selecciona una opción");
+	$this->form_validation->set_rules("C21","Selecciona una opción",'callback_consume');
+	$this->form_validation->set_rules("C22","Selecciona una opción",'callback_C21Fuma');
 	$this->form_validation->set_rules("C23","",'callback_consume');
 	//$this->form_validation->set_rules("C23_cual","Ingresa el texto",'callback_cual['.'C23'.']');
 	$this->form_validation->set_rules("C24","",'callback_consume_ahol');
@@ -161,7 +161,7 @@ if ($nro_slide >= 6){
 	$this->form_validation->set_rules("C26i","",'');
 	$this->form_validation->set_rules("C25j_cual","",'');
 	$this->form_validation->set_rules("C26j","",'');
-	$this->form_validation->set_rules("C27[]","Selecciona una o más opciones",'');
+	$this->form_validation->set_rules("C27[]","Selecciona una o más opciones",'callback_consumioC19');
  }
 
   if ($nro_slide >= 7){
@@ -185,12 +185,12 @@ if ($nro_slide >= 8){
 }
 if ($nro_slide >= 9){
 	$this->form_validation->set_rules("D28","Marca Sí o No",'required');//D38
-	$this->form_validation->set_rules("D31","Marca Sí o No",'required');
 	$this->form_validation->set_rules("D32","Marca Sí o No",'required');
 	$this->form_validation->set_rules("D41a","Marca Sí o No",'callback_ofrecidoD41');
 	$this->form_validation->set_rules("D33","Marca Sí o No",'required');
 	 $this->form_validation->set_rules("D34","Marca Sí o No",'required');//
-	$this->form_validation->set_rules("D35","Marca Sí o No",'');//vaolidar es 40a depende de D40
+	 $this->form_validation->set_rules("D31","Marca Sí o No",'required');
+	$this->form_validation->set_rules("D35","Marca Sí o No",'callback_siD31');//vaolidar es 40a(D35) depende de D40(D31)
 	$this->form_validation->set_rules("D36","Marca Sí o No",'required');
 	$this->form_validation->set_rules("D46a","Marca Sí o No",'required');
 	$this->form_validation->set_rules("D46b","Marca Sí o No",'required');
@@ -609,15 +609,14 @@ if ($nro_slide == 15){
 
   
 if ($validacion == FALSE) // validation hasn't been passed
-{
-	if ($nro_slide  >= 1){
-		$mensaje ='Respuestas incompletas.';
+{   $mensaje ='';
+	if ($nro_slide  == 1){
 		if(set_value('A1') !='' || set_value('A2') !='' || set_value('A3') !='' || set_value('A5') !='' || is_array($this->input->post('A4'))){
 			$form_data['ESTADO_ENCUESTA']=3;
 			//echo is_array($this->input->post('A4'));
 		}
 	}
-	else $mensaje ='';
+	else $mensaje ='Respuestas incompletas.';
 
 	if (isset($_POST['id_e'])){
 		$form_data['SLIDE_NRO']=$nro_slide;
@@ -706,7 +705,7 @@ if ($nro_slide==15)
 		);
 	  if ($nro_slide==15 || ($nro_slide==14 && $this->input->post('E55')==2) )
 		{
-		$mensaje = "<div class='pagination-centered'>Tu Encuesta ha finalizado correctamente.<br>¡Gracias por tu participación!";
+		$mensaje = "<div class='pagination-centered'>Tu Encuesta ha finalizado correctamente, ¡Gracias por tu participación!";
 		$mensaje .= "<center><img src='".base_url('images/danecitos.jpg')."' class='img-responsive'></center>";
 		
 		$mensaje .= "<p><a  href='http://pacman.platzh1rsch.ch' class='btn'>Jugar</a></p></div>";
@@ -773,7 +772,7 @@ function hijos($opcion, $ms){
 		else 
 			return true;
 }
-
+/*
 function pareja($valor){
 	
 	if($this->input->post('A11')==1 and $valor == null){
@@ -782,8 +781,16 @@ function pareja($valor){
 	}
 	else return true;
 }
+*/
 
-
+function siD31($opcion){
+	if ($opcion == null and  $this->input->post('D31') == 1){
+			$this->form_validation->set_message('siD31', 'Marca Sí o No.');
+		return false;
+		}
+		else 
+			return true;
+}
 
 function valida_D38($opcion){
 	if (($this->input->post('D39aux')==1 or
@@ -804,6 +811,15 @@ function valida_D38($opcion){
 			return false;
 
 		}else
+			return true;
+}
+
+function C21Fuma($opcion){
+	if ($opcion == null and  $this->input->post('C21') == 1){
+			$this->form_validation->set_message('C21Fuma', 'Selecciona una opcion.');
+		return false;
+		}
+		else 
 			return true;
 }
 
@@ -860,8 +876,8 @@ function relacion($opcion, $caso){
 			else 
 				return true;
 		break;
-		case 51:
-			if($this->input->post('D50_51') == 1  and $opcion==null){
+		case '51':
+			if($this->input->post('D40') == 1  and $opcion==null){
 					$this->form_validation->set_message('relacion', 'Marca Sí o No');
 			return false;
 			}
@@ -1271,9 +1287,11 @@ function infolt(){// Obtiene el resumen del lote
 				$grado = $result->GRADO;
 				$curso = $result->CURSO;
 				$colegio = $result->SEDE_NOMBRE;
+				$sede_cod = $result->SEDE_CODIGO; 
 			}
 						
             $data['mensaje']="Confirme los datos de la encuesta: <br><h4>Colegio: ".$colegio."<br>
+            CÓDIGO SEDE : ".$sede_cod."<br>
             Grado : ".$grado."<br>
             Curso : ".$curso."<br>
             Encuesta Nro: ".$encuesta." </h4>";
@@ -1333,9 +1351,10 @@ function infolt(){// Obtiene el resumen del lote
 						$grado = $result->GRADO;
 						$curso = $result->CURSO;
 						$colegio = $result->SEDE_NOMBRE;
+						$sede_cod = $result->SEDE_CODIGO; 
 					}
                    $data['id_encuesta'] = $encuesta['ID_ENCUESTA'];
-                   $data['mensaje']="<h4>Se creó la encuesta <b>".$encuesta['NRO_ENCUESTA']."</b> en el Lote <b>".$encuesta['LOTE_ENC']."</b>. Grado: ".$grado .". Curso: <b>".$curso ."</b> colegio: <b>".$colegio." </b></h4>";
+                   $data['mensaje']="<h4>Se creó la encuesta <b>".$encuesta['NRO_ENCUESTA']."</b> en el Lote <b>".$encuesta['LOTE_ENC']."</b>. Grado: ".$grado .". Curso: <b>".$curso ."</b> Colegio: <b>".$colegio."</b> (".$sede_cod.") </h4>";
                    $data['encuestar'] = 1;
                    $data['ingreso'] = 1;
                    /*ob_start(); # open buffer

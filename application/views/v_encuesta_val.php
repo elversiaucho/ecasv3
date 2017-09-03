@@ -73,7 +73,7 @@
 					$rta[$i]=FALSE;
 				}
 				if (isset($mensaje)){
-				    	echo "<span id='ms'>".$mensaje."</span>";
+				    	echo "<div class = 'col-md-2' ></div><span id='ms'>".$mensaje."</span>";
 				    } 
 				   //echo "<span id='ms'>".$mensaje."</span>";
 				//if (isset($data_e))
@@ -1905,7 +1905,7 @@
 		<!-- ************************************************************************************************************************************************************************************* -->
 				<div class="pregunta-encuesta pagina aparece-a-clase container" data-slide="5">
 				
-					<label class="col-md-12 sub_t" id="cap_3">En esta sección encontrarás preguntas relacionadas con las actividades que haces con tu familia, amigos o compañeros del barrio, conjunto o colegio.</label>
+					<label class="col-md-12 sub_t" id="cap_3">En esta sección encontrarás preguntas relacionadas con las actividades que haces con tu familia, amigos(as) o compañeros(as) del barrio, conjunto o colegio.</label>
 
 					<!--Pregunta 21- C24-->
 					<div class="row form-group">
@@ -3333,10 +3333,11 @@
 						</div>
 				</div>
 			</div>
-			<div id="consume" style="display: none;">
-					<input type="button" class="btn btn-raised btn-success" id="btn_mas" value="Agregar Sustancia" />
-					<input type="button" class="btn btn-raised" id="btn_menos" value="Quitar Sustancia" style="display: none;"/>
-				    <input type="button" class="btn btn-raised btn-success" id="btn_sigue" value="Continuar" />
+			<div id="consume" class = "row" style="display: none;">
+					<div class="col-md-5"></div>
+					<input type="button" class="btn btn-raised col-md-2" id="btn_mas" value="Agregar sustancia" />
+					<input type="button" class="btn btn-raised col-md-2" id="btn_menos" value="Quitar sustancia" style="display: none;"/>
+				    <input type="button" class="btn btn-raised col-md-2" id="btn_sigue" value="Siguiente pregunta" />
 			</div>
 					<!-- Pregunta 35 nueva-->
 			 <div class="row form-group" id="C27" style="display: none;">
@@ -3400,7 +3401,7 @@
 	<!-- ************************************************************************************************************************************************************************************* -->
 
 			<div class="pregunta-encuesta pagina aparece-a-clase container" data-slide="7">
-					<label class="col-md-12 sub_t" id="cap_4">Ahora queremos conocer más acerca de la sexualidad de los adolescentes de tu edad.<br> Recuerda que esta información es totalmente anónima.</label>
+					<label class="col-md-12 sub_t" id="cap_4">Ahora queremos conocer más acerca de la sexualidad de las y los adolescentes de tu edad.<br> Recuerda que esta información es totalmente anónima.</label>
 
 					<p class="glosario">
 						<b>Relación afectiva cercana:</b>
@@ -4360,7 +4361,7 @@
 									<div class="checkbox">
 										<label>
 											<input id="ch33" type="checkbox" class="D39 sisexo1" name="D39[]" value ="1" <?php echo set_radio('D39[]','1'); echo $fila->D39a; ?> />
-											A algún familiar (mamá, papá, hermanos, abuelos, madrastra, etc.)
+											A algún familiar (mamá, papá, hermanos(as), abuelos, madrastra, etc.
 										</label>
 									</div>
 									<div class="checkbox">
@@ -4633,7 +4634,7 @@
 							<div class="checkbox">
 								<label>
 									<input class="D54 sisexo2" type="checkbox" value="1" name="D54[]" <?php echo set_checkbox('D54','1'); echo $fila->D54a;?>/>
-									A algún familiar (mamá, papá, hermanos, abuelos, madrastra, etc.)
+									A algún familiar (mamá, papá, hermanos(as), abuelos, madrastra, etc.)
 								</label>
 							</div>
 							<div class="checkbox">
@@ -4800,7 +4801,7 @@
 											<div class="radio radio-primary">
 												<label>
 													<input type="radio" name="D42III" value ="6" <?php echo set_radio('D42III','6'); echo $rta[6]; ?>/>
-													Desconocido
+													Desconocido(a)
 												</label>
 											</div>
 								   			<p class="t_error"><?php echo strip_tags(form_error('D42III')); ?></p>					
@@ -5629,7 +5630,7 @@
 							    <a href="javascript:void(0)" class="btn btn-raised btn-warning arrow-l" style="position:relative;right: 0px;" >Anterior</a>
 							</div>
 							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-								<input type="submit" class="btn btn-raised btn-success arrow-r" style="position:relative;right: 0px;" value="Finalizar" />
+								<input type="submit"  class="btn btn-raised btn-success arrow-r" style="position:relative;right: 0px;" value="Finalizar" />
 							</div>
 						</div>
 					    </div>

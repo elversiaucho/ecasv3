@@ -18,6 +18,8 @@ function index()
     $this->load->helper('url');
     $this->load->view("encabezado",$ingreso);
     $this->load->view('view_alertas');
+
+    
   //echo set_value('colegio');
        }
 

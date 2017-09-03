@@ -33,11 +33,15 @@ function index()
        $this->form_validation->set_rules('IE', 'Digita el Colegio', 'trim|required');
        $this->form_validation->set_rules('grado', 'Seleccione el grado', 'trim|required');
        $this->form_validation->set_rules('tot_cursos', 'Digite la cantidad de cursos', 'trim|required|max_length[2]');
-            
+
+                   
          if($this->form_validation->run()==FALSE){
             
-
-            $data['usuarios'] = $this->m_ecas->get_usuarios(null,$session_data['mpio_user']);// usaurio con rol de monitor
+           
+            $data['usuarios'] = $this->m_ecas->get_usuarios(null,$session_data['mpio_user']);// usaurio con rol de monitor 
+             $data['colegios'] = $this->m_ecas->get_colegio(); 
+            //print_r($data);
+            //exit();
             //var_dump($this->get_users());
             //var_dump($this->ver_pre_lotes());
             //$data['colegios'] = $this->m_ecas->get_colegio();
@@ -57,7 +61,7 @@ function index()
               //$this->load->view('v_menult',$data_m);
               //exit('NO ES PETICION AJAX');
               }
-              $this->load->view('view_asignaciones',$data);
+             $this->load->view('view_asignaciones',$data);
             //echo set_value('colegio');
          }
          else {
@@ -121,7 +125,7 @@ function asignarUsers(){
       $result = $this->m_asigna->setAsignacion($data['usuario'],$data['asignador'],$data['ids']);
       switch ($result) {
         case 1:
-            $data["mensaje"] = "Se asigno el usuario ".$data['usuario']." a los lotes: ".$data['ids'];  
+            $data["mensaje"] = "Se asigno el usuario ".$data['usuario']." a los lotes: ";  
           break;
         
         case 2:
@@ -131,7 +135,7 @@ function asignarUsers(){
       }
   }
   $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($data));
-  //var_dump($data);
+  //var_dump($data); 
   //return json_encode($data);
 
 }
@@ -154,12 +158,7 @@ function asignarUsers(){
  }
 
  public function get_lotes(){
-  $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
-  $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
-  $offset = ($page-1)*$rows;
-  $result = array();
-  $session_data = $this->session->userdata('ingreso');
-  $mpio = $session_data['mpio_user'];
+ 
   //echo $page;
   //include 'conn.php';
   $conn = @mysql_connect('192.168.1.200','dimpe','D1mP3D3s4rr0ll0');
@@ -168,16 +167,30 @@ function asignarUsers(){
     }
     mysql_select_db('dane_ecas_v2', $conn);
     mysql_query("SET NAMES UTF8");
+
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+    $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
+    $codColegio = isset($_POST['codColegio']) ? mysql_real_escape_string($_POST['codColegio']) : '';
+    $sedeNombre = isset($_POST['sedeNombre']) ? mysql_real_escape_string($_POST['sedeNombre']) : '';
+
+    $offset = ($page-1)*$rows;
+    $result = array();
+    $session_data = $this->session->userdata('ingreso');
+    $mpio = $session_data['mpio_user'];
+    
    //$conn=conn();
   
-  $rs = mysql_query("select count(*) from asig_monitor A join mtra_colegios M
-on (A.cod_colegio = M.SEDE_CODIGO AND COD_MUNI ='".$mpio."')");
+  //$where = "itemid like '$itemid%' and productid like '$productid%'";
+  //$rs = mysql_query("select count(*) from item where " . $where);
+  $qry = "select COUNT(*) from asig_monitor A join mtra_colegios M
+on (A.cod_colegio = M.SEDE_CODIGO AND COD_MUNI ='$mpio' AND SEDE_CODIGO like '%$codColegio%' and SEDE_NOMBRE like  '%$sedeNombre%')";
+  $rs = mysql_query($qry);
   $row = mysql_fetch_row($rs);
   $result["total"] = $row[0];
   $rs = mysql_query("select * from asig_monitor A join mtra_colegios M
-on (A.cod_colegio = M.SEDE_CODIGO AND COD_MUNI ='".$mpio."') limit $offset,$rows");
-  //print_r($rs);
-  //exit();
+on (A.cod_colegio = M.SEDE_CODIGO AND COD_MUNI ='$mpio' AND (SEDE_CODIGO like '%$codColegio%' and SEDE_NOMBRE like  '%$sedeNombre%')) limit $offset,$rows");
+  /*print_r($rs);
+  exit();*/
   $items = array();
   while($row = mysql_fetch_object($rs)){
     //array_push($items, $row);

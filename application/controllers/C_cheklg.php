@@ -190,6 +190,41 @@ function rep_monitor(){
    			
 	}
 
+function verVerifica_lt(){
+	$mensaje ="";
+	$data[]= array();
+
+	$session_data = $this->session->userdata('ingreso');
+    $usuario= $session_data['usuario'];
+     foreach ($_POST as $key => $value) {
+        $lotes[$key]=$value;
+    }
+    $inf_lote="";
+    if (isset($lotes['ID_LOTE'])){
+   	  //$lotes = $this->m_ecas->get_lote($lotes['ID_LOTE']);
+   	  $inf_lote=$this->m_ecas->get_infolt($lotes['ID_LOTE']);
+   	}
+   	switch ($lotes) {
+    	case (is_array($lotes)):
+    	  	$mensaje="---";
+    		break;
+    	case 1:
+    	  	$mensaje="No hay lotes para cerrar";
+    		break;
+    	case 2:
+    	  	$mensaje="Error al consultar lotes..";
+    		break;
+    } 
+    $data['lotes']=$lotes;
+    $data['inf_lote']=$inf_lote;//json_encode($inf_lote);
+    //$this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($inf_lote));
+    $data['mensaje']=$mensaje.$lotes['ID_LOTE'];
+    /*print_r($lotes);
+    exit();*/
+	    $this->load->view('viewVerifica_lote',$data);
+   			
+	}
+
 
 	function vista_encuesta(){
 		$data[]= array();

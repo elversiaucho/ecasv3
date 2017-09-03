@@ -17,7 +17,10 @@ function siConsume(){
 		$("#btn7").hide();
 		$("#mensa1").slideDown('slow');
 		$("#errConsume").text("Revisa tus respuestas, nos dijiste haber consumido alguna sustancia psicoactiva en los últimos 12 meses.");
-	}else $("#errConsume").text("");
+	}else {$("#errConsume").text("");
+		   $("#C27").slideDown();
+		   $("#btn7").show();
+		 }
 
 }
 
@@ -179,7 +182,7 @@ function edadRel(e){
 	var edadR=0;
 	if (solonumeros(e)){
 		edadR=Number($("#A9").val()+String.fromCharCode(key).toString());
-		if ((String(edadR).length==1 && ((edadR < 6 || edadR==0) && edadR!=1)) || (String(edadR).length==2 && edadR > edad)) {
+		if ((String(edadR).length==1 && ((edadR > 2 && edadR < 6) || edadR==0) ) || (String(edadR).length==2 && edadR > edad)) {
 		   $("#errA9").text("Edad inválida.");
 	 	   return false;
 	 	}
@@ -258,7 +261,7 @@ function soloLetras(e) {
     key = e.keyCode || e.which;
     tecla = String.fromCharCode(key).toString();
     letras = " áéíóúabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ";//Se define todo el abecedario que se quiere que se muestre.
-    especiales = [8, 37, 39, 46, 6]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
+    especiales = [8, 6]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
 
     tecla_especial = false
     for(var i in especiales) {
@@ -509,12 +512,12 @@ function ocultos(id)
 				
 		break;
 
-		 case "D30b": case "D31b": case "D32b": case "D33b": case "D26b": case "D35b": case "D36b": case "D46b": case "D38b": case "D39auxb":  case "D40b": case "D41no": 
-		 case "D30a": case "D31a": case "D32a": case "D33a": case "D26a": case "D35a": case "D36a": case "D46a": case "D38a": case "D39a":  case "D39b": case "D39auxa":  case "D40a": case "D41si":
-		 case "D41si": case "D34a": case "D34b": case "D41a": case "D41b":
+		 /*case "D30b": */case "D31b": /*case "D32b":*/ case "D33b": /*case "D26b":*/ case "D35b": case "D36b": case "D46b": case "D38b": case "D39auxb":  case "D40b": case "D41no": 
+		 /*case "D30a":*/ case "D31a": /*case "D32a":*/ case "D33a": /*case "D26a":*/ case "D35a": case "D36a": case "D46a": case "D38a": case "D39a": 
+		  case "D39b": case "D39auxa":  case "D40a": case "D41si": case "D34a": case "D34b": case "D41a": case "D41b":
 
-		if($("#D30a").prop("checked")|| $("#D31a").prop("checked")|| $("#D32a").prop("checked")|| $("#D33a").prop("checked")||
-		$("#D26a").prop("checked")|| $("#D35a").prop("checked")|| $("#D36a").prop("checked")||
+		if(/*$("#D30a").prop("checked")||*/ $("#D31a").prop("checked")|| /*$("#D32a").prop("checked")||*/ $("#D33a").prop("checked")||
+		/*$("#D26a").prop("checked")||*/ $("#D35a").prop("checked")|| $("#D36a").prop("checked")||
 		$("#D46a").prop("checked")|| $("#D38a").prop("checked")|| $("#D39auxa").prop("checked")|| $("#D39a").prop("checked")||
 		 $("#D40a").prop("checked")|| $("#D41si").prop("checked") || $("#D34a").prop("checked") || $("#D41a").prop("checked"))
 					{
@@ -651,7 +654,7 @@ function ocultos(id)
 
 		case "C19si":
 					$('#C20').slideDown("slow");
-					$("#btn7").slideUp("slow");
+					//$("#btn7").slideUp("slow");
 			 break;
 
 		case "C20no":
@@ -663,7 +666,7 @@ function ocultos(id)
 		break;
 	    case "C20si":
 					$('#C21').slideDown("slow");
-					$('#btn7').slideUp('slow');
+					////$('#btn7').slideUp('slow');
 			 break;
 
 		case "C21no":
@@ -741,7 +744,7 @@ function hide_C2x(op){
 		$("#mensa1").slideUp('slow');
 		$('#C27').slideUp('slow');
  		$('.C27').prop('checked',false);
- 		$('#btn7').slideDown('slow');
+ 		//$('#btn7').slideDown('slow');
  		}
  //
  $("input:radio[name=C21]").prop('checked',false);
@@ -770,10 +773,10 @@ function hide_C2x(op){
  //
  $('#consume').slideUp();
  if (op==20){
-
+ 	$('.C27').prop('checked',false);
  	$('#C27').slideDown('slow');
  	$("#mensa1").slideDown('slow');
- 	//$("#btn7").slideUp("slow");
+ 	////$("#btn7").slideUp("slow");
  }
  
  cont_C25 = 1;

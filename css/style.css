@@ -71,9 +71,6 @@ input.btn.btn-raised.btn-success.arrow-r {
 input.btn.btn-raised.btn-success.arrow-r:hover {
     background-color: #6d1434;
 }
-#btn_sigue{
-	background-color: #18AAE7;
-}
 /*Estilos adicionales de la encuesta*/
 .logo-dane{
 	margin: 12px;
@@ -210,18 +207,23 @@ input.btn.btn-raised.btn-success.arrow-r:hover {
 }
 
 #btn_mas{
-	background-color: #FF8C00;
-	text-transform: capitalize;
-	/*color: black;*/
+	background-color: #F99643; 
+	border-radius: 5px;
+	text-transform: initial;
+	color: white;
 }
 #btn_menos{
-	background-color: #00BFFF;
-	text-transform: capitalize;
+	background-color: #01B0F1;
+	border-radius: 5px;
+	text-transform: initial;
+	color: white;
 	
 }
 #btn_sigue{
-	background-color: #DD7093;
-	text-transform: capitalize;
+	background-color: #CE807C;
+	border-radius: 5px;
+	text-transform: initial;
+	color: white;
 }
 
 .negrita{

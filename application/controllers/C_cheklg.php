@@ -35,7 +35,10 @@ class C_cheklg extends CI_Controller {
    			$ingreso['usuario']= $data['usuario'];
    			if ($data['usuario']!=false){
    				$this->load->view("encabezado",$ingreso);
-   				$this->load->view('v_menult',$data);
+   				//if ($data['rol'] == 3){
+   					//$this->load->view('v_menu',$data);
+   				//}else
+   				  $this->load->view('v_menult',$data);
    			}
    			else
    				echo "No se encuentra Ningún  usuario";

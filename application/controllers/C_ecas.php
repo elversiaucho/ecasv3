@@ -228,13 +228,13 @@ if ($nro_slide >= 12){//eran del 11
 if ($nro_slide >= 13){//eran del 12
 	
 	
-	$this->form_validation->set_rules("D44","Marca Sí o No",'callback_tubo_relacion');//57
+	$this->form_validation->set_rules("D44","Marca Sí o No",'callback_tubo_relacion['.'Marca Sí o No'.']');//57
 	  $this->form_validation->set_rules("D60","Marca Sí o No",'callback_embarazo');//D58
 		$this->form_validation->set_rules("D61","cuántos(as) hijos(as) tienes",'max_length[1]|is_natural_no_zero|callback_total_h');//59
 		$this->form_validation->set_rules("D62","Selecciona una o más opciones.",'callback_hijos['.'Selecciona una opción.'.']');//60
 		$this->form_validation->set_rules("D63[]","Selecciona una o más opciones.",'callback_hijos['.'Selecciona una o más opciones.'.']');//60
 
-	$this->form_validation->set_rules("D45","Marca Sí o No",'callback_hijos['.'Selecciona una opción'.']');//D62
+	$this->form_validation->set_rules("D45","Marca Sí o No",'callback_hijos['.'Marca Sí o No'.']');//D62
 	$this->form_validation->set_rules("D46","Marca Sí o No",'callback_tubo_relacion['.'Selecciona una opción'.']');//D63
 	$this->form_validation->set_rules("D47","Marca Sí o No",'callback_tubo_relacion['.'Selecciona una opción'.']');//D64
 	$this->form_validation->set_rules("D48[]","Selecciona una o más opciones",'callback_conD47');//D65
@@ -242,7 +242,7 @@ if ($nro_slide >= 13){//eran del 12
 if ($nro_slide >= 14){
 	$this->form_validation->set_rules('E55',"Marca Sí o No",'required');
 	$this->form_validation->set_rules('E56[]',"Selecciona una o más opciones",'callback_navega['.'Selecciona una o más opciones.'.']');
-	$this->form_validation->set_rules('E57',"",'callback_navega['.'Selecciona una opción'.']');
+	$this->form_validation->set_rules('E57[]',"Selecciona una opción",'callback_navega['.'Selecciona una opción'.']');
 }
 if ($nro_slide == 15){
 	$this->form_validation->set_rules('E58[]',"Selecciona una o más opciones",'callback_navega['.'Selecciona una o más opciones.'.']');
@@ -919,7 +919,7 @@ function E59($opcion){
 	function navega($opcion,$texto_err){
 
 		if(is_array($opcion) and count($opcion)==0){
-			$this->form_validation->set_message('cual','Ingresa el texto.');
+			$this->form_validation->set_message('navega','Ingresa el texto.');
 			return false;
 		}
 		if ($opcion == null and $this->input->post('E55') == 1){

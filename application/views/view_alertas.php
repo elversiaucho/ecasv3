@@ -57,7 +57,7 @@
         <th field="FECHA" width="90" fixed="true">FECHA LOTE</th>
         
         <th field="MATRICULADOS" width="80">EST. <br>matriculados</th>
-        <th field="SIS_RECOLECTA" width="80">EST. <br>sistema_r</th>
+        <th field="SIS_RECOLECTA" width="80">sistema de <br>recolección</th>
         <th field="OCUPADOS_LG" width="80">EST. <br>ocupados</th>
         <th field="AUSENTES_LG" width="80">EST. <br>ausentes</th>
         <th field="RECHAZARON_LG" width="80">EST. <br>rechazaron</th>

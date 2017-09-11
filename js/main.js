@@ -17,10 +17,10 @@ function main()
 	
 	$("#paginador").text(slide+"/"+cant_paginas);//origial
 	var paginaActual = parseInt($(".active").attr("data-slide"));
-	if(slide == 9){
-			if($("input:radio[name=D32]:checked").val()==1)
-				$("#D41_a").slideDown('slow');//D41a
-		}
+
+	if($("input:radio[name=D32]:checked").val()==1)
+		$("#D41_a").slideDown('slow');//D41a
+		
 		
 	if(paginaActual == cant_paginas)
 		{
@@ -53,10 +53,52 @@ function main()
 	 		  if($('input:radio[name=C24]').is(':checked')){
 	 		    $('#C25').slideDown("slow");
 	 		  }
-	 		   if($('input:radio[name=C25]:checked').val()=='1'){
+	 		  if($('input:radio[name=C25]:checked').val()=='1'){
 	 		    $('#C26a').slideDown("slow");
 	 		    $('#consume').slideDown("slow");
 	 		  }
+	 		  var letra=['0','b','c','d','e','f','g','h','i','j'];
+				   var nameC26="";
+ 					for (var i = 1; i < 10; i++) {
+ 						nameC26 ="input:radio[name=C26"+letra[i]+"]:checked";
+ 						if($(nameC26).val()!= undefined){
+ 							//alert(nameC26+" "+$(nameC26).val());
+ 							$("#C26"+letra[i]).slideDown("slow");
+ 							cont_C25 = i+1;
+ 						}else break;
+		
+ 					}
+
+ 				if (cont_C25 > 1)
+ 					$('#btn_menos').show();
+
+	 		 /* if($('input:radio[name=C26b]:checked')){
+	 		    $('#C26b').slideDown("slow");
+	 		  }
+	 		  if($('input:radio[name=C26c]:checked')){
+	 		    $('#C26c').slideDown("slow");
+	 		  }
+	 		  if($('input:radio[name=C26d]:checked')){
+	 		    $('#C26d').slideDown("slow");
+	 		  }
+	 		  if($('input:radio[name=C26e]:checked')){
+	 		    $('#C26e').slideDown("slow");
+	 		  }
+	 		  if($('input:radio[name=C26f]:checked')){
+	 		    $('#C26f').slideDown("slow");
+	 		  }
+	 		  if($('input:radio[name=C26g]:checked')){
+	 		    $('#C26g').slideDown("slow");
+	 		  }
+	 		  if($('input:radio[name=C26h]:checked')){
+	 		    $('#C26h').slideDown("slow");
+	 		  }
+	 		  if($('input:radio[name=C26i]:checked')){
+	 		    $('#C26i').slideDown("slow");
+	 		  }
+	 		  if($('input:radio[name=C26j]:checked')){
+	 		    $('#C26j').slideDown("slow");
+	 		  }*/
   
 		 	}
 		if($('input:radio[name=D40]:checked').val()=='2' && slide == 11){
@@ -236,7 +278,7 @@ function main()
 		if($("#D31b").prop("checked")){
 			$("#D35b").prop("checked",true);
 			$("#verD35").hide();
-			$("#D35b").prop("checked",true);
+			//$("#D35b").prop("checked",true);
 		}
 		/*if($("#D36a").prop("checked")||$("#D46a").prop("checked")){
 			$("#btn_D40").prop('disabled',true);
@@ -248,6 +290,10 @@ function main()
 			}*/
 			
 		//else $("input:radio[name=D49]").prop('checked',false);
+		if ($(".D39").is(":checked")){
+			$("#mensa2").show();
+		}
+
 		if ($("#D38abc").prop("checked"))
 			$("#mensa2").slideDown('slow');
 
@@ -301,7 +347,9 @@ function main()
 			}
 		if ($('input:radio[name=D53]:checked').val()=='1')
 			 $('#D54').show();
-			
+		
+		//$('input:radio[name=D46]').prop('checked',false);
+		//$('input:radio[name=E57]').prop('checked',false);
 
 		if($('#D54g').prop('checked'))
 				$("#D54g_cual").prop("disabled",false);
@@ -436,6 +484,9 @@ $(document).ready(function(){
 
 			$('input:radio[name=C22]').click(function(){
 				$('#C23').slideDown();
+				if ($("#C25no").prop("checked")){
+					$("#C27").slideDown('slow');
+				 }	
 			
 			});
 			$('input:radio[name=C23]').click(function(){
@@ -452,13 +503,11 @@ $(document).ready(function(){
 
 				});
 
-				$('input:radio[name=C24]').click(function(){
-				if($('input:radio[name=C24]').is(':checked')){
-					if ($('#C23_cual').val()!='')				
-						$('#C25').slideDown('slow');
-					else
-						$('#errC23_cual').text('Ingresa el texto.');
-				  }
+			$('input:radio[name=C24]').click(function(){
+				if ($("#C25no").prop("checked")){
+					$("#C27").slideDown('slow');
+				 }
+				 $('#C25').slideDown();	
 				});
 
 		
@@ -469,19 +518,27 @@ $(document).ready(function(){
 				   $('#btn_sigue').show();
 				   if ($("#C27").is(":visible")){
 				   		$("#C27").hide();
-				   		$('#btn7').hide();
 			  	   	}
+			  	   	$('#btn7').hide();
 			  	   	if(cont_C25<10)
 						$("#btn_mas").show();
 				 }
 				else{
+				   var letra=['0','a','b','c','d','e','f','g','h','i','j'];
+				   var nameC26="";
+ 					for (var i = 1; i < 11; i++) {
+ 						nameC26 ="input:radio[name=C26"+letra[i]+"]";
+ 						$(nameC26).prop('checked',false);
+ 						$('#C25_cual'+i).val('');
+
+ 					}
 					$('.verC26').hide();
-					$('#C25_cual1').val('');
- 					$('#consume').slideUp();
- 					$('input:radio[name=C26a]:checked').prop('checked',false);
+					$('#consume').slideUp();
+
  					$('#C27').slideDown('slow');
  					if ($(".C27").is(":checked")){
  						$('#btn7').show();
+ 						$("#mensa1").slideDown('slow');
  					}
  					cont_C25=1;
  				}
@@ -497,10 +554,16 @@ $(document).ready(function(){
 				else {
 					$('#btn7').slideUp('slow');
 					$("#errC27").text("Selecciona una o varias opciones.");
-					$("#mensa1").slideDown('slow');
+					$("#mensa1").slideUp('slow');
 				}
 
 
+			});
+
+			$(".D39").click(function(){
+				if ($(".D39").is(":checked")) {
+					$("#mensa2").slideDown();
+				}
 			});
 			/*$('#D39g_cual').click(function(){
 				$('#ch39').prop('checked',true);
@@ -625,15 +688,18 @@ $(document).ready(function(){
 			});
 
 			$("input:radio[name=D32]").click(function(){//corresponde a D41
-				if($("input:radio[name=D32]:checked").val()==1)
+				if($("input:radio[name=D32]:checked").val()==1){
 					$("#D41_a").slideDown('slow');//D41a
-				else{
 					$('input:radio[name=D41a]').prop('checked',false);
+				}
+				else{
+					$('#D41a_no').prop('checked',true);
 					$("#D41_a").slideUp('slow');
-
 				}
 
 			});
+
+			//$("input:radio[name=D35]").prop("checked",false);
 
 			$('input:radio[name=D44]').click(function(){
 			
@@ -675,7 +741,10 @@ $(document).ready(function(){
 				});
 			$('input:radio[name=C25]').click(function(){
 				siConsume();
+				
 				});
+
+
 //////Fin grupo 
 			
 			$('#btn_sigue').click(function(){
@@ -685,7 +754,7 @@ $(document).ready(function(){
 				//cantidad de sustancias ingresadas.
 				if($('#C27').is(':visible')) {
 					$("#C27").hide();
-					//$('#btn7').hide();
+					$('#btn7').hide();
 					$('#btn_sigue').show();
 					$("#mensa1").hide();
 				   }
@@ -693,10 +762,10 @@ $(document).ready(function(){
 				});
 			
 
-				
+
 
 			$('.sisexo1').click(function(){
-				$("#mensa2").slideDown('slow');
+				//$("#mensa2").slideDown('slow');
 			});
 			$('.sisexo2').click(function(){
 				$("#mensa3").slideDown('slow');

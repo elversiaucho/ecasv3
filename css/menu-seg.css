@@ -1,0 +1,52 @@
+/*Esctilos menú dane central*/
+.navbar{
+	background-color: #91224C;
+	width: 50%;
+	
+}
+.dropdown:hover{
+     		
+     		color: white;
+     		background: rgba(100, 34, 150, 0.1);
+   			filter: alpha(opacity=50);
+
+     	}
+
+
+/*Estilos menú principal*/
+  	.btn-menu1{
+     		
+     		border-left:thin dotted;
+     		border-top:thin dotted;
+     		border-right: thin dotted;
+     		border-radius: 10px 10px 0px 0px;
+     		color: #91224C;
+     		background-color: transparent;
+     		margin-left: 20px;
+     		
+     	}
+     
+     	.btn-menu1:hover{
+     		
+     		color: #91224C;
+     		background: rgba(145, 34, 76, 0.1);
+   			filter: alpha(opacity=50);
+
+     	}
+     	.menu1{
+     		font-family: 'Sans extrab' , sans-serif;
+     		border-bottom:thin dotted #91224C;
+     		color: #91224C;
+     		padding: 0 100px 0 100px;
+     		margin: 50px 0 0 0;
+
+     	}
+     	
+     	.clasemenu{
+     		background-color:  #91224C;
+     		color: white;
+     	}
+
+     	label{
+     		font-size: 14px;
+     		}

@@ -1311,8 +1311,8 @@
 										<input type="radio" name="B10i" value="4" <?php echo set_radio("B10i","4"); echo $rta[4];?>/>
 									</label>
 								</div>
-								<span class="t_error col-lg-6"><?php echo strip_tags(form_error('B10i' )); ?></span>
 							</div>
+						  <span class="t_error col-lg-6"><?php echo strip_tags(form_error('B10i' )); ?></span>
 						</div>
 
 						<div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" id='B10j'>
@@ -1519,7 +1519,7 @@
 									</label>
 								</div>
 							</div>
-								<span class="t_error col-lg-6"><?php echo strip_tags(form_error('B10n')); ?></span>
+							<span class="t_error col-lg-6"><?php echo strip_tags(form_error('B10n')); ?></span>
 						</div>
 
 						<div class="container">
@@ -2383,7 +2383,7 @@
 						</div>
 						<!-- Pregunta 23 C26-->
 						<div class="row form-group incluyente">
-							<label class="col-lg-12">18. En los <span class="sub_raya">últimos 12 meses</span>, al momento de tomar decisiones importantes para ti, ¿con quién las hablas?
+							<label class="col-lg-12">18. En los <span class="sub_raya">últimos 12 meses</span>, al momento de tomar decisiones importantes para ti, ¿con quién las consultaste?
 							</label>
 							<div class="col-lg-12">
 								<div class="checkbox">
@@ -3384,7 +3384,7 @@
 						</div>
 						
 			 </div>
-			 	   <p class="glosario" id="mensa1" style="display: none;">
+			 	   <p class="sub_t" id="mensa1" style="display: none;">
 				 	No dependas de sustancias psicoactivas para demostrar qué tan bueno(a) eres y las cosas que puedes lograr. Si has empezado a consumir este tipo de sustancias, comunícate con un adulto de confianza y/o llama a la línea  01 8000 11 24 40.
 				 </p>					
 				 
@@ -4025,9 +4025,9 @@
 										</label>
 									</div>
 								</div>
-								<div class="col-lg-6">
-									<p class="t_error"><?php echo strip_tags(form_error('D35')); ?></p>
-								</div>
+							</div>
+							<div class="col-lg-6">
+								<p class="t_error"><?php echo strip_tags(form_error('D35')); ?></p>
 							</div>
 
 							<!-- Pregunta 41-->
@@ -4077,7 +4077,7 @@
 								<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
 									<div class="radio radio-primary">
 										<label>
-											<input type="radio" name="D41a" value ="2" <?php echo set_radio('D41a','2'); echo $rta2; ?>/>
+											<input type="radio" name="D41a" id="D41a_no" value ="2" <?php echo set_radio('D41a','2'); echo $rta2; ?>/>
 											No
 										</label>
 									</div>
@@ -4117,7 +4117,7 @@
 
 							<!-- Pregunta 43-->
 							<div class="row form-group">	
-								<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">43. ¿Alguna vez has enviado fotos o videos de las partes íntimas de tu cuerpo por mensajes de texto y/o medios virtuales como: correo electrónico, páginas de internet, redes sociales (WhatsApp, Line, Facebook, Twitter, Instagram, Snapchat u otros aplicativos)?</label>
+								<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">43. ¿Alguna vez has enviado fotos o videos de las partes íntimas de tu cuerpo por mensajes de texto y/o medios virtuales como: correo electrónico, páginas de internet y redes sociales (WhatsApp, Line, Facebook, Twitter, Instagram, Snapchat, etc.)?</label>
 								<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
 									<div class="radio radio-primary">
 										<label>
@@ -4347,12 +4347,9 @@
 											No
 										</label>
 									</div>
-									<span class="t_error col-lg-3"><?php echo strip_tags(form_error('D38')); ?></span>
 								</div>	
-								 
-												
 							</div>
-
+							<span class="t_error col-lg-3"><?php echo strip_tags(form_error('D38')); ?></span>
 
 							<!-- Pregunta 39-->
 							
@@ -4513,8 +4510,11 @@
 				                </label>
 		            		</div>
 		            	</div>
-				        <span class="t_error"><?php echo strip_tags(form_error('D50')); ?></span>
 		            </div>
+		            <div class="row">
+		            	<div class="col-xs-1"></div>
+		            	 <span class="t_error"><?php echo strip_tags(form_error('D50')); ?></span>
+		           	</div>
 
 		            <div class="row form-group">
 		            	<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">50. ¿Alguna vez  te han llevado a otra región, ciudad o barrio y te han ofrecido algo a cambio (por ejemplo, dinero, ropa, calificaciones u otros regalos) para tener relaciones sexuales?</label>
@@ -4539,9 +4539,11 @@
 				                </label>
 		            		</div>
 		            	</div>
-				        <span class="t_error"><?php echo strip_tags(form_error('D50_51')); ?></span>
 		            </div>
-
+		            <div class="row">
+		            	<div class="col-xs-1"></div>
+						<span class="t_error"><?php echo strip_tags(form_error('D50_51')); ?></span>
+					</div>
 
 		            <!--Pregunta 51-->
 		            <div class="row form-group">
@@ -4927,9 +4929,12 @@
 							         <input type="radio" name="D44" value ="2" <?php echo set_radio('D44','2'); echo $rta2; ?>/>
 							         No
 							        </label>
-							        <p class="t_error" id="error_D44"> <?php echo strip_tags(form_error('D44')); ?></p>
 						     	</div>
 						    </div>
+					    </div>
+					    <div class="row">
+					    	<div class="col-xs-1"></div>
+					    	<p class="t_error" id="error_D44"> <?php echo strip_tags(form_error('D44')); ?></p>
 					    </div>
 					    	<!-- Pregunta 9 57-->
 					<div class="row form-group" id="D57" style="display: none;">
@@ -5078,10 +5083,15 @@
 						         <input type="radio" name="D45" value ="2" <?php echo set_radio('D45','2'); echo $rta2; ?>/>
 						         No
 						        </label>
-						        <span class="t_error"><?php echo strip_tags(form_error('D45')); ?></span>
 						    </div>
 						</div>
+						<div>
+						</div>
 				    </div>
+				    <div class="row">
+				    	<div class="col-xs-1"></div>
+							 <span class="t_error" ><?php echo strip_tags(form_error('D45')); ?></span>	
+					</div>
 
 				    <!-- Pregunta 63-->
 				  
@@ -5106,10 +5116,13 @@
 						         <input type="radio" name="D46" value ="2" <?php echo set_radio('D46','2'); echo $rta2; ?>/>
 						         No
 						        </label>
-						        <span class="t_error"><?php echo strip_tags(form_error('D46')); ?></span>
 					        </div>
 					    </div>
 				  	</div>
+					<div class="row">
+						<div class="col-xs-1"></div>
+							<span class="t_error"><?php echo strip_tags(form_error('D46')); ?></span>
+					</div>
 					
 				<!-- Pregunta 64-->
 					<div class="row form-group">
@@ -5148,6 +5161,9 @@
 									No has tenido relaciones sexuales en los últimos 12 meses
 								</label>
 							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-1"></div>
 							<span class="t_error"><?php echo strip_tags(form_error('D47')); ?></span>
 						</div>
 					</div>
@@ -5359,6 +5375,11 @@
 								</div>
 							</div>
 					</div>
+					<div class="row">
+							<div class="col-xs-1"></div>
+							<span class="t_error"><?php echo strip_tags(form_error('E57[]')); ?></span>	
+						</div>
+
 				
 					<div class="container">
 					   <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
@@ -5455,10 +5476,12 @@
 					                </label>
 			                	</div>
 			                </div>
-					                
-					      <span class="t_error"><?php echo strip_tags(form_error('E59')); ?></span>
 			            </div>
-
+			            <div class="row">
+			            	<div class="col-xs-1"></div>
+			            	<span class="t_error"><?php echo strip_tags(form_error('E59')); ?></span>	
+			            </div>
+			            
 			            <!--Pregunta 73-->
 			            <div class="row form-group" id= "E60" style="display:none;">
 			            	<label class="col-lg-6 col-md-8 col-sm-12 col-xs-12">71. En los <span class="sub_raya">últimos 12 meses</span>, 

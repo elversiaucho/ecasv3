@@ -4,49 +4,11 @@
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/menu-seg.css">
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
 
 <style type="text/css">
-
-	
-     	.btn-menu1{
-     		
-     		border-left:thin dotted;
-     		border-top:thin dotted;
-     		border-right: thin dotted;
-     		border-radius: 10px 10px 0px 0px;
-     		color: #91224C;
-     		background-color: transparent;
-     		margin-left: 20px;
-     		
-     	}
-     
-     	.btn-menu1:hover{
-     		
-     		color: #91224C;
-     		background: rgba(145, 34, 76, 0.1);
-   			filter: alpha(opacity=50);
-
-     	}
-     	.menu1{
-     		font-family: 'Sans extrab' , sans-serif;
-     		border-bottom:thin dotted #91224C;
-     		color: #91224C;
-     		padding: 0 100px 0 100px;
-     		margin: 50px 0 0 0;
-
-     	}
-     	
-     	.clasemenu{
-     		background-color:  #91224C;
-     		color: white;
-     	}
-
-     	label{
-     		font-size: 14px;
-     		}
-    
 </style>
 <body>
 <div id="cont_ppal">
@@ -56,7 +18,7 @@
 		<div class="btn-group-justified menu1"><!--btn-group btn-group-sm btn-group-justified btn-group-raised-->
 			<?php 
 			if(!isset($encuestar)){
-				if ($rol==2 || $rol == 3){// el rol 3 es para dane central puede ver lso dos
+				if ($rol==2 /*|| $rol == 3*/){// el rol 3 es para dane central puede ver lso dos
 			?>
 		    <a  class="btn btn-menu1" id="crear_lte">Crear Lote</a>
 			<a  class="btn btn-menu1" id="crear_enc">Crear <br>Encuesta</a>
@@ -65,7 +27,7 @@
 				if ($rol == 2)
 					{echo "<a  class='btn btn-menu1' id='cerrar_lt'>Cerrar Lote</a>";}
 				}
-				if ($rol==1 || $rol == 3){
+				if ($rol==1 /*|| $rol == 3*/){
 			?>
 			<a href="<?php echo base_url('index.php/C_asignaciones');?>" class="btn btn-menu1"  id="asignar_colX">Asignar <br>Colegios</a>
 			<a  class="btn btn-menu1" id="cerrar_lt">Cerrar Lote</a>
@@ -80,6 +42,42 @@
 			
 			<!--a  class="btn" id="salir">Salir</a-->
 		</div>
+	</div>
+	<div class="container">
+	<?php if ($rol == 3){?><!--  menú de módulo de seguimiento -->
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		        <ul class="nav navbar-nav">
+		           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes de seguimiento<span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+		            <li><a href="#" class="reporte" id ="v_estadoIE">Estado de Establecimientos Educativos</a></li>
+		            <li><a href="#" class="reporte" id ="novedadIE">Novedades de Establecimientos Educativos</a></li>
+		       
+		        </ul>
+		      </li>
+		    </ul>
+		    </div>
+		<!--     <ul class="nav navbar-nav">
+		      <li class="active"><a href="#" id="agenda">Agenda</a></li>
+		      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Personas<span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="<?php echo base_url().'index.php/c_elps/ver_personas';?>">Nuevos</a></li>
+		          <li><a href="#">Actualizadas</a></li>
+		          <li><a href="#">Completas</a></li>
+		          <li><a href="#" id ="todas">Todas</a></li>
+		        </ul>
+		      </li>
+		    </ul> --> 
+		    <ul class="nav navbar-nav navbar-right">
+		     <!-- <li><a href="<?php echo base_url().'index.php/c_elps'?>" <span class="glyphicon glyphicon-user"></span>Regresar</a></li> -->
+		     <!--li><a href="<?php echo base_url()?>"<span class="glyphicon glyphicon-user"></span>Salir</a></li-->
+		     <li><a href="<?php echo base_url()?>"<span class="glyphicon glyphicon-log-in"></span><?php echo  $usuario;?></a></li>
+		    </ul>
+		  </div>
+		</nav>
+
+	<?php }?>
 	</div>
 	<div class="estilo_campos" id='campos'>
 		<?php }?>
@@ -102,7 +100,10 @@
     <?php #include('v_pie.html'); ?>
 </div>
 </body>
-
+<script type="text/javascript" src= "<?php echo base_url('js/menu.js')?> "></script>
+<?php if ($rol == 3){?>
+	<script type="text/javascript" src="<?php echo base_url();?>assets/js/asignaciones/jquery.easyui.min.js"></script> 
+<?php }?>
 </html>
   <style>
 		/*Quita flecha del campo número*/
@@ -117,6 +118,8 @@
 	</style>
 
   <script type="text/javascript">
+
+  var base_url = '<?php echo base_url();?>';
 
 	  function estilo_menu(id){
 	  	$(".btn-menu1").removeClass('clasemenu');

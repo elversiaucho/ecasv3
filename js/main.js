@@ -379,11 +379,7 @@ function main()
 			$('#E61').show();
 			$('#E62').show();
 		}
-	if($("input:radio[name=A15]:checked").val() != '3' && $('#A4e').prop('checked')){
-			$("#errA15").text("Nos indicaste que vivías con tu pareja, por favor revisa tus respuestas.");
-		}else{
-			$("#errA15").text("");
-		}
+	
     }
 ///Fin mostrar slide
 
@@ -433,7 +429,7 @@ $(document).ready(function(){
 	$("input:radio[name=A15]").click(function(){
 		if($("input:radio[name=A15]:checked").val() != '3' && $('#A4e').prop('checked')){
 			//$("#errA15").addClass("alert alert-warning");
-			$("#errA15").text("Nos indicaste que vivías con tu pareja, por favor revisa tus respuestas.");
+			$("#errA15").text("Nos indicaste que vivías con tu pareja, por favor revisa tus respuestas."); 
 		}else{
 			//$("#errA15").removeClass("alert alert-warning");
 			$("#errA15").text("");

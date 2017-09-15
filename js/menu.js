@@ -10,7 +10,7 @@ $('.reporte').click(function(){
 
 	if($('#campo').length>0)
 		$('#campo').remove();
-	    alert(this.id);
+	    //alert(this.id);
 		$.ajax({
 			url: base_url+"index.php/C_seguimiento?vista="+this.id,
 			type: 'get',
@@ -23,8 +23,6 @@ $('.reporte').click(function(){
             	     	               	     	
             	     	//response+= "<div id='ms'>Texto Agregado</div>";
 						$('#campos').html(response);
-						//window.open('http://YOUR_URL','_blank' );
-						//console.log(response);
 					   }
 					   else {
             			$("#campos").html("Error No se pudo generar reporte");

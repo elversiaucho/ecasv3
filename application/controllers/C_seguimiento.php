@@ -22,6 +22,7 @@ function index()
 
        }
 
+/*--------------------------*/
 function ver_seguimiento($vista){
  
  $result = $this->m_seguimiento->get_estadoIE($vista);

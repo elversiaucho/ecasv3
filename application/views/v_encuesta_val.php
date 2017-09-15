@@ -3638,7 +3638,6 @@
 											Cuando podemos y a escondidas
 										</label>
 									</div>
-										<p class="t_error"><?php echo strip_tags(form_error('A15')); ?></p>
 									<div class="radio radio-primary">
 										<label>
 											<input type="radio" name="A15" <?php echo set_radio("A15","7"); echo $rta[7]; ?> value="7" />

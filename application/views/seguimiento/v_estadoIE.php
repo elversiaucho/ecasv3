@@ -14,6 +14,7 @@
  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/asignaciones/icon.css">
  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/asignaciones/color.css">
  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/asignaciones/demo.css">
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/seguimiento/seguimiento.css">
 
 
 </head>
@@ -39,9 +40,10 @@
       </tr>
     </thead>
   </table>
+  Fila por Establecimiento Educativo
   <!-- formatter="" -->
   <div id="toolbar">
-  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/estadoEE'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_estadoie'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
   </div>
 
   
@@ -66,7 +68,7 @@
       </tr>
     </thead>
   </table>
-
+  Fila por ciudad
   <div id="bar_c">
   <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_coberturaee'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
   </div>
@@ -79,28 +81,44 @@
    <table id="tt" title="Datos por sector (OFICIAL/ NO OFICIAL)" class="easyui-datagrid" style="width:100%;height:300px"
       url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_det_cobertura" pagination="true" rownumbers="true" singleSelect ="true" toolbar ="#bar_det">
     <thead>
-    <tr>
-      <th field="MUNICIPIO" width="100">MUNICIPIO</th>
-      <th field="TOTAL_OFICIALES" width="100">OFICIALES</th>
-      <th field="TOTAL_NO_OFICIALES" width="100">NO OFICIALES</th>
-      <th field="COMPLETOS_OF" width="100">OFICIALES</th>
-      <th field="COMPLETOS_NO_OF" width="100">NO OFICIALES</th>
-      <th field="INCOMPLETOS_OF" width="100">OFICIALES</th>
-      <th field="INCOMPLETOS_NO_OF" width="100">NO OFICIALES</th>
-      <th field="SIN_INFO_OF" width="100">OFICIALES</th>
-      <th field="SIN_INFO_NO_OF" width="100">NO OFICIALES</th>
-      <th field="X100_COMPLETOS_OF" width="100">OFICIALES</th>
-      <th field="X100_COMPLETOS_NO_OF" width="100">NO OFICIALES</th>
-      <th field="X100_INCOMPLETOS_OF" width="100">OFICIALES</th>
-      <th field="X100_INCOMPLETOS_NO_OF" width="100">NO OFICIALES</th>
-      <th field="X100_SIN_INFO_OF" width="100">OFICIALES</th>
-      <th field="X100_SIN_INFO_NO_OF" width="100">NO OFICIALES</th>
+    
+    <tr style="height: 100px">
+        <th rowspan="2" field="MUNICIPIO" width="100">MUNICIPIO</th>
+        <th colspan="2">EE ASIGNADOS EN LA MUESTRA</th>
+        <th colspan="2">EE COMPLETOS</th>
+        <th colspan="2">EE INCOMPLETOS</th>
+        <th colspan="2">EE SIN INFORMACIÓN</th>
+        <th colspan="2">% COBERTURA COMPLETOS</th>
+        <th colspan="2">% INCOMPLETOS</th>
+        <th colspan="2">% SIN INFORMACIÓN</th>
       </tr>
+      <tr>
+        <th rowspan="1" field="TOTAL_OFICIALES" width="100">OFICIALES</th>
+        <th rowspan="1" field="TOTAL_NO_OFICIALES" width="100">NO OFICIALES</th>
+        <th field="COMPLETOS_OF" width="100">OFICIALES</th>
+        <th field="COMPLETOS_NO_OF" width="100">NO OFICIALES</th>
+      
+        <th field="INCOMPLETOS_OF" width="100">OFICIALES</th>
+        <th field="INCOMPLETOS_NO_OF" width="100">NO OFICIALES</th>
+      
+        <th field="SIN_INFO_OF" width="100">OFICIALES</th>
+        <th field="SIN_INFO_NO_OF" width="100">NO OFICIALES</th>
+      
+        <th field="X100_COMPLETOS_OF" width="100">OFICIALES</th>
+        <th field="X100_COMPLETOS_NO_OF" width="100">NO OFICIALES</th>
+       
+        <th field="X100_INCOMPLETOS_OF" width="100">OFICIALES</th>
+        <th field="X100_INCOMPLETOS_NO_OF" width="100">NO OFICIALES</th>
+     
+        <th field="X100_SIN_INFO_OF" width="100">OFICIALES</th>
+        <th field="X100_SIN_INFO_NO_OF" width="100">NO OFICIALES</th>
+      </tr> 
+ 
     </thead>
   </table>
-
+  Fila por ciudad
   <div id="bar_det">
-  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_det_cobertura'); ?>' class="easyui-linkbutton" iconCls="icon-save" plain="true" >Descargar</a>
+  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_det_cobertura'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
   </div>
 
     <div id='ms' class="alert-danger">
@@ -119,29 +137,6 @@ var base_url= '<?php echo base_url(); ?>';
 
 </script>
 
-<style type="text/css">
-    #fm{
-      margin:0;
-      padding:10px 30px;
-    }
-    .ftitle{
-      font-size:14px;
-      font-weight:bold;
-      padding:5px 0;
-      margin-bottom:10px;
-      border-bottom:1px solid #ccc;
-    }
-    .fitem{
-      margin-bottom:5px;
-    }
-    .fitem label{
-      display:inline-block;
-      width:80px;
-    }
-    .fitem input{
-      width:160px;
-    }
-  </style>
 
 
 </html>

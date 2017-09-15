@@ -52,8 +52,10 @@
 		           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Reportes de seguimiento<span class="caret"></span></a>
 		        <ul class="dropdown-menu">
 		            <li><a href="#" class="reporte" id ="v_estadoIE">Estado de Establecimientos Educativos</a></li>
-		            <li><a href="#" class="reporte" id ="novedadIE">Novedades de Establecimientos Educativos</a></li>
-		       
+		            <li><a href="#" class="reporte" id ="v_novIE">Novedades de Establecimientos Educativos</a></li>
+		            <li><a href="#" class="reporte" id ="v_estadoCurso">Estado de Cursos</a></li>
+		       		<li><a href="#" class="reporte" id ="v_estudiantes">Estado Estudiantes</a></li>
+		       		<li><a href="#" class="reporte" id ="v_cobertura_est">Cobertura Estudiantes</a></li>
 		        </ul>
 		      </li>
 		    </ul>

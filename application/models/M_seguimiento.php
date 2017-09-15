@@ -44,21 +44,14 @@ class M_seguimiento extends CI_Model {
 	 return $result;
 	 }
 
- public function get_rep($reporte ="")
+ public function get_rep($vista ="")
  {
-  $vista ="";
-switch ($reporte) {
-	case 'estadoEE':
-		$vista = 'v_estadoIE';
-		break;
-	
-	default:
-		# code...
-		break;
-}
-
- $fields = $this->db->field_data($vista);
- $query = $this->db->select('*')->get($vista);
- return array("fields" => $fields, "query" => $query);
+  if ($vista != ''){
+	 $fields = $this->db->field_data($vista);
+	 $query = $this->db->select('*')->get($vista);
+	 return array("fields" => $fields, "query" => $query);
+    }
+ 	return array("Campos" => "Sin información");
  }
+
 }

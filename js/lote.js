@@ -184,3 +184,13 @@ function valNumero(id, min, max, ms_err){
     else 
         $(id_err).text('');
 }
+
+function buscarIe_seg(id){
+      //console.log(event);
+      idt="#"+id+id;
+     // alert(id+"-ojo ");
+      $(idt).datagrid('load',{
+        codColegio: $('#cod_colegio'+id).val(),
+        sedeNombre: $('#SEDE_NOMBRE'+id).val()
+    });
+  }

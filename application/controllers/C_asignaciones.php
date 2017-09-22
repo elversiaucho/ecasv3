@@ -9,13 +9,14 @@ class C_asignaciones extends CI_Controller {
 
     $this->load->model('m_ecas');
       $this->load->library('form_validation');
-      //$this->load->library('phpGrid');
-      $session_data = $this->session->userdata('ingreso');
+      
+     /* $session_data = $this->session->userdata('ingreso');
       $usuario = $session_data['usuario'];
       $rol = $session_data['rol'];
+      $mpio_user = $session_data['mpio_user'];
       $ingreso['ingreso'] = 1;
-      $ingreso['usuario']= $usuario;
-      //$this->load->view("encabezado",$ingreso);
+      $ingreso['usuario']= $usuario;*/
+      $this->load->helper('mysql_to_excel_helper');
  		//$this->load->helper('url');
    }
 function index()
@@ -201,33 +202,12 @@ on (A.cod_colegio = M.SEDE_CODIGO AND COD_MUNI ='$mpio' AND (SEDE_CODIGO like '%
  // echo json_encode($result);
  }
 
+public function export_excel(){
+  $session_data = $this->session->userdata('ingreso');
+  $mpio_user = $session_data['mpio_user'];
+  //$this->m_asigna->get_asignaciones($mpio_user);
+   to_excel($this->m_asigna->get_asignaciones($mpio_user),"Asignaciones");
+}
 
-/* public function get_users(){
-  $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
-  $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
-  $offset = ($page-1)*$rows;
-  $result = array();
 
-  //include 'conn.php';
-  $conn = @mysql_connect('192.168.1.200','dimpe','D1mP3D3s4rr0ll0');
-    if (!$conn) {
-      die('Could not connect: ' . mysql_error());
-    }
-    mysql_select_db('dane_ecas_v2', $conn);
-   //$conn=conn();
-  
-  $rs = mysql_query("select count(*) from users");
-  $row = mysql_fetch_row($rs);
-  $result["total"] = $row[0];
-  $rs = mysql_query("select * from users limit $offset,$rows");
-  
-  $items = array();
-  while($row = mysql_fetch_object($rs)){
-    //array_push($items, $row);
-    $items[] = $row;
-  }
-  $result["rows"] = $items;
-
-  echo json_encode($result);
- }*/
 }

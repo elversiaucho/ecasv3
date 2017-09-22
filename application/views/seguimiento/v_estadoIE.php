@@ -28,7 +28,7 @@
 
    <!--  <div class="col-md-8">Información.</div> -->
   
-    <table id="tt" title="Estado de Establecimientos Educativos" class="easyui-datagrid" style="width:100%;height:400px"
+    <table id="t1t1" title="Estado de Establecimientos Educativos" class="easyui-datagrid" style="width:100%;height:400px"
       url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_estadoie" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#toolbar">
     <thead>
       <tr>
@@ -44,6 +44,11 @@
   <!-- formatter="" -->
   <div id="toolbar">
   <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_estadoie'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+  <span>CODIGO SEDE:</span>
+    <input maxlength="13" id="cod_colegiot1" onkeypress="return solonumeros(event);" style="line-height:26px;border:1px solid #ccc">
+    <span>SEDE NOMBRE:</span>
+    <input id="SEDE_NOMBREt1" onkeypress="return soloLetras(event);"  maxlength="300" style="line-height:26px;border:1px solid #ccc">
+    <a href="#" id="t1" class="easyui-linkbutton" plain="true" onclick="buscarIe_seg(this.id)">Buscar</a>
   </div>
 
   
@@ -52,7 +57,7 @@
    <!--  <h4>Cobertura de Establecimientos Educativos</h4> -->
   </div>
 
-   <table id="tt" title="Cobertura de Establecimientos Educativos" class="easyui-datagrid" style="width:100%;height:300px"
+   <table id="t2t2" title="Cobertura de Establecimientos Educativos" class="easyui-datagrid" style="width:100%;height:300px"
       url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_coberturaee" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#bar_c">
     <thead>
       <tr>
@@ -78,7 +83,7 @@
  <!--    <h4>Datos por sector (OFICIAL/ NO OFICIAL)</h4> -->
   </div>
 
-   <table id="tt" title="Datos por sector (OFICIAL/ NO OFICIAL)" class="easyui-datagrid" style="width:100%;height:300px"
+   <table id="tt3" title="Datos por sector (OFICIAL/ NO OFICIAL)" class="easyui-datagrid" style="width:100%;height:300px"
       url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_det_cobertura" pagination="true" rownumbers="true" singleSelect ="true" toolbar ="#bar_det">
     <thead>
     
@@ -130,10 +135,14 @@
 </div>
 </body>
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/asignaciones/jquery.easyui.min.js"></script> 
- <!-- <script type="text/javascript" src="<?php echo base_url();?>js/jquery.validate.min.js"></script> -->
+<script type="text/javascript" src="<?php echo base_url();?>js/lote.js"></script> 
 <!--  <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-dialog.js"></script> -->
 <script type="text/javascript">
 var base_url= '<?php echo base_url(); ?>';
+/*
+esta fucnion se utiliza en variasa vista para actualizar
+*/
+
 
 </script>
 

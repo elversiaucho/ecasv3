@@ -24,8 +24,10 @@ function index()
 
 /*--------------------------*/
 function ver_seguimiento($vista){
- 
- $result = $this->m_seguimiento->get_estadoIE($vista);
+  $codColegio = isset($_POST['codColegio']) ? ($_POST['codColegio']) : '';
+  $sedeNombre = isset($_POST['sedeNombre']) ? ($_POST['sedeNombre']) : '';
+
+ $result = $this->m_seguimiento->get_reporte($vista, $codColegio, $sedeNombre);
  $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($result));
 
 }

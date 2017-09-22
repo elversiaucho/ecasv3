@@ -27,7 +27,7 @@
 
 
 
-   <table id="tt" title="Estudiantes" class="easyui-datagrid" style="width:100%;height:400px"
+   <table id="t1t1" title="Estado de Estudiantes" class="easyui-datagrid" style="width:100%;height:400px"
       url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_estudiantes" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#down_est">
     <thead> 
       <tr>
@@ -74,11 +74,49 @@
   <!-- formatter="" -->
   <div id="down_est">
   <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_estudiantes'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+  <span>CODIGO SEDE:</span>
+    <input maxlength="13" id="cod_colegiot1" onkeypress="return solonumeros(event);" style="line-height:26px;border:1px solid #ccc">
+    <span>SEDE NOMBRE:</span>
+    <input id="SEDE_NOMBREt1" onkeypress="return soloLetras(event);"  maxlength="300" style="line-height:26px;border:1px solid #ccc">
+    <a href="javascript:void(0)" id="t1" class="easyui-linkbutton" plain="true" onclick="buscarIe_seg(this.id)">Buscar</a>
   </div>  
 
    <hr>
 
-    <table id="tt" title="Detalle de Estudiantes Encuestados" class="easyui-datagrid" style="width:100%;height:400px"
+    <table id="t2t2" title="Detalle de Estudiantes Encuestados por curso" class="easyui-datagrid" style="width:100%;height:400px"
+      url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_estxcurso" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#down_estxcurso">
+    <thead> 
+      <tr>
+        <th field="MUNICIPIO" width="100">MUNICIPIO</th>
+        <th field="SEDE_CODIGO" width="90">SEDE CÓDIGO</th>
+        <th field="SECTOR" width="90">SECTOR</th>
+        <th field="SEDE_NOMBRE" width="350">NOMBRE SEDE</th>
+        <th field="GRADO" width="90">GRADO</th>
+        <th field="CURSO" width="90">CURSO</th>
+        <th field="MATRICULADOS" width="90">MATRICULADOS</th>
+        <th field="REGULARES" width="90">REGULARES</th>
+        <th field="ENCUESTADOS" width="100">ENCUESTADOS</th>
+        <th field="NO_ENCUESTADOS" width="120">NO_ENCUESTADOS</th>
+        
+        
+      </tr>
+    </thead>
+  </table>
+  Fila por curso
+  <!-- formatter="" -->
+  <div id="down_estxcurso">
+  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_estxcurso'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+   <span>CODIGO SEDE:</span>
+    <input maxlength="13" id="cod_colegiot2" onkeypress="return solonumeros(event);" style="line-height:26px;border:1px solid #ccc">
+    <span>SEDE NOMBRE:</span>
+    <input id="SEDE_NOMBREt2" onkeypress="return soloLetras(event);"  maxlength="300" style="line-height:26px;border:1px solid #ccc">
+    <a href="javascript:void(0)" id="t2" class="easyui-linkbutton" plain="true" onclick="buscarIe_seg(this.id)">Buscar</a>
+  </div>  
+
+
+   <hr>
+
+    <table id="t3t3" title="Detalle de Estudiantes Encuestados" class="easyui-datagrid" style="width:100%;height:400px"
       url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_det_est" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#down_detalle">
     <thead> 
       <tr>
@@ -113,10 +151,15 @@
   <!-- formatter="" -->
   <div id="down_detalle">
   <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_det_est'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+   <span>CODIGO SEDE:</span>
+    <input maxlength="13" id="cod_colegiot3" onkeypress="return solonumeros(event);" style="line-height:26px;border:1px solid #ccc">
+    <span>SEDE NOMBRE:</span>
+    <input id="SEDE_NOMBREt3" onkeypress="return soloLetras(event);"  maxlength="300" style="line-height:26px;border:1px solid #ccc">
+    <a href="javascript:void(0)" id="t3" class="easyui-linkbutton" plain="true" onclick="buscarIe_seg(this.id)">Buscar</a>
   </div>  
 
   <hr>
-      <table id="tt" title="Detalle de Estudiantes NO Encuestados" class="easyui-datagrid" style="width:100%;height:400px"
+    <table id="t4t4" title="Detalle de Estudiantes NO Encuestados" class="easyui-datagrid" style="width:100%;height:400px"
       url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_det_est2" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#down_det2">
     <thead> 
       <tr>
@@ -124,8 +167,11 @@
         <th rowspan ="2" field="SEDE_CODIGO" width="90">SEDE CÓDIGO</th>
         <th rowspan ="2" field="SECTOR" width="90">SECTOR</th>
         <th rowspan ="2" field="SEDE_NOMBRE" width="350">NOMBRE SEDE</th>
-        <th colspan="6">EST. ENCUESTA COMPLETA</th>
-        <th colspan="6">EST. ENCUESTA INCOMPLETA</th>
+        <th colspan="6">OCUPADOS</th>
+        <th colspan="6">NO ASISTIERON</th>
+        <th colspan="6">RECHAZO</th>
+        <th colspan="6">MENORES DE 12 AÑOS</th>
+        <th colspan="6">OTRO MOTIVO</th>
     
       </tr>
       <tr>
@@ -171,6 +217,44 @@
   <!-- formatter="" -->
   <div id="down_det2">
   <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_det_est2'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+  <span>CODIGO SEDE:</span>
+    <input maxlength="13" id="cod_colegiot4" onkeypress="return solonumeros(event);" style="line-height:26px;border:1px solid #ccc">
+    <span>SEDE NOMBRE:</span>
+    <input id="SEDE_NOMBREt4" onkeypress="return soloLetras(event);"  maxlength="300" style="line-height:26px;border:1px solid #ccc">
+    <a href="javascript:void(0)" id="t4" class="easyui-linkbutton" plain="true" onclick="buscarIe_seg(this.id)">Buscar</a>
+  </div>
+
+
+    <hr>
+    <table id="t5t5" title="NO Encuestados por curso" class="easyui-datagrid" style="width:100%;height:400px"
+      url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_detnoe" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#down_det5">
+    <thead> 
+      <tr>
+        <th field="MUNICIPIO" width="100">MUNICIPIO</th>
+        <th field="SEDE_CODIGO" width="90">SEDE CÓDIGO</th>
+        <th field="SECTOR" width="90">SECTOR</th>
+        <th field="SEDE_NOMBRE" width="350">NOMBRE SEDE</th>
+        <th field="grado" width="80">GRADO</th>
+        <th field="CURSO" width="80">CURSO</th>
+        <th field="OCUPADOS_LG" width="90">OCUPADOS</th>
+        <th field="AUSENTES_LG" width="90">AUSENTES</th>
+        <th field="RECHAZARON_LG" width="90">RECHAZARON</th>
+        <th field="MENORES_DE_12" width="90">MENORES</th>
+        <th field="CON_MOTIVO_LG" width="90">OTRO MOTIVO</th>
+        
+              
+      </tr>
+    </thead>
+  </table>
+  Fila por curso
+  <!-- formatter="" -->
+  <div id="down_det5">
+  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_detnoe'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+  <span>CODIGO SEDE:</span>
+    <input maxlength="13" id="cod_colegiot5" onkeypress="return solonumeros(event);" style="line-height:26px;border:1px solid #ccc">
+    <span>SEDE NOMBRE:</span>
+    <input id="SEDE_NOMBREt5" onkeypress="return soloLetras(event);"  maxlength="300" style="line-height:26px;border:1px solid #ccc">
+    <a href="javascript:void(0)" id="t5" class="easyui-linkbutton" plain="true" onclick="buscarIe_seg(this.id)">Buscar</a>
   </div>
   
     <div id='ms' class="alert-danger">
@@ -182,7 +266,7 @@
 </div>
 </body>
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/asignaciones/jquery.easyui.min.js"></script> 
- <!-- <script type="text/javascript" src="<?php echo base_url();?>js/jquery.validate.min.js"></script> -->
+ <script type="text/javascript" src="<?php echo base_url();?>js/lote.js"></script>
 <!--  <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-dialog.js"></script> -->
 <script type="text/javascript">
 var base_url= '<?php echo base_url(); ?>';

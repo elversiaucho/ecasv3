@@ -9,6 +9,7 @@ class M_asignaciones extends CI_Model {
     function __construct() {
         parent::__construct();
         date_default_timezone_set('America/Bogota');
+
     }
 
 
@@ -61,4 +62,16 @@ foreach ($rs as $key => $value) {
         $this->db->close();
         return $data;
     }
+
+
+public function get_asignaciones($cod_mpio=""){
+
+    $campos= $this->db->field_data('v_temp_asignaciones');
+    $result = $this->db->query("CALL ver_asignaciones('".$cod_mpio."')");
+    return array('fields'=>$campos, 'query' =>$result);
+    //print_r($result->result());
+    //exit();
+
+
+ }
 }

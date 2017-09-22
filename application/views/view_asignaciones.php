@@ -75,18 +75,16 @@
   </table>
 
   <div id="tb" style="padding:3px">
+    <a href='<?php echo base_url('index.php/C_asignaciones/export_excel'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true">Descargar</a>
     <span>CODIGO SEDE:</span>
     <input id="cod_colegio" style="line-height:26px;border:1px solid #ccc">
     <span>SEDE NOMBRE:</span>
     <input id="SEDE_NOMBRE" style="line-height:26px;border:1px solid #ccc">
     <a href="#" class="easyui-linkbutton" plain="true" onclick="buscarIe()">Buscar</a>
+    
   </div>
 
-  <div id="toolbar">
-    <!-- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">Opcion</a> -->
-    <!-- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Editar Monitor</a> -->
-   <!--  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a> -->
-  </div>
+
   
  </div>
       <div id='ms' class="alert-danger">
@@ -114,6 +112,7 @@
   
 <script type="text/javascript">
 var base_url= '<?php echo base_url(); ?>'+'index.php/';
+
 
 function buscarIe(){
       $('#tt').datagrid('load',{

@@ -23,29 +23,38 @@
   <div class="estilo_campos">
        <div class="row pregunta-lote form-group">
           <div class="col-md-1 icono-lote"></div>
-          <label class="col-sm-11">Novedades de Establecimientos Educativos</label>
+          <label class="col-sm-11">Control de Asignación de Cursos  a Monitores</label>
 
 
    <!--  <div class="col-md-8">Información.</div> -->
   
-    <table id="tt" title="Novedades de Establecimientos Educativos" class="easyui-datagrid" style="width:100%;height:400px"
-      url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_novIE" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#toolbar">
-    <thead>
-      <tr>
-        <th field="MUNICIPIO" width="100">MUNICIPIO</th>
-        <th field="SEDE_CODIGO" width="90">CODIGO SEDE</th>
-        <th field="SECTOR" width="90">SECTOR</th>
-        <th field="SEDE_NOMBRE" width="350">NOMBRE</th>
-        <th field="NOVEDAD" width="100">NOVEDAD</th>
-         
+    <table id="tt" title="Asignaciones" class="easyui-datagrid" style="width:100%;height:400px"
+      url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_asignaciones" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#toolbar">
+    <thead> 
+      
+     
+          <th field="MUNICIPIO" width="90">MUNICIPIO</th>
+          <th field="SEDE_CODIGO" width="90">CODIGO SEDE</th>
+          <th field="SECTOR" width="90">SECTOR</th>
+          <th field="SEDE_NOMBRE" width="380">NOMBRE ESTABLECIMIENTO EDUCATIVO</th>
+          <th field="grado_asignado" width="80">GRADO</th>
+          <th field="curso_nro" width="50">CURSO</th>
+       
+          <th field="estado" width="80">ESTADO</th>
+          <th field="coordinador" width="280">COORDINADOR</th>
+          <th field="monitor" width="280">MONITOR</th>
+          <th field="fecha" width="90">FECHA</th>
+          
       </tr>
     </thead>
   </table>
-  Fila por Establecimiento Educativo
+  Fila por curso
   <!-- formatter="" -->
   <div id="toolbar">
-  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_novIE'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_asignaciones'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
   </div>
+
+  
 
     <div id='ms' class="alert-danger">
   

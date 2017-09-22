@@ -28,7 +28,7 @@
 
    <!--  <div class="col-md-8">Información.</div> -->
   
-    <table id="tt" title="Estado de cursos" class="easyui-datagrid" style="width:100%;height:400px"
+    <table id="t1t1" title="Estado de cursos" class="easyui-datagrid" style="width:100%;height:400px"
       url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_estadoCurso" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#toolbar">
     <thead> 
       <tr>
@@ -46,11 +46,16 @@
   <!-- formatter="" -->
   <div id="toolbar">
   <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_estadoCurso'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+  <span>CODIGO SEDE:</span>
+    <input maxlength="13" id="cod_colegiot1" onkeypress="return solonumeros(event);" style="line-height:26px;border:1px solid #ccc">
+    <span>SEDE NOMBRE:</span>
+    <input id="SEDE_NOMBREt1" onkeypress="return soloLetras(event);"  maxlength="300" style="line-height:26px;border:1px solid #ccc">
+    <a href="javascript:void(0)" id="t1" class="easyui-linkbutton" plain="true" onclick="buscarIe_seg(this.id)">Buscar</a>
   </div>
 
   <hr>
 
-   <table id="tt" title="Resultados de cursos por establecimiento" class="easyui-datagrid" style="width:100%;height:400px"
+   <table id="t2t2" title="Resultados de cursos por establecimiento" class="easyui-datagrid" style="width:100%;height:400px"
       url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_detCurso" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#down_detalle">
     <thead> 
       <tr>
@@ -81,6 +86,11 @@
   <!-- formatter="" -->
   <div id="down_detalle">
   <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_detCurso'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+  <span>CODIGO SEDE:</span>
+    <input maxlength="13" id="cod_colegiot2" onkeypress="return solonumeros(event);" style="line-height:26px;border:1px solid #ccc">
+    <span>SEDE NOMBRE:</span>
+    <input id="SEDE_NOMBREt2" onkeypress="return soloLetras(event);"  maxlength="300" style="line-height:26px;border:1px solid #ccc">
+    <a href="javascript:void(0)" id="t2" class="easyui-linkbutton" plain="true" onclick="buscarIe_seg(this.id)">Buscar</a>
   </div>  
 
    <hr>
@@ -124,7 +134,7 @@
 </div>
 </body>
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/asignaciones/jquery.easyui.min.js"></script> 
- <!-- <script type="text/javascript" src="<?php echo base_url();?>js/jquery.validate.min.js"></script> -->
+ <script type="text/javascript" src="<?php echo base_url();?>js/lote.js"></script> 
 <!--  <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-dialog.js"></script> -->
 <script type="text/javascript">
 var base_url= '<?php echo base_url(); ?>';

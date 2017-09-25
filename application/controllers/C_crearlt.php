@@ -276,7 +276,7 @@ function otra_nov($valor){
         $this->load->view('view_retomar',$data);
        }else
        {$encuesta = array(
-          'ID_ENCUESTA' => set_value('nro_lote').set_value('nro_encuesta'),
+          'ID_ENCUESTA' => set_value('nro_lote').set_value('nro_encuesta').set_value('nro_encuesta'),
           'LOTE_ENC' => set_value('nro_lote')
            );
       

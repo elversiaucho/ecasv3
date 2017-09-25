@@ -17,7 +17,7 @@
       <label class="col-lg-3">Número del lote:</label>
       <select id = 'lote' name="id_lote">
         <?php 
-          echo "<option value=''>Selecciona..</option>";
+          echo "<option value=''>Seleccione..</option>";
           if(isset($lotes))
           {
           foreach ($lotes as $fila){
@@ -27,7 +27,7 @@
           ?>        
   
       </select>
-      <p class="t_error"><?php echo strip_tags(form_error('id_lote')); ?></p>
+      <p class="t_error" id="err_lote"><?php echo strip_tags(form_error('id_lote')); ?></p>
     </div>
      <div style="display: none;">
      	<label>Digite número de la encuesta:</label>
@@ -41,6 +41,7 @@
       <?php 
 	  $data = array('type' => 'submit',
 	  'value' =>'Crear encuesta',
+    'id' => 'btn_enviar',
 	  'class' => 'btn btn-success abtn ');
 	  ?>
     <div class='estilo_campos'>
@@ -54,6 +55,14 @@
 </html>
 <script type="text/javascript">
 	$(document).ready(function(){
+    $("#btn_enviar").click(function(){
+       //
+      if ($("select[id=lote]").val()==''){
+       $("#err_lote").text("Seleccione un lote");
+       event.preventDefault();
+      }
+    });
+
    /* $("#lote").change(function(){
      
         var lote = $(this);
@@ -147,6 +156,7 @@
                 {
                     $("#inf").html("<img src='<?php echo base_url('images/ajax-loader.gif');?>'>");
                     lote.prop('disabled', true);
+                     $("#err_lote").text("");
                 },
                 success:  function (r) 
                 {
@@ -194,8 +204,11 @@
               
                    }
                    else{
-                     alert(texto);
+                     //alert(texto);
                      $("#inf").html(texto);
+                     lote.prop('disabled', false);
+                     lote.val(lote.children('option:first').val());
+                     //lot.prop('defaultSelected',true);
                    }
 
                  },
@@ -209,7 +222,7 @@
         }
         else
         {
-          //
+        
         }
     });
 	

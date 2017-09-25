@@ -1288,15 +1288,23 @@ function infolt(){// Obtiene el resumen del lote
 				$curso = $result->CURSO;
 				$colegio = $result->SEDE_NOMBRE;
 				$sede_cod = $result->SEDE_CODIGO; 
+				$max_encuestas = $result->REGULARES; 
 			}
 						
-            $data['mensaje']="Confirme los datos de la encuesta: <br><h4>Colegio: ".$colegio."<br>
-            CÓDIGO SEDE : ".$sede_cod."<br>
-            Grado : ".$grado."<br>
-            Curso : ".$curso."<br>
-            Encuesta Nro: ".$encuesta." </h4>";
-          	$data['encuestar'] = 1;
-          	$data['nro_encuesta'] =  $encuesta;
+			if ($encuesta<=$max_encuestas){
+	            $data['mensaje']="Confirme los datos de la encuesta: <br><h4>Colegio: ".$colegio."<br>
+	            CÓDIGO SEDE : ".$sede_cod."<br>
+	            Grado : ".$grado."<br>
+	            Curso : ".$curso."<br>
+	            Encuesta Nro: ".$encuesta." de ".$max_encuestas." a crear</h4>";
+	          	$data['encuestar'] = 1;
+	          	$data['nro_encuesta'] =  $encuesta;
+	          }else{
+	          	$data['mensaje']="La cantidad de encuestas creadas del lote <b>".$lote."</b> excede a ".$max_encuestas." cantidad de estudiantes regulares del curso.";
+	          	$data['encuestar'] = 0;
+	          	$data['nro_encuesta'] =  $encuesta;
+	          }
+
 
             print_r(json_encode($data));
 		 }
@@ -1307,6 +1315,7 @@ function infolt(){// Obtiene el resumen del lote
        $session_data = $this->session->userdata('ingreso');
        $data['usuario'] = $session_data['usuario'];
        $data['rol'] = $session_data['rol'];
+       $data['ingreso']=1;
        $data_l[] = array();
        $encuesta=0;
        $mensaje ="";
@@ -1334,7 +1343,7 @@ function infolt(){// Obtiene el resumen del lote
               $lote = set_value('id_lote');
               $encuesta = set_value('nro_encuesta');
               $encuesta = array(
-               'ID_ENCUESTA' => $lote.$encuesta,
+               'ID_ENCUESTA' => $lote.$encuesta.$encuesta,
                'LOTE_ENC' => $lote,
                'NRO_ENCUESTA' => $encuesta,
                'ESTADO_ENCUESTA' => 0

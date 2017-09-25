@@ -78,12 +78,11 @@
         La información que nos brindarás cuenta con la protección de los datos establecidos en la ley de reserva estadística: Los datos suministrados al Departamento Administrativo Nacional de Estadística (DANE), en el desarrollo de censos y encuestas, no podrán darse a conocer al público ni a las entidades u organismos oficiales, ni a las autoridades públicas, sino únicamente en resúmenes numéricos, que no hagan posible deducir de ellos información alguna de caracter individual que pudiera utilizarse para fines comerciales, de tributación fiscal, de investigación judicial o cualquier otro diferente del propiamente estadístico. LEY DE RESERVA ESTADÍSTICA (Art.5° Ley 79 de 1993).
       </div>
      </div>
-    <footer class="pie">
-      <img style="width:100%; height:10px;" src="<?php echo base_url()?>images/linea_dane.png" class="img-responsive"/ >
-    <p>Carrera 59 Nº 26 - 70 interior 1 - CAN Tel (571) 5978300 - Bogotá D. C.,. Colombia </p>   
-  </footer>
   </div>
-
+   <footer>
+      <img  style="width:100%; height:10px;"src="<?php echo base_url()?>images/linea_dane.png" class="img-responsive"/ > 
+    Carrera 59 Nº 26 - 70 interior 1 - CAN Tel (571) 5978300 - Bogotá D. C.,. Colombia
+  </footer>
 <script type="text/javascript">
 
   $(document).ready(function(){
@@ -94,7 +93,6 @@
         $(".contenido").css('height',"60%");
 
       });
-
 
   });
   

@@ -104,6 +104,9 @@
 </div>
 </body>
 <script type="text/javascript" src= "<?php echo base_url('js/menu.js')?> "></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/bootstrap.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/material.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/validar.js"></script>
 <?php if ($rol == 3){?>
 	<script type="text/javascript" src="<?php echo base_url();?>assets/js/asignaciones/jquery.easyui.min.js"></script> 
 <?php }?>

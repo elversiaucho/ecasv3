@@ -20,9 +20,8 @@ header
 }
 
 footer{
-	/*margin:10% 0 0 0px;*/
+	width:100%; 
 	bottom: 0px;
-	height: 10%;
 	position: absolute;
 	background-color: #91224C; 	
 	color: #FFFFFF;
@@ -141,7 +140,7 @@ input.btn.btn-raised.btn-success.arrow-r:hover {
 	height: 100%;
 	/*width: 80%;*/
 	position: relative;
-	background-color: #ƒƒƒ;
+	/*background-color: #fff;*/
 } 
 .contenido{/*para el login!*/
 	float: none;

@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>ECAS</title>
+		<link href="<?php echo base_url('images/favicon.jpg')?>" rel="shortcut icon"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/bootstrap-material-design.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/animaciones.css">

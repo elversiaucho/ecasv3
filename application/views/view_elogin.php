@@ -81,7 +81,7 @@
   </div>
    <footer>
       <img  style="width:100%; height:10px;"src="<?php echo base_url()?>images/linea_dane.png" class="img-responsive"/ > 
-    Carrera 59 Nº 26 - 70 interior 1 - CAN Tel (571) 5978300 - Bogotá D. C.,. Colombia
+    Carrera 59 Nº 26 - 70 interior 1 - CAN Tel (571) 5978300 - Bogotá D. C... Colombia
   </footer>
 <script type="text/javascript">
 

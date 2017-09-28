@@ -100,11 +100,11 @@
        ?>
        </h2>
 </div>
-    <?php #include('v_pie.html'); ?>
+    
 </div>
 </body>
 <script type="text/javascript" src= "<?php echo base_url('js/menu.js')?> "></script>
-<script type="text/javascript" src="<?php echo base_url()?>js/bootstrap.js"></script>
+<!--<script type="text/javascript" src="<?php echo base_url()?>js/bootstrap.js"></script>-->
 <script type="text/javascript" src="<?php echo base_url()?>js/material.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>js/validar.js"></script>
 <?php if ($rol == 3){?>

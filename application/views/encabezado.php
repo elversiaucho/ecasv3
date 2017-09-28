@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title>ECAS</title>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/bootstrap.css">
-		<link href="<?php echo base_url('images/favicon.jpg')?>" rel="shortcut icon"/>
+		<link href="<?php echo base_url('images/favicon.png')?>" rel="shortcut icon"/>
 		<!--link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/bootstrap-material-design.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/ripples.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/animaciones.css"-->
@@ -46,8 +46,8 @@
 	</body>
 	   
 	    <script type="text/javascript" src="<?php echo base_url()?>js/jquery-2.2.0.min.js"></script>
-	   <!--  <script type="text/javascript" src="<?php echo base_url()?>js/bootstrap.js"></script>
-		<script type="text/javascript" src="<?php echo base_url()?>js/material.js"></script>
+	   <script type="text/javascript" src="<?php echo base_url()?>js/bootstrap.js"></script>
+		<!--<script type="text/javascript" src="<?php echo base_url()?>js/material.js"></script>
 		<script type="text/javascript" src="<?php echo base_url()?>js/ripples.js"></script>
 		<script type="text/javascript" src="<?php echo base_url()?>js/main.js"></script>
 		<script type="text/javascript" src="<?php echo base_url()?>js/validar.js"></script> -->

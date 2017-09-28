@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>ECAS</title>
-		<link href="<?php echo base_url('images/favicon.jpg')?>" rel="shortcut icon"/>
+		<link href="<?php echo base_url('images/favicon.png')?>" rel="shortcut icon"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/bootstrap-material-design.min.css">
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/animaciones.css">
@@ -211,7 +211,7 @@
 								</div>
 								<div class="checkbox">
 									<label>
-										<input id="A4d" onclick="oculto()" class="A4" type="checkbox" name="A4[]" value="4"" <?php echo set_checkbox('A4', "4"); echo $fila->A4d;?>/>
+										<input id="A4d" onclick="oculto()" class="A4" type="checkbox" name="A4[]" value="4" <?php echo set_checkbox('A4', "4"); echo $fila->A4d;?>/>
 										Madrastra
 									</label>
 								</div>
@@ -2331,7 +2331,7 @@
 					<!-- Pregunta 17-->
 					
 						<div class="row form-group">
-						<label class="mg-top-label col-lg-12 col-md-12 col-sm-12 col-xs-12">17. En tu grupo de amigos, ¿consideras que existe presión en temas relacionados con:</label>
+						<label class="mg-top-label col-lg-12 col-md-12 col-sm-12 col-xs-12">17. En tu grupo de amigos(as), ¿consideras que existe presión en temas relacionados con:</label>
 							<div class="col-lg-12 incluyente" >
 								<div class="checkbox">
 									<label>
@@ -4938,10 +4938,10 @@
 					    </div>
 					    	<!-- Pregunta 9 57-->
 					<div class="row form-group" id="D57" style="display: none;">
-						<label class="mg-top-label col-lg-4 col-md-6 col-sm-6 col-xs-12">58. ¿Tienes hijos(as)?
+						<label class="mg-top-label col-lg-6 col-md-8 col-sm-12 col-xs-12">58. ¿Tienes hijos(as)?
 						</label>
 						<p class="t_error" id="err_D60"></p>
-						<div class="col-lg-1 col-md-1 col-sm-6 col-xs-6">
+						<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
 							<div class="radio radio-primary">
 								<label>
 								<?php

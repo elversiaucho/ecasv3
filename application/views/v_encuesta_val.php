@@ -1888,7 +1888,7 @@
 										No recibes malos tratos
 									</label>
 								</div>
-								<p class="t_error"><?php echo strip_tags(form_error('B15[]')); ?></p>	
+								<p class="t_error" id="ErrB15"><?php echo strip_tags(form_error('B15[]')); ?></p>	
 							</div>
 					</div>
 
@@ -1897,7 +1897,7 @@
 							<a href="javascript:void(0)" class="btn btn-raised btn-warning arrow-l" style="position:relative;right: 0px;" >Anterior</a>
 						</div>
 						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-							<input type="submit" class="btn btn-raised btn-success arrow-r" style="position:relative;right: 0px;" value="Siguiente"/>
+							<input type="submit" id="btnSl4" class="btn btn-raised btn-success arrow-r" style="position:relative;right: 0px;" value="Siguiente"/>
 						</div>
 					</div>
 					<?#php echo form_close(); ?>
@@ -3538,7 +3538,7 @@
 						</div>			
 						<!--P14-->
 						<div class="row form-group TH">
-								<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12">34. Esta relación afectiva es con:</label>
+								<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12">34. Esta relación afectiva cercana es con:</label>
 								<div class="col-lg-12">
 									<div class="radio radio-primary">
 										<label>
@@ -3939,10 +3939,9 @@
 										</label>
 									</div>
 								</div>
-								<div class="col-lg-6">
-									<p class="t_error"><?php echo strip_tags(form_error('D28')); ?></p>
-								</div>
+								<span class="t_error"><?php echo strip_tags(form_error('D28')); ?></span>
 						</div>
+					
 							<!-- Pregunta 39-->						
 						<div class="row form-group">
 							<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">39. ¿Alguna vez te han propuesto o insinuado que participes en actividades sexuales?</label>
@@ -3967,10 +3966,9 @@
 										</label>
 									</div>
 								</div>	
-								<div class="col-lg-6">
-									<p class="t_error"><?php echo strip_tags(form_error('D39aux')); ?></p>
-								</div>
-							</div>	
+								<span class="t_error"><?php echo strip_tags(form_error('D39aux')); ?></span>
+							</div>
+							
 
 							<!-- Pregunta 31-->
 							<div class="row form-group">		
@@ -3996,10 +3994,9 @@
 										</label>
 									</div>
 								</div>
-								<div class="col-lg-6">
-									<p class="t_error"><?php echo strip_tags(form_error('D31')); ?></p>
-								</div>
+								<span class="t_error"><?php echo strip_tags(form_error('D31')); ?></span>
 							</div>
+							
 									<!-- Pregunta 40a-->
 							<div class="row form-group" id="verD35" style="display: none;">	
 								<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">40a. ¿Alguna vez has aceptado algo (por ejemplo, dinero, ropa, calificaciones u otros regalos) a cambio de mostrar las partes íntimas de tu cuerpo (por ejemplo, en videos o fotos)?
@@ -4025,11 +4022,9 @@
 										</label>
 									</div>
 								</div>
+								<span class="t_error"><?php echo strip_tags(form_error('D35')); ?></span>
 							</div>
-							<div class="col-lg-6">
-								<p class="t_error"><?php echo strip_tags(form_error('D35')); ?></p>
-							</div>
-
+							
 							<!-- Pregunta 41-->
 							<div class="row form-group">	
 								<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">41. ¿Alguna vez te han ofrecido algo (por ejemplo, dinero, ropa, calificaciones u otros regalos) a cambio de participar en actividades sexuales contigo? </label>
@@ -4054,11 +4049,10 @@
 										</label>
 									</div>
 								</div>
-								<div class="col-lg-6">
-									<p class="t_error"><?php echo strip_tags(form_error('D32')); ?></p>
-								</div>
+								<span class="t_error"><?php echo strip_tags(form_error('D32')); ?></span>
 							</div>
-								<div class="row form-group" style="display: none;" id="D41_a">	
+							
+							<div class="row form-group" style="display: none;" id="D41_a">	
 								<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">41a. ¿Alguna vez has aceptado algo (por ejemplo, dinero, ropa, calificaciones u otros regalos) a cambio de participar en actividades sexuales?
 								</label>
 								<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
@@ -4081,9 +4075,8 @@
 											No
 										</label>
 									</div>
-									<p class="t_error col-lg-6"><?php echo strip_tags(form_error('D41a')); ?></p>
 								</div>
-								
+								<span class="t_error"><?php echo strip_tags(form_error('D41a')); ?></span>
 							</div>
 						
 							<!-- Pregunta 33-->
@@ -4110,11 +4103,9 @@
 										</label>
 									</div>
 								</div>
-								<div class="col-lg-6">
-									<p class="t_error"><?php echo strip_tags(form_error('D33')); ?></p>
-								</div>
+								<span class="t_error"><?php echo strip_tags(form_error('D33')); ?></span>
 							</div>
-
+						
 							<!-- Pregunta 43-->
 							<div class="row form-group">	
 								<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">43. ¿Alguna vez has enviado fotos o videos de las partes íntimas de tu cuerpo por mensajes de texto y/o medios virtuales como: correo electrónico, páginas de internet y redes sociales (WhatsApp, Line, Facebook, Twitter, Instagram, Snapchat, etc.)?</label>
@@ -4139,11 +4130,9 @@
 										</label>
 									</div>
 								</div>
-								<div class="col-lg-6">
-									<p class="t_error"><?php echo strip_tags(form_error('D34')); ?></p>
-								</div>
+								<span class="t_error"><?php echo strip_tags(form_error('D34')); ?></span>
 							</div>
-
+						
 						
 							<!-- Pregunta 44-->
 							<div class="row form-group">
@@ -4152,14 +4141,13 @@
 								</label>
 								<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
 									<div class="radio radio-primary">
-										
+										<label>
 										<?php
 											$rta1 =''; $rta2='';
 											if ($fila->D36 == 'checked') {$rta1 ='checked'; $rta2='';}
 											if ($fila->D36 == 2) {$rta1  =''; $rta2='checked';}
 										?>
-										<label>
-											<input type="radio" name="D36" class="" id="D36a" onclick="ocultos(this.id)" value ="1" <?php echo set_radio('D36','1'); echo $rta1; ?>/>
+										<input type="radio" name="D36" class="" id="D36a" onclick="ocultos(this.id)" value ="1" <?php echo set_radio('D36','1'); echo $rta1; ?>/>
 											Sí
 										</label>
 									</div>
@@ -4172,11 +4160,9 @@
 										</label>
 									</div>
 								</div>	
-								<div class="col-lg-6">
-									<p class="t_error"><?php echo strip_tags(form_error('D36')); ?></p>
-								</div>				
+								<span class="t_error"><?php echo strip_tags(form_error('D36')); ?></span>
 							</div>
-
+							
 							<!--div class="col-md-12 glosario">
 								<b>Juegos Sexuales:</b> se refiere a la práctica de relaciones sexuales, entre dos o más personas, en el contexto de algún tipo de juego o de competencia.
 							</div-->	
@@ -4210,9 +4196,7 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-6">
-										<span class="t_error"><?php echo strip_tags(form_error('D46a')); ?></span>
-									</div>
+									<span class="t_error"><?php echo strip_tags(form_error('D46a')); ?></span>
 								</div>
 								<div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<label class="mg-top-label col-lg-6 col-md-8 col-sm-8 col-xs-12">Bailar en clubes nocturnos</label>
@@ -4237,10 +4221,9 @@
 											</label>
 										</div>
 									</div>	
-									<div class="col-lg-6">
-										<span class="t_error"><?php echo strip_tags(form_error('D46b')); ?></span>
-									</div>
+									<span class="t_error"><?php echo strip_tags(form_error('D46b')); ?></span>
 								</div>	
+
 								<div class="fila-1 container col-lg-12 col-md-12 col-sm-12 col-xs-12">		
 									<label class="mg-top-label col-lg-6 col-md-8 col-sm-8 col-xs-12">Acompañar turistas</label>
 									<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
@@ -4264,10 +4247,9 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-6">
 										<span class="t_error"><?php echo strip_tags(form_error('D46c')); ?></span>
-									</div>
 								</div>
+
 								<div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">	
 									<label class="mg-top-label col-lg-6 col-md-8 col-sm-8 col-xs-12">Asistir a sesiones de fotografía y video sin ropa</label>
 									<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
@@ -4291,10 +4273,9 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-6">
-										<span class="t_error"><?php echo strip_tags(form_error('D46d')); ?></span>
-									</div>
+									<span class="t_error"><?php echo strip_tags(form_error('D46d')); ?></span>
 								</div>
+
 								<div class="fila-1 container col-lg-12 col-md-12 col-sm-12 col-xs-12">	
 									<label class="mg-top-label col-lg-6 col-md-8 col-sm-8 col-xs-12">Dar masajes</label>
 									<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
@@ -4318,10 +4299,9 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-lg-6">
-										<span class="t_error"><?php echo strip_tags(form_error('D46e')); ?></span>
-									</div>
+									<span class="t_error"><?php echo strip_tags(form_error('D46e')); ?></span>
 								</div>
+
 							</div>
 
 							<!-- Pregunta 38-->
@@ -4354,7 +4334,8 @@
 							<!-- Pregunta 39-->
 							
 							<div class="row form-group" id="D39" style ="display:none;">
-								<label>47. ¿A quién se lo has comentado?</label>
+								<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12">47. ¿A quién se lo has comentado?</label>
+								 <div class="col-lg-12">
 									<div class="checkbox">
 										<label>
 											<input id="ch33" type="checkbox" class="D39 sisexo1" name="D39[]" value ="1" <?php echo set_radio('D39[]','1'); echo $fila->D39a; ?> />
@@ -4399,6 +4380,7 @@
 										<input type="text" id="D39g_cual" onkeypress="return soloLetras(event);" <?php echo "value='".set_value('D39g_cual',$fila->D39g_cual)."'";?> name="D39g_cual"/>
 										<span class="t_error"><?php echo strip_tags(form_error('D39g_cual')); ?></span>
 								</div>	
+							 </div>
 								<div class="col-lg-6">
 									<p class="t_error"><?php echo strip_tags(form_error('D39[]')); ?></p>
 								</div>
@@ -5290,7 +5272,7 @@
 								</label>
 							</div>
 						</div>
-						<span class="t_error"><?php echo strip_tags(form_error('E55')); ?></span>
+						<span class="t_error" id="ErrE66"><?php echo strip_tags(form_error('E55')); ?></span>
 					</div>
 
 					<!-- Pregunta 69-->								

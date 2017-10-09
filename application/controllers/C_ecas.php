@@ -16,6 +16,13 @@ function index(){
 	$result = 2;
 	$validacion = FALSE;
 	$info_encuesta = array();
+	
+	$session_data = $this->session->userdata('ingreso');
+    $usuario = $session_data['usuario'];
+
+	if ($usuario=="")
+		redirect('/index.php/C_ecas_lg','refresh');
+
 	if (isset($_POST["estado_e"]))
 		$estado_e = $_POST["estado_e"];
 	if (isset($_POST["seguir"]))

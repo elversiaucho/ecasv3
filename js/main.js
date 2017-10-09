@@ -15,6 +15,12 @@ $(function(){
 function main()
 {
 	
+/**espacio para limpiar campos*/
+
+
+
+
+	/*******/
 	$("#paginador").text(slide+"/"+cant_paginas);//origial
 	var paginaActual = parseInt($(".active").attr("data-slide"));
 
@@ -71,34 +77,6 @@ function main()
 
  				if (cont_C25 > 1)
  					$('#btn_menos').show();
-
-	 		 /* if($('input:radio[name=C26b]:checked')){
-	 		    $('#C26b').slideDown("slow");
-	 		  }
-	 		  if($('input:radio[name=C26c]:checked')){
-	 		    $('#C26c').slideDown("slow");
-	 		  }
-	 		  if($('input:radio[name=C26d]:checked')){
-	 		    $('#C26d').slideDown("slow");
-	 		  }
-	 		  if($('input:radio[name=C26e]:checked')){
-	 		    $('#C26e').slideDown("slow");
-	 		  }
-	 		  if($('input:radio[name=C26f]:checked')){
-	 		    $('#C26f').slideDown("slow");
-	 		  }
-	 		  if($('input:radio[name=C26g]:checked')){
-	 		    $('#C26g').slideDown("slow");
-	 		  }
-	 		  if($('input:radio[name=C26h]:checked')){
-	 		    $('#C26h').slideDown("slow");
-	 		  }
-	 		  if($('input:radio[name=C26i]:checked')){
-	 		    $('#C26i').slideDown("slow");
-	 		  }
-	 		  if($('input:radio[name=C26j]:checked')){
-	 		    $('#C26j').slideDown("slow");
-	 		  }*/
   
 		 	}
 		if($('input:radio[name=D40]:checked').val()=='2' && slide == 11){
@@ -262,11 +240,7 @@ function main()
 			}
 			else $(".D27").prop("disabled",false);
 
-	/*if($("#D30a").prop("checked")|| $("#D31a").prop("checked")|| $("#D32a").prop("checked")|| $("#D33a").prop("checked")||
-		$("#D26a").prop("checked")|| $("#D35a").prop("checked")|| $("#D36a").prop("checked")||
-		$("#D46a").prop("checked")|| $("#D38a").prop("checked")|| $("#D39auxa").prop("checked")|| $("#D39a").prop("checked")||
-		 $("#D40a").prop("checked")|| $("#D41si").prop("checked") || $("#D34a").prop("checked") || $("#D41a").prop("checked"))
-		{*/
+	
 		if( $("#D31a").prop("checked")||  $("#D33a").prop("checked")||
 		$("#D35a").prop("checked")|| $("#D36a").prop("checked")||
 		$("#D46a").prop("checked")|| $("#D38a").prop("checked")|| $("#D39auxa").prop("checked")|| $("#D39a").prop("checked")||
@@ -280,15 +254,7 @@ function main()
 			$("#verD35").hide();
 			//$("#D35b").prop("checked",true);
 		}
-		/*if($("#D36a").prop("checked")||$("#D46a").prop("checked")){
-			$("#btn_D40").prop('disabled',true);
-		}*/
-		/*if ($('#D32b').prop('checked')){
-				$("#D49no").prop('checked',true);
-				$("#D50no").prop("checked",true); 
-				$('#ver_D49').hide();
-			}*/
-			
+	
 		//else $("input:radio[name=D49]").prop('checked',false);
 		if ($(".D39").is(":checked")){
 			$("#mensa2").show();
@@ -348,9 +314,7 @@ function main()
 		if ($('input:radio[name=D53]:checked').val()=='1')
 			 $('#D54').show();
 		
-		//$('input:radio[name=D46]').prop('checked',false);
-		//$('input:radio[name=E57]').prop('checked',false);
-
+		
 		if($('#D54g').prop('checked'))
 				$("#D54g_cual").prop("disabled",false);
 			else{
@@ -358,20 +322,23 @@ function main()
 				$("#D54g_cual").val('');
 			}
 		if ($('#E55si').prop("checked") )
-			{
-			  $('#E56').show();
-			  $('#E57').show();
-			  $('#E58').show();
-			  $('#E59').show();
-			  $('#E63').show();
-			  $('#E64').show();
-			  $('#fin_internet').show();
-			}
-			if ($('#E55no').prop("checked")){
-				  $("#internet").val('Finalizar');
-				  $('#fin_internet').hide();
-				  //slide=15;
-			}
+		{
+		  $('#E56').show();
+		  $('#E57').show();
+		  $('#E58').show();
+		  $('#E59').show();
+		  $('#E63').show();
+		  $('#E64').show();
+		  $('#internet').prop("disabled",false);
+		  $('#fin_internet').show();
+		}
+		if ($('#E55no').prop("checked"))
+		{
+		  $("#internet").val('Finalizar');
+		  VerificaNavega();
+		  $('#fin_internet').hide();
+		  //slide=15;
+		}
 
 
 		if($('input:radio[name=E59]:checked').val()=='1'){
@@ -425,6 +392,18 @@ function delegateEvents()
 
 $(document).ready(function(){
  
+ $("input:radio[name=B13]").click(function(){
+ 	var rtaB13 = $(this).val();
+ 	if ($("#B15t").prop("checked") && ((rtaB13 > 1 && rtaB13 < 5) || rtaB13 == 7))
+ 	{
+ 		VerificaB15t();
+ 	}else{
+ 		$("#btnSl4").prop("disabled",false);
+ 		$("#ErrB15").text("");
+ 	}
+
+
+ });
 	
 	$("input:radio[name=A15]").click(function(){
 		if($("input:radio[name=A15]:checked").val() != '3' && $('#A4e').prop('checked')){

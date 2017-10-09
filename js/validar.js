@@ -336,6 +336,7 @@ function ocultos(id)
 
         case 'E55si':
               $("#internet").val('Siguiente');
+              $('#internet').prop("disabled",false);
               $('#E56').slideDown("slow");
               $('#E57').show();
               $('#E58').show();
@@ -343,6 +344,7 @@ function ocultos(id)
               $('#E63').show();
               $('#E64').show();
               $("#monitor").show();
+              $("#ErrE66").text("");
               break;
         case 'E55no':
               $("#internet").val('Finalizar');
@@ -363,7 +365,10 @@ function ocultos(id)
               $('#E63').hide();
               $('#E64').hide();
               $("#monitor").hide();
-              //$('#fin_internet').hide();
+              
+               VerificaNavega();
+              
+              
               //aumetar las página en 1
               break;
         case 'D54g' : 
@@ -473,9 +478,18 @@ function ocultos(id)
                 
         break;
 
-        case "B15t": if($("#B15t").prop("checked"))
-                      $(".B15").prop("disabled",true);
-                    else $(".B15").prop("disabled",false);
+        case "B15t": 
+        if($("#B15t").prop("checked"))
+          {
+            $(".B15").prop("disabled",true);
+            VerificaB15t();
+          }
+          else
+          {
+            $(".B15").prop("disabled",false);
+            $("#btnSl4").prop("disabled",false);
+            $("#ErrB15").text("");
+          }
                 
         break;
         case "C17i": if($("#C17i").prop("checked")){
@@ -955,3 +969,21 @@ function nt()
                 
 }
 
+function VerificaNavega()
+{
+if($("input:radio[name=C16g]:checked").val()==1)
+  {
+   $("#ErrE66").text("Por favor verifica tu respuesta. Informaste que has chateado o navegado en internet en tu tiempo libre pregunta 16.");
+   $('#internet').prop("disabled",true);
+  }
+}
+
+function VerificaB15t()
+{
+  var rtaB13 = $("input:radio[name=B13]:checked").val();
+  if ((rtaB13>1 && rtaB13 <5) || rtaB13 == 7)
+  {
+    $("#ErrB15").text("Por favor verifica tu respuesta, según lo que marcaste en la pregunta 13.");
+    $("#btnSl4").prop("disabled",true);
+  }
+}

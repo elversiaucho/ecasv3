@@ -2518,7 +2518,7 @@
 
 			<!--Pregunta -27-->
 				<div class="row form-group">
-					<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">19. ¿Has consumido alguna sustancia psicoactiva?</label>
+					<label class="col-lg-8 col-md-8 col-sm-12 col-xs-12">19. ¿Alguna vez has consumido alguna sustancia psicoactiva?</label>
 					<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
 						<div class="radio radio-primary">
 							<label>

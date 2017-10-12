@@ -20,6 +20,7 @@ class M_alertas extends CI_Model {
 	  $result = array();
 	  $session_data = $this->session->userdata('ingreso');
 	  $mpio = $session_data['mpio_user'];
+	  $condicion="";
 	  //echo $page;
 	  //include 'conn.php';
 	  $conn = @mysql_connect('192.168.1.200','dimpe','D1mP3D3s4rr0ll0');
@@ -30,10 +31,11 @@ class M_alertas extends CI_Model {
 	    mysql_query("SET NAMES UTF8");
 	   //$conn=conn();
 	  
-	  $rs = mysql_query("SELECT COUNT(*) FROM v_AlertaLotes WHERE COD_MUNI = '".$mpio."';");
+	  $condicion = "COD_MUNI = '".$mpio."' AND  alerta <> 'ok'";
+	  $rs = mysql_query("SELECT COUNT(*) FROM v_AlertaLotes WHERE ".$condicion);
 	  $row = mysql_fetch_row($rs);
 	  $result["total"] = $row[0];
-	  $rs = mysql_query("SELECT * FROM v_AlertaLotes WHERE COD_MUNI = '".$mpio."' limit $offset,$rows");
+	  $rs = mysql_query("SELECT * FROM v_AlertaLotes WHERE ".$condicion." limit $offset,$rows");
 	  //print_r($rs);
 	  //exit();
 	  $items = array();
@@ -41,6 +43,7 @@ class M_alertas extends CI_Model {
 	    //array_push($items, $row);
 	    $items[] = $row;
 	  }
+	  mysql_close($conn);
 	  $result["rows"] = $items;
 	 return $result;
 	 }

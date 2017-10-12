@@ -973,7 +973,7 @@ function VerificaNavega()
 {
 if($("input:radio[name=C16g]:checked").val()==1)
   {
-   $("#ErrE66").text("Por favor verifica tu respuesta. Informaste que has chateado o navegado en internet en tu tiempo libre pregunta 16.");
+   $("#ErrE66").text("Por favor verifica tu respuesta. Informaste que has chateado o navegado en internet en tu tiempo libre.");
    $('#internet').prop("disabled",true);
   }
 }

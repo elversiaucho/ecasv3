@@ -39,6 +39,7 @@
         <th field="GRADO" width="100">GRADO</th>
         <th field="CURSO" width="100">CURSO</th>
         <th field="ESTADO_LOTE" width="100">ESTADO</th>
+        <th field="TIPO_RECOLECCION" width="120">TIPO DE <BR>RECOLECCION</th>
       </tr>
     </thead>
   </table>

@@ -1,4 +1,10 @@
- <script type="text/javascript" src="<?php echo base_url();?>js/lote.js" ></script>
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
 
 <div class="estilo_campos" id="campo">
   <div id='new_lote'>
@@ -39,20 +45,24 @@
       <p class="t_error"><?php echo strip_tags(form_error('nro_lote')); ?></p>
     </div>
 
-
-<p>Grado: <span id="grado">
-      <?php if (isset($inf_lote["GRADO"])){
-        echo $inf_lote["GRADO"][0]->GRADO;
-        }?>
-    </span></p>
-    <p>Curso: <span id="curso">
-      <?php if (isset($inf_lote["CURSO"])){
-        echo $inf_lote["CURSO"][0]->CURSO;
-        }?>
-    </span></p>
  <!-- Sistema de recoleccion del lote -->
  <div class="row form-group" id="op_recoleccion" style="display: none;">
-     <?#php echo json_encode($lotes);?>
+     
+    <div class="col-lg-12 col-md-12">
+      <p>Grado: <span id="grado">
+            <?php 
+            //print_r($inf_lote['estudiantes'][0]);
+            if (isset($inf_lote["estudiantes"])){
+              echo $inf_lote["estudiantes"][0]->GRADO;
+              }?>
+          </span></p>
+        <p>Curso: <span id="curso">
+            <?php if (isset($inf_lote["estudiantes"])){
+              echo $inf_lote["estudiantes"][0]->CURSO;
+              }?>
+          </span>
+        </p>
+    </div>
      <div class="col-md-1 icono-lote"></div>
       <label class="col-lg-3">Sistema de recolección:</label>
       <select id = 'sistema_r' name="sistema_r" class="col-lg-3">
@@ -82,7 +92,7 @@
       ?>
        
     </div>
-    <div >
+  <div>
    
    <div style="display:none;"><input type="number" name="total_e" id="total_e" value ="<?php echo set_value('total_e');?>"></div> 
    <div style="display:none;"><input type="number" name="faltaron" id="faltaron" value ="<?php echo set_value('faltaron');?>"></div><!--  -->
@@ -207,10 +217,11 @@
   </div><!--Fin Crear lote-->   	
 </div>
 </body>
+<script type="text/javascript" src="<?php echo base_url();?>js/lote.js" ></script>
 </html>
 <script type="text/javascript">
 	$(document).ready(function(){
- 
+  tot_e= parseInt($("#total_e").val());
 
     ///////MOstrar la cantidad de encuestas completas incompletas y totales...
     $("#lote").change(function(){
@@ -222,9 +233,12 @@
         
         //alert("lote: "+ lote.val());
          if($(this).val() != '')
-        {   
+        {   off_line=0;
             $("#op_recoleccion").slideDown();
             $('#sistema_r').prop('selectedIndex',0);
+            $('#off_line').val("");
+            $('#enc_offline').slideUp();
+            $("#tot_web_offline").slideUp(); 
             $.ajax({
                 data: {id_lote : lote.val() },
                 url:   '<?php echo base_url('index.php/c_ecas/infolt');?>',
@@ -261,26 +275,31 @@
                          //alert("Total encuestas" + typeof(faltaron)+" "+$("#regulares").val());
                         
                         $("#total_e").val(tot_e);
-                                                
+                        $("#web_offline").text(""+tot_e);                        
                         $("#info_faltaron").text(faltaron);
                         $("#faltaron").val(faltaron);
                         $("#err_ocupados").text("");
                         $("#err_matriculados").text("");
-
                     });
+                   if (parseInt($("#total_e").val())>0) 
+                   {
+                      $("#sistema_r").find("option[value='3']").remove();
+                   }else if ($("#sistema_r option").length<4){
+                     $("#sistema_r").append('<option value = "3">Offline</option>');
+                   }
+
                     
                 },
                 error: function(errorThrown)
                 {
-               alert("Ocurrio un error en AJAX!");
-             alert(errorThrown);
+             alert("Ocurrio un error al consultar la información del lote.");
+             //alert(errorThrown);
              lote.prop('disabled', false);
                 }
             });
         }
         else
         {
-          
           $("#op_recoleccion").slideUp();
           $("#enc_offline").slideUp();
         }

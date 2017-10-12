@@ -85,9 +85,13 @@
 	<div class="estilo_campos" id='campos'>
 		<?php }?>
 			<h2>
-			Señor(a) Monitor(a):
 			<?php 
-		 		echo $usuario."<br> ";
+			$tex_rol = "Monitor";
+			if (isset($rol))
+			{
+				if ($rol != 2){$tex_rol ="Coordinador";}
+			}
+		 		echo "Señor(a) ".$tex_rol."(a): ".$usuario."<br> ";
 		 		if (isset($mensaje))
 		 			echo $mensaje;
 	    	if(isset($encuestar))

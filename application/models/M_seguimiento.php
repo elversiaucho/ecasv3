@@ -35,7 +35,7 @@ class M_seguimiento extends CI_Model {
   	  	|| $tabla == 'v_det_est' || $tabla == 'v_det_est2' || $tabla == 'v_estxcurso' || $tabla == 'v_detnoe'){
   	  	$codicion = " where SEDE_CODIGO like '%$codColegio%' and SEDE_NOMBRE like '%$sedeNombre%'";
 	  }
-	  
+	 	  
 	  $rs = mysql_query("SELECT COUNT(*) FROM $tabla".$codicion );
 	  $row = mysql_fetch_row($rs);
 	  $result["total"] = $row[0];
@@ -47,6 +47,7 @@ class M_seguimiento extends CI_Model {
 	      $items[] = $row;
 	  }
 	  $result["rows"] = $items;
+	  mysql_close($conn);
 	 return $result;
 	 }
 

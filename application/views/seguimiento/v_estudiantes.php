@@ -95,9 +95,12 @@
         <th field="CURSO" width="90">CURSO</th>
         <th field="MATRICULADOS" width="90">MATRICULADOS</th>
         <th field="REGULARES" width="90">REGULARES</th>
-        <th field="ENCUESTADOS" width="100">ENCUESTADOS</th>
+        <th field="CARGADAS_BD" width="100">CARGADAS <BR> EN BD</th>
+        <th field="ENC_COMPLETA" width="100">ESTUDIANTES<BR> ENC. COMPLETA</th>
+        <th field="ENC_INCOMPLETA" width="100">ESTUDIANTES<BR> ENC. INCOMPLETA</th>
+        <th field="REGISTRADAS" width="100">REGISTRAGAS <BR>WEB+OFF</th>
         <th field="NO_ENCUESTADOS" width="120">NO_ENCUESTADOS</th>
-        
+        <th field="ID_LOTE" width="90">ID LOTE</th>
         
       </tr>
     </thead>

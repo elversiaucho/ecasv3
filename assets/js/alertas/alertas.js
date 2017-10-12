@@ -46,7 +46,7 @@ $(document).ready(function() {
 			     },
 			     error: function(errorThrown){
         	 	 alert(errorThrown);
-        	 	 alert("Ocurrio un error en AJAX!");
+        	 	 alert("Ocurrio un error al consultar la información del lote.");
         	 	 }	
 			});
           }else $("#ms").text("Seleccione un lote").fadeToggle(3000);

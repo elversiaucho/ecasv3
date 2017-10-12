@@ -4426,9 +4426,8 @@
 										No
 									</label>
 								</div>
-								<p class="t_error" id="error_D40"><?php echo strip_tags(form_error('D40')); ?></p>
 							</div>
-							
+							<p class="t_error col-lg-12 col-md-12 col-sm-12" id="error_D40"><?php echo strip_tags(form_error('D40')); ?></p>
 						</div>
 						<div class="container"></div>
 							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
@@ -5272,7 +5271,7 @@
 								</label>
 							</div>
 						</div>
-						<span class="t_error" id="ErrE66"><?php echo strip_tags(form_error('E55')); ?></span>
+						<span class="t_error col-xs-12 col-sm-12 col-lg-12" id="ErrE66"><?php echo strip_tags(form_error('E55')); ?></span> 
 					</div>
 
 					<!-- Pregunta 69-->								

@@ -33,9 +33,8 @@
          	<select id ='novedad_lt' name="novedad_lt" >
          		<option value=''>Selecciona..</option>
          		<option value='1' <?php echo  set_select('novedad_lt', '1');?>>Ocupado</option>
-         		<option value='2' <?php echo  set_select('novedad_lt', '2');?>>Ausente Temporal</option>
+         		<option value='2' <?php echo  set_select('novedad_lt', '2');?>>No asistió</option>
          		<option value='3' <?php echo  set_select('novedad_lt', '3');?>>Rechazó</option>
-         		<!-- <option value='4' <?php echo  set_select('novedad_lt', '4');?>>Activo</option> -->
          	</select>
          	<p class="t_error"><?php echo strip_tags(form_error('novedad_lt')); ?></p>
         </div>

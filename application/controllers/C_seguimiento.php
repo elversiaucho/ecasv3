@@ -11,16 +11,12 @@ class C_seguimiento extends CI_Controller {
    }
 function index()
    {  
-   
-  if (isset($_GET['vista'])){
-    if ($_GET['vista']!=''){
-       $this->load->view('seguimiento/'.$_GET['vista']);
-    }
-    //echo $_GET['vista'];
-  }else
+    $vista = $this->input->get('vista',TRUE);
+    if ($vista!=''){
+       $this->load->view('seguimiento/'.$vista);
+    }else
       echo "No hay reporte para esta opción";
-
-       }
+   }
 
 /*--------------------------*/
 function ver_seguimiento($vista){

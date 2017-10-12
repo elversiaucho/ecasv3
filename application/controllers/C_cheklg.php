@@ -74,8 +74,9 @@ class C_cheklg extends CI_Controller {
 		$rol = $session_data['rol'];
 		$data['cod_mpio'] = $session_data['mpio_user'];
 		$data['usuario'] = $session_data['usuario'];
+		$data['rol'] = $rol;
 		if ($rol==1 || $rol == 3)
-			$this->load->view('v_reportes',$data);
+			$this->load->view('v_reportes',$data); 
 		else
 		 echo "Usuario no tiene privilegios para realizar esta accíon. rol:".$rol;	
 
@@ -172,10 +173,16 @@ function rep_monitor(){
 
 	function ver_cerralt(){
 	$mensaje ="";
+	$caso = 0;
 	$data[]= array();
 	$session_data = $this->session->userdata('ingreso');
     $usuario= $session_data['usuario'];
-   	$lotes = $this->m_ecas->get_lotes($usuario,0);//caso puede ser 2.todos.. 0.solo abiertos... 1.solo cerrados. del usuarios
+    //print_r($session_data);
+  /*  if ($session_data["rol"]==1)//Muestra todos los lotes de la ciudad abiertos para el monitor
+    {
+    	$caso = 2;
+    }*/
+   	$lotes = $this->m_ecas->get_lotes($usuario,$caso);//caso puede ser 2.todos.. 0.solo abiertos... 1.solo cerrados. del usuarios
    	switch ($lotes) {
     	case (is_array($lotes)):
     	  	$mensaje="---";

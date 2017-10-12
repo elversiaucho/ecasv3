@@ -93,20 +93,20 @@
         value ="<?php if (isset($lote["sede_nombre"])){echo $lote["sede_nombre"];} else echo set_value('sede_nombre');?>"></div>    <!-- sede_name para que no se envíe a la verificacion del lote -->
    <!--  -->
 
-    <section id='info_lt'> 
+    <section id='info_lt'>
   
       <p>Total de encuestas web: <span id="tot_encuestas">
       <?php if (isset($inf_lote["total_e"])){
         echo $inf_lote["total_e"];
         }?>
     </span></p>
-      <p>Total de encuestas <b>completas</b> web:<span id="tot_completas">
+      <p>Total de encuestas <b>completas:<span id="tot_completas">
         <?php if (isset($inf_lote2["e_completas"])){
         echo $inf_lote2["e_completas"][0]->completas;
            }?>
 
       </span></p>
-      <p>Total de encuestas <b>incompletas</b> web:<span id="incompletas">
+      <p>Total de encuestas <b>incompletas:<span id="incompletas">
         <?php if (isset($inf_lote2["incompletas"])){
         echo $inf_lote2["incompletas"][0]->incompletas;
            }?>

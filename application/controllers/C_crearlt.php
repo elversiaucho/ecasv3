@@ -380,7 +380,7 @@ function otra_nov($valor){
           $data_l['inf_lote']="";
           if (is_numeric(set_value('nro_lote'))){//consulta la info del lote
              $data_l['inf_lote']=$this->m_ecas->get_infolt(set_value('nro_lote'));
-             //$data_l['inf_lote']=['inf_lote']);
+             $data_l['total_e']=$this->input->post("total_e");
           }
           $this->load->view('v_menult',$data);
           $this->load->view('view_cerrarlt',$data_l);
@@ -451,7 +451,7 @@ function otra_nov($valor){
 
       if (array_key_exists('alerta',$_POST)){
            $valida = FALSE;
-           echo "viene de Alerta";
+          // echo "viene de Alerta";
          }
         //echo gettype($this->form_validation->run());
         
@@ -478,7 +478,7 @@ function otra_nov($valor){
           
            if (isset($_POST['nro_lote'])){//consulta la info del lote
               $data_l['inf_lote2']=$this->m_ecas->get_infolt(set_value('nro_lote'));
-              //$data_l['inf_lote']=['inf_lote']);
+              
             }
          // $this->load->view('v_menult',$data);
           $this->load->view('viewVerifica_lote',$data_l);

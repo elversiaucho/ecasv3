@@ -35,10 +35,12 @@ function index(){
 		$nro_slide= $_GET["seguir"];
 	//echo $nro_slide;
 	
-	}else
-		{$id_encuesta = $_POST['id_e'];
+	}else if ($this->input->post('id_e')!=NULL)
+		{
+			$id_encuesta = $this->input->post('id_e');
 		//echo "deste formulario".$id_encuesta.gettype($id_encuesta);
 		}
+		else {redirect('/index.php/C_ecas_lg','refresh');}
 	$data_encuesta = $this->m_ecas->get_encuesta($id_encuesta);
 	if (is_array($data_encuesta)){
 		

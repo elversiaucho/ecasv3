@@ -29,7 +29,7 @@
    <!--  <div class="col-md-8">Información.</div> -->
   
     <table id="tt" title="Novedades de Establecimientos Educativos" class="easyui-datagrid" style="width:100%;height:400px"
-      url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_novIE" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#toolbar">
+      url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_novie" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#toolbar">
     <thead>
       <tr>
         <th field="MUNICIPIO" width="100">MUNICIPIO</th>
@@ -44,7 +44,7 @@
   Fila por Establecimiento Educativo
   <!-- formatter="" -->
   <div id="toolbar">
-  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_novIE'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_novie'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
   </div>
 
     <div id='ms' class="alert-danger">

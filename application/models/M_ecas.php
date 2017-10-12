@@ -20,16 +20,16 @@ function actualizar_encuesta($form_data,$id_encuesta)
 			$this->db->where('ID_ENCUESTA',$id_encuesta);
 			$this->db->update('encuesta3', $form_data);
 			//echo "Filas actualizadas".$this->db->affected_rows();
-			if ($this->db->affected_rows() == 1)
+			$resultado = $this->db->affected_rows();
+
+			if ($resultado == 1)
 				{
 				//print_r($this->db->last_query());
 				return 1;
 				}
 			else {	
-				//print_r($this->db->last_query());
-			//	var_dump($this->db->error());
 				return 2;//error al actualizar
-			  }
+	     		  }
 		}
 		else{
 			return 3;
@@ -62,9 +62,9 @@ function m_cerrar_e($id_encuesta,$info){
 	
 	$this->db->where('ID_ENCUESTA',$id_encuesta);
 	$this->db->update('encuesta3',$info);
-	if($this->db->affected_rows()==1)
-		return 1;
-			//Se actualizó el lote"
+	if($this->db->affected_rows()==1){
+		return 1;//Se cerro la encuesta"
+	}
 	else
 		return 0;
 }
@@ -162,6 +162,10 @@ function get_lotes($usuario, $caso=""){
 	$cod_mpio= $session_data['mpio_user'];
 	$this->db->select('ID_LOTE, mtra_colegios.SEDE_NOMBRE ,ESTADO_LOTE');
 	$this->db->from('lote');
+    if ($session_data["rol"]==1)//Muestra todos los lotes de la ciudad abiertos para el monitor
+    {
+    	$caso = 2;
+    }
 	switch ($caso) {
 		case 0: case 1:
 			$this->db->join('mtra_colegios',"lote.COD_COLEGIO_OP=mtra_colegios.Cod_colegio_op AND USUARIO ='".$usuario."' AND ESTADO_LOTE='".$caso."'");//caso 0 lote abierto 1 cerrado 
@@ -177,6 +181,12 @@ function get_lotes($usuario, $caso=""){
 				join encuesta3 ON (lote_enc = id_lote))";
 				$result = $this->db->query($sql);
 			break;
+			//todos los lotes de la ciudad cuando el rol es coordinador
+		case 2:
+		  $this->db->join('mtra_colegios',"lote.COD_COLEGIO_OP=mtra_colegios.Cod_colegio_op AND lote.COD_MUNI ='".$cod_mpio."' AND ESTADO_LOTE= 0");//caso 0 lote abierto 1 cerrado 
+			$result = $this->db->get();
+
+		break;
 		
 		default:
 			$this->db->join('mtra_colegios',"lote.COD_COLEGIO_OP=mtra_colegios.Cod_colegio_op AND USUARIO ='".$usuario."'");//todos los lotes

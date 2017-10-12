@@ -39,23 +39,9 @@ function index()
          if($this->form_validation->run()==FALSE){
             
            
-            $data['usuarios'] = $this->m_ecas->get_usuarios(null,$session_data['mpio_user']);// usaurio con rol de monitor 
-             $data['colegios'] = $this->m_ecas->get_colegio(); 
-            //print_r($data);
-            //exit();
-            //var_dump($this->get_users());
-            //var_dump($this->ver_pre_lotes());
-            //$data['colegios'] = $this->m_ecas->get_colegio();
-            //$colegio = set_value('IE');
-            //$lugar= strpos($colegio, '-');
-           /* if ($lugar>0)
-              $colegio = substr($colegio, 0,$lugar);
-            if (is_numeric($colegio)){
-
-                $data['grados'] = $this->m_ecas->mget_grado($colegio);
-                //is_array
-              }
-              */
+            $data['usuarios'] = $this->m_ecas->get_usuarios(2,$session_data['mpio_user']);// usuario con rol de monitor 
+            $data['colegios'] = $this->m_ecas->get_colegio(); 
+        
               if (!$this->input->is_ajax_request()) {
                 
               $this->load->view("encabezado",$ingreso);

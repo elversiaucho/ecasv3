@@ -1,5 +1,9 @@
-
-
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
 
   <div id='campo' class="estilo_campos">
   <?php 
@@ -9,23 +13,9 @@
   ?>
 
   	  <a  class="btn" id="rep_monitor">Reporte Monitores</a>
-      <?php 
-      $ver=0;
-      if (isset($usuario)) {
 
-            $usuario_base = array('elver', 'dcpenab','cceballosm', 'lesanchezm', 'jlfzorrom','ecaslg');
-            for($i=0; $i<sizeof($usuario_base); $i++) {
-                if ($usuario_base[$i]==$usuario) {
-                  $ver=1;
-                  break;
-                }
-             }
-
-          if ($ver ==1 ) {
-        ?>
-      <a  class="btn" id="full_monitor">Reporte Monitores Completo</a>
-     <?php }
-        }?>
+     <!--  <a  class="btn" id="full_monitor">Reporte Monitores Completo</a> -->
+    
       <div id='result'></div>
    </div><!--Fin Reportes-->   	
 
@@ -86,4 +76,8 @@ $(document).ready(function(){
 
 //---------------------
 </script>
+
+
+</body>
+</html>
 

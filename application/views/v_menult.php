@@ -3,9 +3,9 @@
 
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>css/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/menu-seg.css">
-  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+  <script src="<?php echo base_url()?>js/jquery-ui.js"></script>
 
 
 <style type="text/css">
@@ -272,7 +272,7 @@ function scriptCargado() {
 			     },
 			     error: function(errorThrown){
         	 	 alert(errorThrown);
-        	 	 alert("Ocurrio un error en AJAX!");
+        	 	 alert("Ocurrio un error al intentar cerrar el lote.");
         	 	 }	
 			});
 

@@ -417,13 +417,23 @@ $(document).ready(function(){
 	});
 
 	$("#monitor").click(function(){
-				$("#form_cierre").show();
+	  if ($("#form_cierre").is(":hidden"))
+		$("#form_cierre").show();
+	  else 
+	  	{
+	  	 $("#clave").val("");
+		 $("#motivo").val("");
+	  	 $("#form_cierre").slideUp();
+	  	 
+	  	}
+	});
+
+	$("#clave").focus(function(){
+		$("#err_clave").text("");
 			});
-			$("#clave").focus(function(){
-				$("#err_clave").text("");
-			});
-			$("#motivo").focus(function(){
-				$("#err_motivo").text("");
+
+	$("#motivo").focus(function(){
+		$("#err_motivo").text("");
 			});
 			
 			/*validaciones de las preguntas*/

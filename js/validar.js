@@ -393,23 +393,29 @@ function ocultos(id)
                       $('#D53').slideDown("slow");
                       $('input:radio[name=D52]').prop('checked',false);
                       $('input:radio[name=D53]').prop('checked',false);
+                      $('.D54').prop('checked',false);
             break;
         case 'D51no': $("#D52no").prop("checked",true);
                       $('#D52').slideUp("slow");
-                      if($('input:radio[name=D49]:checked').val()!=1){
+                      if($('input:radio[name=D49]:checked').val()!=1 && $("input:radio[name=D50_51]:checked").val()!=1){
                         $('.D54').prop('checked',false);
                         $("#D54g_cual").val('');
-                        $('#D53no').prop("checked",false);
+                        $('input:radio[name=D53]').prop('checked',false);
                         $('#D53').slideUp("slow");
                         $('#D54').slideUp("slow");
                       }
             break;
         case 'D50_si':
                 $('#D53').slideDown("slow");
+                $('input:radio[name=D53]').prop('checked',false);
+                $('.D54').prop('checked',false);
          break;
-        case 'D50_no': 
+        case 'D50_no':
                 if($('input:radio[name=D49]:checked').val()!=1 && $('input:radio[name=D51]:checked').val()!=1){
+                    $('input:radio[name=D53]').prop('checked',false);
+                    $('.D54').prop('checked',false);
                     $('#D53').slideUp("slow");
+                    $("#D54").slideUp();
                 }
 
         break;
@@ -418,13 +424,14 @@ function ocultos(id)
                       $('#D53').slideDown("slow");
                       $('input:radio[name=D50]').prop('checked',false);
                       $('input:radio[name=D53]').prop('checked',false);
+                      $('.D54').prop('checked',false);
                   
             break; 
         case 'D49no':
                      $('#ver_D49a').slideUp("slow");
                      $('#D50no').prop("checked",true);
-                      if($('input:radio[name=D51]:checked').val()!=1){
-                        $('#D53no').prop("checked",false);
+                      if($('input:radio[name=D51]:checked').val()!=1 && $("input:radio[name=D50_51]:checked").val()!=1){
+                        $('input:radio[name=D53]').prop('checked',false);
                         $('.D54').prop('checked',false);
                         $("#D54g_cual").val('');
                         $('#D53').slideUp("slow");

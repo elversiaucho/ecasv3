@@ -16,26 +16,22 @@
 		<header>
 			 <section id="form_cierre" class="form-group" style="display:none;">
 			   <div class="row">
-				 <div class="col-lg-5" ></div>
-				 
-					<label class="col-lg-2 control-label">Digita tu Clave:</label>
-				  	<input class="col-lg-1" type="password" name="clave" id="clave" autocomplete="off"/>
-				  	
+				 <div class="col-lg-6 col-sm-6" ></div>
+				 	<label class="col-lg-2 col-sm-2  control-label">Digita tu Clave:</label>
+				  	<input class="col-lg-1 col-sm-1" type="password" name="clave" id="clave" autocomplete="off"/> 	
 			 </div>
-			 <!--div class="row"-->
 			 	<div class="col-lg-7"></div>
 			    <span id="err_clave" class="t_error col-lg-4"></span>
-			 <!--/div-->
 			
 			<div class="row">
-				 <div class="col-lg-5" ></div>
+				 <div class="col-lg-6 col-sm-6" ></div>
 				 
-					<label class="col-lg-2 control-label">Motivo cierre:</label><br>
-					<textarea class="col-lg-2" name="motivo" id="motivo" onkeypress="return soloLetras(event);"></textarea> 
-					<div class="col-lg-2">
+					<label class="col-lg-2 col-sm-2 control-label">Motivo cierre:</label><br>
+					<textarea class="col-lg-2 col-sm-2" name="motivo" id="motivo" onkeypress="return soloLetras(event);"></textarea> 
+					<div class="col-lg-2 col-sm-2">
 						<a class="btn" id="btn_close" >Cerrar</a>
 					</div> 
-				<div class="col-lg-7"></div>
+				<div class="col-lg-7 col-sm-7"></div>
 				<span id="err_motivo" class="t_error col-lg-4"></span>
 			</div>
 			<div class="row">
@@ -3386,7 +3382,7 @@
 						
 			 </div>
 			 	   <p class="sub_t" id="mensa1" style="display: none;">
-				 	No dependas de sustancias psicoactivas para demostrar qué tan bueno(a) eres y las cosas que puedes lograr. Si has empezado a consumir este tipo de sustancias, comunícate con un adulto de confianza y/o llama a la línea  01 8000 11 24 40.
+				 	No dependas de sustancias psicoactivas para demostrar qué tan bueno(a) eres y las cosas que puedes lograr. Si has empezado a consumir este tipo de sustancias, comunícate con un adulto de confianza, llama a la línea <b>141</b>. 
 				 </p>					
 				 
 			  	<div class="container">
@@ -3412,7 +3408,6 @@
 					<!-- Pregunta 8-->
 					<div class="row form-group">
 						<label class="mg-top-label col-lg-4 col-md-6 col-sm-6 col-xs-12">28. ¿Has tenido relaciones afectivas cercanas?
-
 						</label>
 						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6">
 							<div class="radio radio-primary">
@@ -4386,7 +4381,7 @@
 								</div>
 							</div>	
 
-							<p class="sub_t" id="mensa2" style="display: none;"> Si tú o alguien que conoces ha vivido  alguna de las situaciones anteriores comunícate con un adulto de confianza y/o llama a la línea  01 8000 11 24 40.</p>					
+							<p class="sub_t" id="mensa2" style="display: none;"> Si tú o alguien que conoces ha vivido  alguna de las situaciones anteriores comunícate con un adulto de confianza, llama a la línea <b>141</b>, y/o ingresa a la página web <b>www.teprotejo.org</b></p>					
 
 							<div class="container">			
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
@@ -4661,7 +4656,7 @@
 							<span class="t_error"><?php echo strip_tags(form_error('D54[]')); ?></span>
 						</div>	
 				</div>
-				<p class="sub_t" id="mensa3" style="display: none;"> Si tú o alguien que conoces ha vivido  alguna de las situaciones anteriores comunícate con un adulto de confianza y/o llama a la línea  01 8000 11 24 40.</p>					
+				<p class="sub_t" id="mensa3" style="display: none;"> Si tú o alguien que conoces ha vivido  alguna de las situaciones anteriores comunícate con un adulto de confianza, llama a la línea <b>141</b>, y/o ingresa a la página web <b>www.teprotejo.org</b></p>					
 				<div class="container">
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
 						<a href="javascript:void(0)" class="btn btn-raised btn-warning arrow-l" style="position:relative;right: 0px;" >Anterior</a>
@@ -5699,7 +5694,7 @@
 		                },
 		                error: function(errorThrown)
 		                {
-		                 alert("Ocurrio un error en AJAX!");
+		                 alert("Ocurrio un error al intentar cerrar la encuesta.");
 		                 alert(errorThrown);
 		                }
 	            });

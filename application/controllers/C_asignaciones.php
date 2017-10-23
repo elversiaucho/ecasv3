@@ -8,15 +8,11 @@ class C_asignaciones extends CI_Controller {
  		$this->load->model('m_asignaciones',"m_asigna");
 
     $this->load->model('m_ecas');
-      $this->load->library('form_validation');
-      
-     /* $session_data = $this->session->userdata('ingreso');
-      $usuario = $session_data['usuario'];
-      $rol = $session_data['rol'];
-      $mpio_user = $session_data['mpio_user'];
-      $ingreso['ingreso'] = 1;
-      $ingreso['usuario']= $usuario;*/
-      $this->load->helper('mysql_to_excel_helper');
+    $this->load->library('form_validation');
+    
+    $this->db->cache_delete($this->router->fetch_class(), $this->router->fetch_method());
+    $this->db->simple_query('SET NAMES \'utf-8\'');  
+    $this->load->helper('mysql_to_excel_helper');
  		//$this->load->helper('url');
    }
 function index()
@@ -128,33 +124,8 @@ function asignarUsers(){
 }
 
 
- function conn(){
-   $conn = @mysql_connect('192.168.1.200','dimpe','D1mP3D3s4rr0ll0');
-    if (!$conn) {
-      die('Could not connect: ' . mysql_error());
-    }
-    mysql_select_db('dane_ecas_v2', $conn);
-    return $conn;
- }
-
- function ver_pre_lotes(){
- 
- /**/
-  //$result["rows"] = $this->m_asigna->get_pre_lotes(1, 10);
-
- }
-
  public function get_lotes(){
  
-  //echo $page;
-  //include 'conn.php';
-  $conn = @mysql_connect('192.168.1.200','dimpe','D1mP3D3s4rr0ll0');
-    if (!$conn) {
-      die('Could not connect: ' . mysql_error());
-    }
-    mysql_select_db('dane_ecas_v2', $conn);
-    mysql_query("SET NAMES UTF8");
-
     $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
     $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
     $codColegio = isset($_POST['codColegio']) ? mysql_real_escape_string($_POST['codColegio']) : '';
@@ -169,24 +140,22 @@ function asignarUsers(){
   
   //$where = "itemid like '$itemid%' and productid like '$productid%'";
   //$rs = mysql_query("select count(*) from item where " . $where);
-  $qry = "select COUNT(*) from asig_monitor A join mtra_colegios M
+  $qry = "select COUNT(*) as total from asig_monitor A join mtra_colegios M
 on (A.cod_colegio = M.SEDE_CODIGO AND COD_MUNI ='$mpio' AND SEDE_CODIGO like '%$codColegio%' and SEDE_NOMBRE like  '%$sedeNombre%')";
-  $rs = mysql_query($qry);
-  $row = mysql_fetch_row($rs);
-  $result["total"] = $row[0];
-  $rs = mysql_query("select * from asig_monitor A join mtra_colegios M
+  $rs = $this->db->query($qry);
+  $row = $rs->row();
+  $result["total"] = $row->total;
+   
+  $rs = $this->db->query("select * from asig_monitor A join mtra_colegios M
 on (A.cod_colegio = M.SEDE_CODIGO AND COD_MUNI ='$mpio' AND (SEDE_CODIGO like '%$codColegio%' and SEDE_NOMBRE like  '%$sedeNombre%')) limit $offset,$rows");
-  /*print_r($rs);
-  exit();*/
-  $items = array();
-  while($row = mysql_fetch_object($rs)){
-    //array_push($items, $row);
-    $items[] = $row;
+   $items = array();
+  foreach ($rs->result_array() as $row) {
+     $items[] = $row;
   }
   $result["rows"] = $items;
- $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($result));
- // echo json_encode($result);
+  $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($result));
  }
+
 
 public function export_excel(){
   $session_data = $this->session->userdata('ingreso');

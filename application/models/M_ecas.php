@@ -526,26 +526,7 @@ function get_usuarios($rol='', $ciudad = ''){
 
       }
 
-function get_rep_monitor($op){
-	$result=null;
-	$this->db->select("SET NAMES UTF8");
-	//mysql_query("SET NAMES UTF8");
-	if ($op==1){
-			$session_data = $this->session->userdata('ingreso');
-			$mpio= $session_data['mpio_user'];
-			$result = $this->db->query("CALL rep_monitorv3('".$mpio."')");
-		}
-	 else
-	 	$result = $this->db->query("CALL full_monitorv3()");
-	
-	  if($result->num_rows()>0)
-	    {
-	       return $result->result();
-	    }else{
-	       return 2;
-	    }
-  
-}
+
   ####fin funciones
 }
 ?>

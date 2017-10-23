@@ -82,6 +82,7 @@ class C_cheklg extends CI_Controller {
 
 	}
 
+
 function rep_monitor(){
    $op= $_GET['op'];
    $datos['reporte'] = $this->m_ecas->get_rep_monitor($op);
@@ -102,7 +103,7 @@ function rep_monitor(){
 			foreach ($datos['reporte'] as $fila) 
 				{
 				$tabla.= '<tr>
-				<th>'.$fila->Monitor.'"</th>
+				<th>'.$fila->Monitor.'</th>
 				<th>'.$fila->Nro_lote.'</th>
 				<th>'.$fila->SEDE_CODIGO.'</th>
 				<th>'.$fila->SEDE_NOMBRE.'</th>

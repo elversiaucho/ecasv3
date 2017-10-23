@@ -33,7 +33,8 @@
 			<a  class="btn btn-menu1" id="cerrar_lt">Cerrar Lote</a>
 			<a  class="btn btn-menu1" id="nov_lt">Novedad <br>Lote</a>
 			<a  class="btn btn-menu1" id="nov_ie">IE Novedad</a>
-			<a  class="btn btn-menu1" id="reportar">Reportes </a>	
+			<!-- <a  class="btn btn-menu1" id="reportar">Reportes </a>	 -->
+			<a href="<?php echo base_url('index.php/C_reporte');?>" class="btn btn-menu1"  id="">Reporte</a>	
 			<a href="<?php echo base_url('index.php/C_alertas');?>" class="btn btn-menu1"  id="">Alertas</a>	
 			<?php
 				}
@@ -106,14 +107,15 @@
 </div>
     
 </div>
-</body>
 <script type="text/javascript" src= "<?php echo base_url('js/menu.js')?> "></script>
-<!--<script type="text/javascript" src="<?php echo base_url()?>js/bootstrap.js"></script>-->
 <script type="text/javascript" src="<?php echo base_url()?>js/material.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>js/validar.js"></script>
 <?php if ($rol == 3){?>
 	<script type="text/javascript" src="<?php echo base_url();?>assets/js/asignaciones/jquery.easyui.min.js"></script> 
 <?php }?>
+
+</body>
+
 </html>
   <style>
 		/*Quita flecha del campo número*/

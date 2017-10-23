@@ -32,24 +32,7 @@ function ver_seguimiento($vista){
 function down_excel($reporte =""){
   to_excel($this->m_seguimiento->get_rep($reporte), $reporte);
 }
-      
+    
+
+
    }
-/*
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
- 
-class Home extends CI_Controller {
- 
- public function __construct()
- {
- parent::__construct();
- $this->load->helper('mysql_to_excel_helper');
- }
- 
- public function index()
- {
- $this->load->model('usuarios');
- to_excel($this->usuarios->get(), "archivoexcel");
- }
- 
-}
-*/

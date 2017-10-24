@@ -25,8 +25,8 @@ class M_seguimiento extends CI_Model {
 	  //include 'conn.php';
 	 
 	   //$conn=conn();
-  	  if ($tabla=='v_estadoie' || $tabla=='v_estadoCurso' 
-  	  	|| $tabla=='v_detCurso' || $tabla =='v_estudiantes' 
+  	  if ($tabla=='v_estadoie' || $tabla=='v_estadocurso' 
+  	  	|| $tabla=='v_detcurso' || $tabla =='v_estudiantes' 
   	  	|| $tabla == 'v_det_est' || $tabla == 'v_det_est2' || $tabla == 'v_estxcurso' || $tabla == 'v_detnoe'){
   	  	$codicion = " where SEDE_CODIGO like '%$codColegio%' and SEDE_NOMBRE like '%$sedeNombre%'";
 	  }

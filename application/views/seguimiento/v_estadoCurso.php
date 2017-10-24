@@ -29,7 +29,7 @@
    <!--  <div class="col-md-8">Información.</div> -->
   
     <table id="t1t1" title="Estado de cursos" class="easyui-datagrid" style="width:100%;height:400px"
-      url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_estadoCurso" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#toolbar">
+      url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_estadocurso" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#toolbar">
     <thead> 
       <tr>
         <th field="MUNICIPIO" width="100">MUNICIPIO</th>
@@ -46,7 +46,7 @@
   Fila por curso
   <!-- formatter="" -->
   <div id="toolbar">
-  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_estadoCurso'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_estadocurso'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
   <span>CODIGO SEDE:</span>
     <input maxlength="13" id="cod_colegiot1" onkeypress="return solonumeros(event);" style="line-height:26px;border:1px solid #ccc">
     <span>SEDE NOMBRE:</span>
@@ -57,7 +57,7 @@
   <hr>
 
    <table id="t2t2" title="Resultados de cursos por establecimiento" class="easyui-datagrid" style="width:100%;height:400px"
-      url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_detCurso" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#down_detalle">
+      url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_detcurso" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#down_detalle">
     <thead> 
       <tr>
         <th rowspan ="2" field="MUNICIPIO" width="100">MUNICIPIO</th>
@@ -86,7 +86,7 @@
   Fila de Establecimiento Educativo
   <!-- formatter="" -->
   <div id="down_detalle">
-  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_detCurso'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
+  <a  href = '<?php echo base_url('index.php/C_seguimiento/down_excel/v_detcurso'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true" >Descargar</a>
   <span>CODIGO SEDE:</span>
     <input maxlength="13" id="cod_colegiot2" onkeypress="return solonumeros(event);" style="line-height:26px;border:1px solid #ccc">
     <span>SEDE NOMBRE:</span>

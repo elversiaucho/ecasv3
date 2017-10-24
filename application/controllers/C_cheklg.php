@@ -143,7 +143,7 @@ function rep_monitor(){
 		if ($data['colegios']!=false)
 			$this->load->view('v_novedad_ie',$data);	
 		else
-			echo "No se encuentra Ningún  usuario";
+			echo "No se encuentra ningún  Colegio para cerrar";
 		
 	}
 

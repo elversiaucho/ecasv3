@@ -96,11 +96,8 @@ function asignarUsers(){
   $data =array();
   $data["codiError"] = 1;
   $data["usuario"] = "";
-
   
-  //if (isset($_POST['ids']))
-    //echo $_POST['ids'];
-  foreach ($_POST as $key => $value) {
+  foreach ($this->input->post() as $key => $value) {
         $data[$key]=$value;
     }
     if (isset($data['usuario']) && isset($data['asignador']) && isset($data['ids'])){
@@ -118,8 +115,7 @@ function asignarUsers(){
       }
   }
   $this->output->set_content_type('application/json', 'utf-8')->set_output(json_encode($data));
-  //var_dump($data); 
-  //return json_encode($data);
+
 
 }
 

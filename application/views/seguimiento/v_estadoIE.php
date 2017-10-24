@@ -26,8 +26,6 @@
           <label class="col-sm-11">Seguimiento de Estado de Establecimientos Educativos</label>
 
 
-   <!--  <div class="col-md-8">Información.</div> -->
-  
     <table id="t1t1" title="Estado de Establecimientos Educativos" class="easyui-datagrid" style="width:100%;height:400px"
       url="<?php echo base_url()?>index.php/C_seguimiento/ver_seguimiento/v_estadoie" pagination="true" rownumbers="true" singleSelect ="true" toolbar="#toolbar">
     <thead>

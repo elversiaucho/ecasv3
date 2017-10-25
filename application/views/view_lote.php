@@ -8,7 +8,7 @@
        	echo form_open('index.php/C_crearlt', $attributes);
        	?>
 	 
-     	<h5>Por favor identificar y diligenciar las siguientes preguntas:</h5> 
+     	<h5>Por favor diligenciar los siguientes campos:</h5> 
         <br>
        <!--  <div class="row pregunta-lote">
             <div class="col-md-1 icono-lote"></div>
@@ -89,7 +89,7 @@
             <div class="col-md-1 icono-lote"></div>
             <label class="col-md-4">Seleccione el curso a encuestar:</label>
             <select class="col-md-7" id ='curso' name="curso">
-            <option value=''>Selecciona..</option>
+            <option value=''>Seleccione..</option>
             <option value='1' <?php echo  set_select('curso', '1');?> >1</option>
             <option value='2' <?php echo  set_select('curso', '2');?> >2</option>
             <option value='3' <?php echo  set_select('curso', '3');?> >3</option>
@@ -120,7 +120,7 @@
             <div class="col-md-1 icono-lote"></div>
             <label class="col-md-4">Jornada:</label>
          	<select  class="col-md-7" id ='jornada' name="jornada">
-         		<option value=''>Selecciona..</option>
+         		<option value=''>Seleccione..</option>
          		<option value='1' <?php echo  set_select('jornada', '1');?>>Mañana</option>
          		<option value='2' <?php echo  set_select('jornada', '2');?>>Tarde</option>
          		<option value='3' <?php echo  set_select('jornada', '3');?>>Única</option>
@@ -228,7 +228,7 @@ $(document).ready(function(){
                     $('#curso').prop('disabled', false);
                     // Limpiamos el select
                     grado.find('option').remove();
-                    
+                    grado.append("<option value=''>Seleccione...</option>");
                      //$('#ms').text(r);
                     $(r).each(function(clave, valor){ // indice, valor
                         if (valor.GRADO6 != 0)
@@ -292,8 +292,7 @@ $(document).ready(function(){
                     $('#curso').prop('disabled', false);
                     // Limpiamos el select
                     grado.find('option').remove();
-                    
-                     //$('#ms').text(r);
+                    grado.append("<option value=''>Seleccione...</option>");
                     $(r).each(function(clave, valor){ // indice, valor
                         //console.log(valor.grado_asignado);
                        grado.append("<option value='"+valor.grado_asignado+"'>GRADO "+valor.grado_asignado+"</option>")

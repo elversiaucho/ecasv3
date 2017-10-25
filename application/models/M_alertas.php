@@ -22,10 +22,10 @@ class M_alertas extends CI_Model {
 	  $condicion="";
 
 	  $condicion = "COD_MUNI = '".$mpio."' AND  alerta <> 'ok'";
-	  $rs = $this->db->query("SELECT COUNT(*) as total FROM v_AlertaLotes WHERE ".$condicion);
+	  $rs = $this->db->query("SELECT COUNT(*) as total FROM v_alertalotes WHERE ".$condicion);
 	  $row = $rs->row();
 	  $result["total"] = $row->total;
-	  $rs = $this->db->query("SELECT * FROM v_AlertaLotes WHERE ".$condicion." limit $offset,$rows");
+	  $rs = $this->db->query("SELECT * FROM v_alertalotes WHERE ".$condicion." limit $offset,$rows");
 	  //$items[]= array();	  
 	  foreach ($rs->result_array() as $row) {
 	  	$items[] = $row;

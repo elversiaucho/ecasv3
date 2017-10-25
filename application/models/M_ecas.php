@@ -443,7 +443,8 @@ function get_col_asignado(){
 	    //exit();
 	    $this->db->select("Cod_colegio_op, COD_MUNI, MUNICIPIO, SECTOR, CONCAT(SEDE_NOMBRE,' (',SEDE_CODIGO,')') AS SEDE_NOMBRE, GRADO6, GRADO7, GRADO8, GRADO8, GRADO9, GRADO10, GRADO11_OMAS, SEDE_CODIGO");
      	$this->db->from('mtra_colegios');//$this->db->from('mtra_colegios');
-     	$this->db->where_in('SEDE_CODIGO', $lista);
+     	$this->db->where('(Novedad is NULL or Novedad = 0)');
+     	$this->db->where_in('SEDE_CODIGO', $lista); 
      	$result = $this->db->get();
      	//echo $this->db->last_query();
      	if($result->num_rows()>0)

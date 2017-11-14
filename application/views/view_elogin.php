@@ -28,6 +28,7 @@
        <div class="contenido">
           <div id='cont_iz'>
             <h3>Bienvenido</h3>
+
              <span>A la primera estrategia de recolección de información vía web
                para la <span class="negrita"><b>Encuesta de Comportamientos y Factores de Riesgo en Niñas, 
                Niños y Adolescentes Escolarizados</b></span>.
@@ -45,7 +46,9 @@
              <!--div id="campos"-->
                 <?php 
                 $attributes = array('class' => '', 'id' => 'form_lote' , 'method' => 'POST');
-                echo form_open('index.php/c_cheklg', $attributes); ?>
+                echo form_open('index.php/c_cheklg', $attributes);
+                echo CI_VERSION;
+                 ?>
                	
                     <div class="login">
                          <label>Usuario:</label><br>

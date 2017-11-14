@@ -13,7 +13,7 @@ class M_seguimiento extends CI_Model {
 
 
 
-	 public function get_reporte($tabla ="" , $codColegio="", $sedeNombre=""){
+ function get_reporte($tabla ="" , $codColegio="", $sedeNombre=""){
 	  $page = isset($_POST['page']) ? intval($_POST['page']) : 1;
 	  $rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
 	  $offset = ($page-1)*$rows;
@@ -51,7 +51,7 @@ class M_seguimiento extends CI_Model {
 	  
 
 //**consulta toda la tabla del reporte para generar excel
- public function get_rep($vista ="")
+function get_rep($vista ="")
  {
   if ($vista != ''){
 	 $fields = $this->db->field_data($vista);

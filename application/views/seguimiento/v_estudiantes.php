@@ -95,11 +95,12 @@
         <th field="CURSO" width="90">CURSO</th>
         <th field="MATRICULADOS" width="90">MATRICULADOS</th>
         <th field="REGULARES" width="90">REGULARES</th>
-        <th field="CARGADAS_BD" width="100">CARGADAS <BR> EN BD</th>
-        <th field="ENC_COMPLETA" width="100">ESTUDIANTES<BR> ENC. COMPLETA</th>
-        <th field="ENC_INCOMPLETA" width="100">ESTUDIANTES<BR> ENC. INCOMPLETA</th>
-        <th field="REGISTRADAS" width="100">REGISTRAGAS <BR>WEB+OFF</th>
-        <th field="NO_ENCUESTADOS" width="120">NO_ENCUESTADOS</th>
+        <th field="CARGADAS_BD" width="100">CARGADAS <br> EN BD</th>
+        <th field="ENC_COMPLETA" width="100">ESTUDIANTES<br> ENC. COMPLETA</th>
+        <th field="ENC_INCOMPLETA" width="100">ESTUDIANTES<br> ENC. INCOMPLETA</th>
+        <th field="REGISTRADAS" width="100">REGISTRAGAS <br>WEB+OFF</th>
+        <th field="NO_ENCUESTADOS" width="90">NO ENCUESTADOS</th>
+        <th field="TIPO_RECOLECCION" width="120">TIPO DE <br>RECOLECCIÓN</th>
         <th field="ID_LOTE" width="90">ID LOTE</th>
         
       </tr>
@@ -244,6 +245,8 @@
         <th field="RECHAZARON_LG" width="90">RECHAZARON</th>
         <th field="MENORES_DE_12" width="90">MENORES</th>
         <th field="CON_MOTIVO_LG" width="90">OTRO MOTIVO</th>
+        <th field="TIPO_RECOLECCION" width="120">TIPO DE <br>RECOLECCIÓN</th>
+        <th field="ID_LOTE" width="90">ID LOTE</th>
         
               
       </tr>

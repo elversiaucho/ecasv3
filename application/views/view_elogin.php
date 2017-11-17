@@ -22,6 +22,10 @@
   color: #a52548;
 }
 </style>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
 
 
    <div id='cont_ppal'>
@@ -47,7 +51,7 @@
                 <?php 
                 $attributes = array('class' => '', 'id' => 'form_lote' , 'method' => 'POST');
                 echo form_open('index.php/c_cheklg', $attributes);
-                echo CI_VERSION;
+                #echo CI_VERSION;
                  ?>
                	
                     <div class="login">
@@ -83,7 +87,7 @@
      </div>
   </div>
    <footer>
-      <img  style="width:100%; height:10px;"src="<?php echo base_url()?>images/linea_dane.png" class="img-responsive"/ > 
+      <img  style="width:100%; height:10px;"src="<?php echo base_url()?>images/linea_dane.png" class="img-responsive"/> 
     Carrera 59 Nº 26 - 70 interior 1 - CAN Tel (571) 5978300 - Bogotá D. C... Colombia
   </footer>
 <script type="text/javascript">

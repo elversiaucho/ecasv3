@@ -70,9 +70,7 @@
     </thead>
   </table>
   <div id="toolbar">
-    <!-- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">Opcion</a> -->
-    <!-- <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Editar Monitor</a> -->
-   <!--  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a> -->
+ 
   </div>
 
     <div id='ms' class="alert-danger">

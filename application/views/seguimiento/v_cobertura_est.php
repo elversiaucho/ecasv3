@@ -105,8 +105,7 @@
 </div>
 </body>
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/asignaciones/jquery.easyui.min.js"></script> 
- <!-- <script type="text/javascript" src="<?php echo base_url();?>js/jquery.validate.min.js"></script> -->
-<!--  <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-dialog.js"></script> -->
+
 <script type="text/javascript">
 var base_url= '<?php echo base_url(); ?>';
 

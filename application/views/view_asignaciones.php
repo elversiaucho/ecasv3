@@ -43,14 +43,7 @@
           </select>
           
 </div>
-<!-- 
-  <div class="row pregunta-lote">
-            <div class="col-md-1 icono-lote"></div>
-            <label class="col-md-4" >Filtra establecimiento educativo a asignar: </label>
-            <input class="col-md-6 ui-widget" type="text" name="IE" id="IE" class="form-control" value = "<?php echo set_value('IE');?>" placeholder="Digita el Código o Nombre"/>
-            <button class="btn-success" id="buscar">Buscar</button>             
-      </div>
-     <p class="t_error" id="err_IE"><?php echo strip_tags(form_error('IE')); ?></p> -->
+
 
 <div>
           <table id="tt" title="Cursos" class="easyui-datagrid" style="width:100%;height:350px"
@@ -108,9 +101,7 @@
  <script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-dialog.js"></script>
  <script type="text/javascript" src="<?php echo base_url();?>assets/js/asignaciones/mis_funciones.js"></script>
  <script type="text/javascript" src="<?php echo base_url();?>js/jquery.validate.min.js"></script>
- 
- <!-- <script type="text/javascript" src="<?php echo base_url();?>assets/js/autocompletar/jquery-ui.js"></script> -->
-  
+   
 <script type="text/javascript">
 var base_url= '<?php echo base_url(); ?>'+'index.php/';
 

@@ -37,11 +37,6 @@
 
   <div id="tb" style="padding:3px">
     <a href='<?php echo base_url('index.php/C_seguimiento/down_excel/v_rep_monitor'); ?>' class="easyui-linkbutton" iconCls="icon-add" plain="true">Descargar</a>
- <!--    <span>CODIGO SEDE:</span>
-    <input id="cod_colegio" style="line-height:26px;border:1px solid #ccc">
-    <span>SEDE NOMBRE:</span>
-    <input id="SEDE_NOMBRE" style="line-height:26px;border:1px solid #ccc">
-    <a href="#" class="easyui-linkbutton" plain="true" onclick="buscarIe()">Buscar</a> -->
     
   </div>
      
@@ -59,7 +54,6 @@ $(document).ready(function(){
       $.ajax({
           url: '<?php echo base_url('index.php/C_cheklg/rep_monitor?op=1');?>',
           type: 'GET',
-          //data: $(this).serialize(),
           beforeSend : function(){
             $("#result").html("<img src='<?php echo base_url('images/ajax-loader.gif');?>'>");
           },

@@ -11,21 +11,12 @@
 
   	<?php
   
-    //echo $inf_lote[0]->total_e;
-    //if (is_array(var))
-    //var_dump($inf_lote);
-    
+   
 		$attributes = array('class' => '', 'id' => 'fr_cerrarlt' , 'method' => 'POST');
        	echo form_open('index.php/c_crearlt/cerrar_lt', $attributes);
        	?>
 	  
-      <!--div class="row">
-       	<label class="col-sm-3" >Por favor ingrese el número del lote a cerrar.:</label>
-       	 <div class="col-sm-9">
-            <input type="number" name="nro_lote" value = "<?php echo set_value('nro_lote');?>"/>
-            <p class="t_error"><?php echo strip_tags(form_error('nro_lote')); ?></p>
-        </div>
-      </div-->
+ 
     <div class="row form-group">
      <?#php echo json_encode($lotes);?>
      <div class="col-md-1 icono-lote"></div>

@@ -973,14 +973,7 @@ function E59($opcion){
 				}
 
 				break;
-			/*case 'C25'://de un radio
-			if($this->input->post('C25k')!= null and $texto == null){
-				if ($this->input->post('C25k')!=7){
-					$this->form_validation->set_message('cual','Ingresa el texto.');
-					return false;
-				}
-			}
-			break;*/
+	
 
 			case 'C23'://de un si no cosumo alcohol
 			if($this->input->post('C23')== 1 and $texto == null){
@@ -1118,11 +1111,7 @@ function E59($opcion){
 		}
 		else 
 			return true;
-		/*if ($opcion == '2' and $this->input->post('A8')==1)
-		{
-			$this->form_validation->set_message('D44rel_sex', "Por favor revisa tu respuesta, nos informaste tener hijos");
-			return false;
-		}*/
+	
 		
 
 	}
@@ -1175,9 +1164,7 @@ function E59($opcion){
 /**************************************/
 
 function cerrar_e(){
-	//$this->form_validation->set_rules("clave","Ingresa la clave",'required');
-	//$this->form_validation->set_rules("Motivo","Ingresa el Motivo",'required');
-	//if($this->form_validation->run()==FALSE)
+
 	$session_data = $this->session->userdata('ingreso');
     $usuario = $session_data['usuario'];
 	$clave = $this->input->post('clave');
@@ -1267,8 +1254,6 @@ function infolt(){// Obtiene el resumen del lote
             }
     }
     
-
-    //echo '{"firstname":"Jesper","surname":"Aaberg","phone":["555-0100","555-0120"]}';
 }
 
  function pre_encuesta(){
@@ -1375,18 +1360,12 @@ function infolt(){// Obtiene el resumen del lote
                    $data['mensaje']="<h4>Se creó la encuesta <b>".$encuesta['NRO_ENCUESTA']."</b> en el Lote <b>".$encuesta['LOTE_ENC']."</b>. Grado: ".$grado .". Curso: <b>".$curso ."</b> Colegio: <b>".$colegio."</b> (".$sede_cod.") </h4>";
                    $data['encuestar'] = 1;
                    $data['ingreso'] = 1;
-                   /*ob_start(); # open buffer
-	     		   include(base_url('application/views/v_recomenda.php');
-				   $data['v_recomenda'] = echo ob_get_contents();
-				   ob_end_clean(); # close buffer*/
-				   //var_dump($data['v_recomenda']);
+          
                    $this->load->view("encabezado",$data);
                    //print_r(json_encode($data));
 
                    $this->load->view("v_recomenda", $data);
-                  /* echo "<br><div class='pagination-centered'><a href=<?php echo base_url('index.php/c_ecas?id_e=".$encuesta['NRO_ENCUESTA']."');?> class='btn btn-raised btn-danger' style='position:auto; 0px;' >Iniciar</a></div>";
-                   */
-                   //$this->load->view('v_menult',$data);
+              
                    break;
                 case 2:
                    $data['mensaje']="Error al crear la encuesta";

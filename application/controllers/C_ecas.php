@@ -259,7 +259,7 @@ if ($nro_slide == 15){
 	$this->form_validation->set_rules('E60',"Marca Sí o No",'callback_E59');
 	$this->form_validation->set_rules('E61',"Marca Sí o No",'callback_E59');
 	$this->form_validation->set_rules('E62',"Marca Sí o No",'callback_E59');
-	$this->form_validation->set_rules('E63[]',"Selecciona una o más opciones",'callback_navega['.'Selecciona una o más opciones'.']');
+	$this->form_validation->set_rules('E74[]',"Selecciona una o más opciones",'callback_navega['.'Selecciona una o más opciones'.']');
 	$this->form_validation->set_rules('E64[]',"Selecciona una o más opciones",'callback_navega['.'Selecciona una o más opciones'.']');
 }
 
@@ -502,7 +502,7 @@ if ($nro_slide == 15){
 			}
 		if ($nro_slide >= 8){
 			//D26[]
-				for($i=0; $i<18;$i++) //limpia valores
+				for($i=0; $i<20;$i++) //limpia valores
 			         {
 			         	$form_data['D26'.$letra[$i]]=0;
 					 }
@@ -512,7 +512,7 @@ if ($nro_slide == 15){
 			       	 } 
 			      }
 					//D27[]
-				for($i=0; $i<18;$i++) //limpia valores
+				for($i=0; $i<19;$i++) //limpia valores
 			         {
 			         	$form_data['D27'.$letra[$i]]=0;
 					 }
@@ -593,13 +593,13 @@ if ($nro_slide == 15){
 	       	 		$form_data['E58'.$letra[$val-1]]=1;
 	       	 		} 
 		  }
-		for($i=0; $i<5;$i++) //limpia valores
+		for($i=0; $i<6;$i++) //limpia valores
 		         {
-		         	$form_data['E63'.$letra[$i]]=0;
+		         	$form_data['E74'.$letra[$i]]=0;
 				 }
-			if (is_array($this->input->post('E63'))){
-				 foreach ($this->input->post('E63[]') as $key => $val) {
-				    $form_data['E63'.$letra[$val-1]]=1;
+			if (is_array($this->input->post('E74'))){
+				 foreach ($this->input->post('E74[]') as $key => $val) {
+				    $form_data['E74'.$letra[$val-1]]=1;
 		       	 } 
 		      }
 				

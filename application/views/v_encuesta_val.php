@@ -1574,7 +1574,7 @@
 							<div class="radio radio-primary">
 								<label>
 									<input type="radio" name="B11" value="5" <?php echo set_radio("B11","5"); echo $rta[5]; ?>/>
-									Acuden a (psicólogo(a), orientador(a), comisarías de familia, ICBF, Policía, autoridades comunitarias de etnia)
+									Acuden a (psicólogo(a), orientador(a), guía espiritual, comisarías de familia, ICBF, Policía, autoridades comunitarias de etnia)
 								</label>
 							</div>
 							<div class="radio radio-primary">
@@ -3382,7 +3382,7 @@
 						
 			 </div>
 			 	   <p class="sub_t" id="mensa1" style="display: none;">
-				 	No dependas de sustancias psicoactivas para demostrar qué tan bueno(a) eres y las cosas que puedes lograr. Si has empezado a consumir este tipo de sustancias, comunícate con un adulto de confianza, llama a la línea <b>141</b>. 
+			 	   	No dependas de sustancias psicoactivas para demostrar qué tan bueno(a) eres y las cosas que puedes lograr.  Si has empezado a consumir este tipo de sustancias, comunícate con un adulto de confianza y/o llama a la línea <b>141</b>. 
 				 </p>					
 				 
 			  	<div class="container">
@@ -3503,7 +3503,7 @@
 													if ($fila->A12=='checked') {$rta1 ='checked'; $rta2='';}
 													if ($fila->A12== 2) {$rta1  =''; $rta2='checked';}
 												?>
-												<img src='<?php echo base_url("images/hombre.png");?>' class="img-responsive"/> 
+												<!-- <img src='<?php echo base_url("images/hombre.png");?>' class="img-responsive"/>  -->
 												<input type="radio" name="A12" value="1" <?php echo set_radio("A12","1"); echo $rta1; ?> />Un hombre
 											</label>
 										</div>
@@ -3511,7 +3511,7 @@
 									<div class="col-md-3 col-sm-6 col-xs-6">
 										<div class="radio radio-primary">
 											<label>
-											<img src='<?php echo base_url("images/mujer.png");?>' class="img-responsive"/> 
+											<!-- <img src='<?php echo base_url("images/mujer.png");?>' class="img-responsive"/>  -->
 												<input type="radio" name="A12" value="2" <?php echo set_radio("A12","2"); echo $rta2; ?> />Una mujer
 											</label>
 										</div>
@@ -3735,42 +3735,54 @@
 									<div class="checkbox">
 										<label>
 											<input id="D26l" type="checkbox" name="D26[]" class="D26" onclick="D26()" value="12" <?php echo set_checkbox('D26','12'); echo $fila->D26l;?>/>
-											Anticoncepción
+											Ciclo e higiene menstrual
 										</label>							
 									</div>
 									<div class="checkbox">
 										<label>
 											<input id="D26m" type="checkbox" name="D26[]" class="D26" onclick="D26()" value="13" <?php echo set_checkbox('D26','13'); echo $fila->D26m;?>/>
-											Embarazo y parto
+											Anticoncepción
 										</label>							
 									</div>
 									<div class="checkbox">
 										<label>
 											<input id="D26n" type="checkbox" name="D26[]" class="D26" onclick="D26()" value="14" <?php echo set_checkbox('D26','14'); echo $fila->D26n;?>/>
-											Aborto
+											Embarazo y parto
 										</label>							
 									</div>
 									<div class="checkbox">
 										<label>
 											<input id="D26o" type="checkbox" name="D26[]" class="D26" onclick="D26()" value="15" <?php echo set_checkbox('D26','15'); echo $fila->D26o;?>/>
-											Violencia y abuso sexual
+											Aborto
 										</label>							
 									</div>
 									<div class="checkbox">
 										<label>
 											<input id="D26p" type="checkbox" name="D26[]" class="D26" onclick="D26()" value="16" <?php echo set_checkbox('D26','16'); echo $fila->D26p;?>/>
+											Violencia y abuso sexual
+										</label>							
+									</div>
+									<div class="checkbox">
+										<label>
+											<input id="D26q" type="checkbox" name="D26[]" class="D26" onclick="D26()" value="17" <?php echo set_checkbox('D26','17'); echo $fila->D26q;?>/>
 											Infecciones de Transmisión Sexual y SIDA
 										</label>							
 									</div>
 									<div class="checkbox">
 										<label>
-											<input id="D26q" class type="checkbox" name="D26[]" onclick="ocultos(this.id)" value="17" <?php echo set_checkbox('D26','17'); echo $fila->D26q;?>/>
+											<input id="D26r" type="checkbox" name="D26[]" class="D26" onclick="D26()" value="18" <?php echo set_checkbox('D26','18'); echo $fila->D26r;?>/>
+											Explotación Sexual Comercial de Niños, Niñas y Adolescentes
+										</label>							
+									</div>
+									<div class="checkbox">
+										<label>
+											<input id="D26s" type="checkbox" name="D26[]" onclick="ocultos(this.id)" value="19" <?php echo set_checkbox('D26','19'); echo $fila->D26s;?>/>
 											No te acuerdas
 										</label>							
 									</div>
 									<div class="checkbox">
 										<label>
-											<input id="D26r" type="checkbox" name="D26[]"  onclick="D26()" value="18" <?php echo set_checkbox('D26','18'); echo $fila->D26r;?>/>
+											<input id="D26t" type="checkbox" name="D26[]"  onclick="D26()" value="20" <?php echo set_checkbox('D26','20'); echo $fila->D26t;?>/>
 											No te han hablado de estos temas
 										</label>							
 									</div>
@@ -3883,7 +3895,13 @@
 									</div>
 									<div class="checkbox">
 										<label>
-											<input id="D27r" class type="checkbox" name="D27[]" onclick="ocultos(this.id)" value="18" <?php echo set_checkbox('D27','18'); echo $fila->D27r;?>/>
+											<input  id="D27r" type="checkbox" name="D27[]" class="D27" onclick="D27()" value="18" <?php echo set_checkbox('D27','18'); echo $fila->D27r;?>/>
+											Desconocido(a)
+										</label>							
+									</div>
+									<div class="checkbox">
+										<label>
+											<input id="D27s" class type="checkbox" name="D27[]" onclick="ocultos(this.id)" value="19" <?php echo set_checkbox('D27','19'); echo $fila->D27s;?>/>
 											Con nadie
 										</label>							
 									</div>
@@ -4352,7 +4370,7 @@
 									<div class="checkbox">	
 										<label>
 											<input id="ch36" type="checkbox" class="D39 sisexo1" name="D39[]" value ="4" <?php echo set_radio('D39[]','4'); echo $fila->D39d; ?> />
-											A algún trabajador(a) de tu colegio (orientador(a), profesor(a), etc.)
+											A algún trabajador(a) de tu colegio (orientador(a), guía espiritual, profesor(a), etc)
 										</label>
 									</div>
 									<div class="checkbox">
@@ -4630,7 +4648,7 @@
 							<div class="checkbox">
 								<label>
 									<input class="D54 sisexo2" type="checkbox" value="4" name="D54[]" <?php echo set_checkbox('D54','4'); echo $fila->D54d;?>/>
-									A algún trabajador(a) de tu colegio (orientador(a), profesor(a), etc.)
+									A algún trabajador(a) de tu colegio (orientador(a), guía espiritual, profesor(a), etc)
 								</label>
 							</div>
 							<div class="checkbox">
@@ -4704,14 +4722,14 @@
 										<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="cap_4">Sexo</label>	
 										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 container">
 											<div class="row radio radio-primary col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										 		<img class="col-lg-6 col-md-6 col-sm-12 col-xs-4 img-responsive" src='<?php echo base_url("images/hombre2.png");?>'> <br>
+										 		<!-- <img class="col-lg-6 col-md-6 col-sm-12 col-xs-4 img-responsive" src='<?php echo base_url("images/hombre2.png");?>'> <br> -->
 											    <label class="col-lg-6 col-md-6 col-sm-12 col-xs-8">
 											    	<input type="radio" name="D42I" value ="1" <?php echo set_radio('D42I','1'); echo $rta1;?>/>
 											  	    Hombre
 											   	</label>							
 											</div>
 										  	<div class="row radio radio-primary col-lg-12 col-md-12 col-sm-12 col-xs-12">	 	
-										  		<img class="col-lg-6 col-md-6 col-sm-12 col-xs-4 img-responsive" src='<?php echo base_url("images/mujer2.png");?>'><br> 
+										  		<!-- <img class="col-lg-6 col-md-6 col-sm-12 col-xs-4 img-responsive" src='<?php echo base_url("images/mujer2.png");?>'><br> --> 
 												<label class="col-lg-6 col-md-6 col-sm-12 col-xs-8">
 													<input type="radio" name="D42I" value ="2" <?php echo set_radio('D42I','2'); echo $rta2;?>/>
 												  Mujer
@@ -5540,7 +5558,7 @@
 			            </div>
 			          
 			       		<!--Pregunta 76-->
-					    <div class="row form-group" id="E63" style="display:none;  text-align: justify;">
+					    <div class="row form-group" id="E74" style="display:none;  text-align: justify;">
 							<label class="col-lg-12">74. ¿Cuáles de los siguientes riesgos de internet conoces?</label>
 							
 							<div class="col-lg-12">
@@ -5548,7 +5566,7 @@
 								<div class="checkbox col-lg-4">
 
 									<label>
-										<input id="E59a" type="checkbox" class="E63" value="1" name="E63[]" onclick="ocultos('E63e')" <?php echo set_checkbox('E63','1'); echo $fila->E63a;?>/>	
+										<input type="checkbox" class="E74" value="1" name="E74[]" onclick="ocultos('E74f')" <?php echo set_checkbox('E74','1'); echo $fila->E74a;?>/>	
 										<b>Grooming:</b> es cuando un posible abusador o una persona que usa una identidad falsa trata de iniciar una relación en línea con un menor de edad, buscando involucrarlo en actos sexuales, en intercambio de imágenes y en conversaciones con contenido sexual.
 									</label>
 								</div>
@@ -5556,7 +5574,7 @@
 								<div class="checkbox col-lg-4">
 								<br>
 										<label>
-										<input id="E59b" type="checkbox" class="E63" value="2" name="E63[]" onclick="ocultos('E63e')" <?php echo set_checkbox('E63','2'); echo $fila->E63b;?>/>
+										<input type="checkbox" class="E74" value="2" name="E74[]" onclick="ocultos('E74f')" <?php echo set_checkbox('E74','2'); echo $fila->E74b;?>/>
 									    <b>Sexting:</b> es cuando alguien hace fotos o videos de sí mismo, poco apropiados (sugestivos o sexualmente explícitos), y los envía a alguien vía teléfono celular o internet.
 									</label>
 								</div>
@@ -5566,58 +5584,65 @@
 							<div class="col-lg-12">
 								<div class="checkbox col-lg-4">
 									<label>
-										<input id="E59c" type="checkbox" class="E63" value="3" name="E63[]" onclick="ocultos('E63e')" <?php echo set_checkbox('E63','3'); echo $fila->E63c;?>/>
+										<input type="checkbox" class="E74" value="3" name="E74[]" onclick="ocultos('E74f')" <?php echo set_checkbox('E74','3'); echo $fila->E74c;?>/>
 										<b>Ciberacoso:</b> es un tipo de agresión psicológica que se da usando las nuevas tecnologías: teléfonos celulares e internet. Por medio del envío de correos, mensajes o imágenes, se busca herir o intimidar a otra persona. La víctima desconoce la identidad de su agresor.
 									</label>
 								</div>
 								<div class="checkbox col-lg-4">
 									<br>
 									<label>
-										<input id="E59d" type="checkbox" class="E63" value="4" name="E63[]" onclick="ocultos('E63e')" <?php echo set_checkbox('E63','4'); echo $fila->E63d;?>/>
+										<input type="checkbox" class="E74" value="4" name="E74[]" onclick="ocultos('E74f')" <?php echo set_checkbox('E74','4'); echo $fila->E74d;?>/>
 										<b>Ciberdependencia:</b> se da cuando el tiempo dedicado a navegar en internet y usar redes sociales es superior al tiempo que se  invierte  en actividades fuera de la red. Son comportamientos donde las personas convierten en imprescindibles las herramientas digitales, significa el miedo a perderse de algo que sucede en el mundo virtual.
+									</label>
+								</div>
+								<div class="checkbox col-lg-4">
+									<br>
+									<label>
+										<input type="checkbox" class="E74" value="5" name="E74[]" onclick="ocultos('E74f')" <?php echo set_checkbox('E74','5'); echo $fila->E74e;?>/>
+										<b>Sextorsión:</b> cuando la persona que envía material sexual a través del sexting es chantajeada con su propio material con el fin de obtener dinero o algún otro beneficio por parte del chantajista. El chantaje consiste en la amenaza de publicar el material en internet o ser enviado a los familiares y conocidos del implicado.
 									</label>
 								</div>
 							</div>
 							<div class="col-lg-12">
 								<div class="checkbox col-lg-6">
 									<label>
-									<input id="E63e" type="checkbox" value="5" onclick="ocultos(this.id)" name="E63[]" <?php echo set_checkbox('E63','5'); echo $fila->E63e;?>/>
+									<input id="E74f" type="checkbox" value="6" onclick="ocultos(this.id)" name="E74[]" <?php echo set_checkbox('E74','6'); echo $fila->E74f;?>/>
 										Ninguno de los anteriores
 									</label>
 								</div>
 							</div>
-							<span class="t_error"><?php echo strip_tags(form_error('E63[]')); ?></span>
+							<span class="t_error"><?php echo strip_tags(form_error('E74[]')); ?></span>
 						</div>	
 							<div class="row form-group" id="E64" style="display:none;">
 						<label class="col-lg-12">75. ¿Qué es lo que más te gusta de las redes sociales?</label>
 							<div class="col-lg-12">
 								<div class="checkbox">
 									<label>
-										<input id="ch1" type="checkbox" value="1" name="E64[]" class="E64" <?php echo set_checkbox('E64','1'); echo $fila->E64a;?>/>
+										<input type="checkbox" value="1" name="E64[]" class="E64" <?php echo set_checkbox('E64','1'); echo $fila->E64a;?>/>
 										Puedes subir fotos, videos y música para compartir
 									</label>
 								</div>
 								<div class="checkbox">
 									<label>
-										<input id="ch2" type="checkbox" value="2" name="E64[]" class="E64" <?php echo set_checkbox('E64','2'); echo $fila->E64b;?>/>
+										<input type="checkbox" value="2" name="E64[]" class="E64" <?php echo set_checkbox('E64','2'); echo $fila->E64b;?>/>
 									    Te puedes reencontrar con gente que hace mucho no ves
 									</label>
 								</div>
 								<div class="checkbox">
 									<label>
-										<input id="ch3" type="checkbox" value="3" name="E64[]" class="E64" <?php echo set_checkbox('E64','3'); echo $fila->E64c;?>/>
+										<input type="checkbox" value="3" name="E64[]" class="E64" <?php echo set_checkbox('E64','3'); echo $fila->E64c;?>/>
 										Puedes conocer gente nueva
 									</label>
 								</div>
 								<div class="checkbox">
 									<label>
-										<input id="ch4" type="checkbox" value="4" name="E64[]" class="E64" <?php echo set_checkbox('E64','4'); echo $fila->E64d;?>/>
+										<input type="checkbox" value="4" name="E64[]" class="E64" <?php echo set_checkbox('E64','4'); echo $fila->E64d;?>/>
 										Te enteras de las cosas que le pasan a tus amigos(as)
 									</label>
 								</div>
 									<div class="checkbox">
 									<label>
-										<input id="ch4" type="checkbox" value="5" name="E64[]" class="E64" <?php echo set_checkbox('E64','5'); echo $fila->E64e;?>/>
+										<input type="checkbox" value="5" name="E64[]" class="E64" <?php echo set_checkbox('E64','5'); echo $fila->E64e;?>/>
 										Otra
 									</label>
 								</div>

@@ -234,7 +234,7 @@ function main()
 		 }
 /******************/
 
-		if($("#D27r").prop("checked")){
+		if($("#D27s").prop("checked")){
 			  $(".D27").prop("disabled",true);
 			  $(".D27").prop("checked",false);
 			}
@@ -327,7 +327,7 @@ function main()
 		  $('#E57').show();
 		  $('#E58').show();
 		  $('#E59').show();
-		  $('#E63').show();
+		  $('#E74').show();//antes E63
 		  $('#E64').show();
 		  $('#internet').prop("disabled",false);
 		  $('#fin_internet').show();

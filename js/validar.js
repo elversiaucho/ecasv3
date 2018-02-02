@@ -308,8 +308,8 @@ function ocultos(id)
               $(".B14").prop("disabled",true);
             else $(".B14").prop("disabled",false);
         break;
-        case 'E63e':
-            var obj = $('.E63');
+        case 'E74f':
+            var obj = $('.E74');
             var estado = 0;
             for (var i=0; i< obj.length ; i++)
             {
@@ -319,17 +319,17 @@ function ocultos(id)
                 }
             }
             if (estado==1 ){
-                $("#E63e").prop("disabled",true);
-                $("#E63e").prop("checked",false);
+                $("#E74f").prop("disabled",true);
+                $("#E74f").prop("checked",false);
                 
             }
             else {
-                $("#E63e").prop("disabled",false);
+                $("#E74f").prop("disabled",false);
                 }
-            if($("#E63e").prop("checked"))
-                $(".E63").prop("disabled",true);
+            if($("#E74f").prop("checked"))
+                $(".E74").prop("disabled",true);
             else
-                $(".E63").prop("disabled",false);
+                $(".E74").prop("disabled",false);
         
 
         break;
@@ -341,7 +341,7 @@ function ocultos(id)
               $('#E57').show();
               $('#E58').show();
               $('#E59').show();
-              $('#E63').show();
+              $('#E74').show();
               $('#E64').show();
               $("#monitor").show();
               $("#ErrE66").text("");
@@ -355,14 +355,14 @@ function ocultos(id)
               $('input:radio[name=E60]').prop('checked',false);
               $('input:radio[name=E61]').prop('checked',false);
               $('input:radio[name=E62]').prop('checked',false);
-              $('.E63').prop("checked",false);
-              $('#E63e').prop("checked",false);
+              $('.E74').prop("checked",false);
+              $('#E74f').prop("checked",false);
               $('.E64').prop("checked",false);
               $('#E56').slideUp("slow");
               $('#E57').hide();
               $('#E58').hide();
               $('#E59').hide();
-              $('#E63').hide();
+              $('#E74').hide();
               $('#E64').hide();
               $("#monitor").hide();
               
@@ -527,7 +527,7 @@ function ocultos(id)
                 
         break;
 
-        case "D27r": if($("#D27r").prop("checked")){
+        case "D27s": if($("#D27s").prop("checked")){
                       $(".D27").prop("disabled",true);
                       $(".D27").prop("checked",false);
                     }
@@ -600,14 +600,14 @@ function ocultos(id)
 
                 break;
     
-        case "D26q": if($("#D26q").prop("checked"))
+        case "D26s": if($("#D26s").prop("checked"))//antes D26q
                     {
                       $(".D26").prop("disabled",true);
-                      $("#D26r").prop("disabled",true);
+                      $("#D26t").prop("disabled",true);
                     }
                     else
                     { $(".D26").prop("disabled",false);
-                     $("#D26r").prop("disabled",false);
+                     $("#D26t").prop("disabled",false);
                     }
                 
         break;
@@ -901,8 +901,8 @@ function D27()
         }
     }
     if (estadoe==0 )
-        $("#D27r").prop("disabled",true);
-    else $("#D27r").prop("disabled",false);
+        $("#D27s").prop("disabled",true);
+    else $("#D27s").prop("disabled",false);
 }
 
 
@@ -919,18 +919,18 @@ function D26()
     }
     if (estadof==0 )
     {
-        $("#D26q").prop("disabled",true);
-        $("#D26r").prop("disabled",true);
+        $("#D26s").prop("disabled",true);
+        $("#D26t").prop("disabled",true);
     }
     else
-    { $("#D26q").prop("disabled",false);
-      $("#D26r").prop("disabled",false);
+    { $("#D26s").prop("disabled",false);
+      $("#D26t").prop("disabled",false);
     }
 
-    if($("#D26r").prop("checked"))
+    if($("#D26t").prop("checked"))
     {
         $(".D26").prop("disabled",true);
-        $("#D26q").prop("disabled",true);
+        $("#D26s").prop("disabled",true);
     }
      
     else
